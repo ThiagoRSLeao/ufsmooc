@@ -1,0 +1,137 @@
+body
+{
+    min-height: 600px;
+}
+input:focus
+{
+    outline: none;
+}
+.section-main
+{
+    padding-top: 0px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.main-container
+{
+    background: #F3F3FA;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25), 0px 0px 3px #FFFFFF, 0px 0px 3px rgba(31, 42, 139, 0.48);
+    border: 2px solid #F3F3F4;
+    height: 450px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-title
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 50px; 
+    color: #21376B;
+    font-weight: bold;
+    font-size: 35px;
+    letter-spacing: 0.2px;  
+    margin-bottom: 15px;
+}
+.main-box
+{
+    height: 380px;
+    display: flex;
+    justify-content: center;
+	flex-wrap: wrap;
+}
+.main-box > *
+{
+    margin-bottom: 12.5px;
+    font-size: 15pt;
+}
+input[type='text'], input[type='password']
+{    
+    width: 90%;
+    box-sizing: border-box;
+    height: 50px;
+    background: #E6E6E8;
+    border: 2px solid rgba(245, 245, 245, 0.2);
+    box-shadow: inset 0px 0px 1px #FFFFFF, inset 0.1px 0px 2px #6E7788;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+.remind-login-container
+{    
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 90%;
+}
+.remind-login-checkbox
+{
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+.login-btn
+{
+    width: 90%;
+    box-sizing: border-box;
+
+    height: 50px;
+    background: #2754BE;
+    border: 2px solid #A4A4A4;
+    color: white;
+    border-radius: 10px;
+    transition: .15s ease;
+}
+.login-btn:hover
+{
+    color: #c4c4c4;
+    cursor: pointer;
+}
+.lines-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 90%;
+}
+.line
+{
+    width: 190px;
+    background: #B5AEAE;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    border: 0.1px solid #A6A1A1;
+    box-shadow: 0px 0.1px 0.1px #000000;
+    transform: rotate(0.24deg);
+}
+.create-account-btn
+{
+    text-decoration: none;
+    background: #F3F3F4;
+    color: black;
+    border: 2px solid #F3F3F4;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25), 0px 1px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
+}
+.create-account-btn:hover
+{
+    color: #385bcc;
+    cursor: pointer;
+}
+.forgot-account-container
+{    
+    font-size: 12pt;
+    width: 90%;  
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

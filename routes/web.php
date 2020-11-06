@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.landingPage');
-});
-Route::get('/robertinho', function () {
-    return view('pages.courses');
-});
+}) -> name('start');
+
+Route::get('/login', function () {
+    return view('pages.login');
+}) -> name('login');
+
+Route::get('/signup', function () {
+    return view('pages.signUp');
+}) -> name('signup');
+
+Route::get('/panel', function () {
+    return view('pages.panel');
+}) -> name('panel');

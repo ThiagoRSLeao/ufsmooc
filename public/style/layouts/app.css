@@ -1,0 +1,103 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik';
+    /*font-family: 'Zapf Humanist BT';*/
+}
+html
+{
+    height: 100%;
+}
+body 
+{
+    height: 100%;
+}
+header
+{
+    display: flex;
+    align-items: center;
+    height: 110px;
+    width: 100%;
+    background: #21376B;
+    margin-left: 0px;
+}
+header > a > img
+{
+    margin-left: 25px;
+    margin-right: 5px;
+    width: 220px;
+}
+header > .nav-container
+{
+    margin-left: 20px;
+    height: 100px;
+    width: inherit; 
+}
+header > .nav-container > .nav-box-pages
+{
+    padding-top: 52px;
+    height: 55px;
+    float: left;
+}
+header > .nav-container > .nav-box-login
+{
+    padding-top: 25px;
+    height: 75px;
+    width: 180px;
+    display: flex;
+    align-items: center;    
+    float: right;
+}
+header > .nav-container > .nav-box-pages > a
+{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 25px;
+    font-size: 14pt;
+    text-decoration: none;    
+    height: auto;
+    color: white;
+    transition: 0.25s 0s ease;
+}
+header > .nav-container > .nav-box-login > a
+{
+    font-size: 14pt;
+    text-decoration: none;    
+    height: auto;
+    color: white;
+    transition: 0.25s 0s ease;
+}
+header > .nav-container > .nav-box-login > .register-btn
+{
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 25px;    
+    background-color:#2754BE;
+    margin-left: 15px;
+    font-size: 14pt;
+    text-decoration: none;    
+    height: auto;
+    color: white;
+}     
+header > .nav-container > .nav-box-login > a:hover,
+header > .nav-container > .nav-box-pages > a:hover
+{    
+    color: rgb(182, 182, 182);
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    margin: 0 auto -50px; 
+}
+footer
+{
+    position: relative;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background: #21376B;
+}
