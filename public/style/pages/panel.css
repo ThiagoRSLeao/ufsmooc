@@ -98,10 +98,8 @@ body
 }
 .course-name
 {
-    color: #21376B;
+    color: #2754BE;
     min-height: 30px;
-    min-width: 290px;
-    width: 500px;
     padding: 5px;
     font-size: 16pt;
     word-break: break-all;
@@ -129,7 +127,7 @@ body
     display: flex;
     align-items: center;
     height: 20%;
-    width: 100%;
+    width: 89%;
     font-size: 14pt;
     color: #21376B;
     transition: 0.3s 0.15s ease;
@@ -149,7 +147,7 @@ body
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-size: 13pt;
+    font-size: 11pt;
     color: #21376B;
 }
 .course-alert-value
@@ -165,7 +163,7 @@ body
 }
 .course-box:hover > .course-name /*, .course-box:hover > .course-body > .course-alert-title*/
 {
-    color: #7292df;
+    color: #f19a59;
 }
 /*
 .section-head

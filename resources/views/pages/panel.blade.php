@@ -7,7 +7,6 @@
 @section('title', 'Painel de Cursos')
 
 @section('content')
-    <section class="section-main wrapper">
         <div class="main-header">
             Meus cursos
         </div>
@@ -84,6 +83,6 @@
                     </div>
                 </div>
             </div>
+            
         </div>
-    </section>
 @endsection

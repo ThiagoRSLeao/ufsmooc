@@ -7,7 +7,6 @@
 @section('title', 'Faça o Login')
 
 @section('content')
-    <section class="section-main">
         <form>
             <div class="main-container">            
                 <div>
@@ -34,5 +33,4 @@
                 </div>
             </div>
         </form>
-    </section>
 @endsection

@@ -6,6 +6,10 @@ input:focus, select:focus
 {
     outline: none;
 }
+form
+{
+    height: 690px;
+}
 .section-main
 {
     padding-top: 0px;

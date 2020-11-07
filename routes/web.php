@@ -28,3 +28,11 @@ Route::get('/signup', function () {
 Route::get('/panel', function () {
     return view('pages.panel');
 }) -> name('panel');
+
+Route::get('/panel', function () {
+    return view('pages.panel');
+}) -> name('panel');
+
+Route::get('/questions', function () {
+    return view('pages.questions');
+}) -> name('questions');

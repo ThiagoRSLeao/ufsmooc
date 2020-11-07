@@ -20,7 +20,7 @@
                 <a href="{{ route('panel') }}">Painel</a>
                 <a href="">Cursos</a>
                 <a href="">Sobre</a>
-                <a href="">Dúvidas</a>
+                <a href="{{ route('questions') }}">Dúvidas</a>
             </div>
             <div class='nav-box-login'>            
                 <a href="{{ route('login') }}">Entrar</a>
@@ -28,7 +28,9 @@
             </div>
         </div>
     </header>
-    @yield('content')
+    <section class="section-main wrapper">
+        @yield('content')
+    </section>
     <div class="push">
         <footer>
             
@@ -36,4 +38,4 @@
     </div>
 </body>
 </html>
-
+@yield('script')
