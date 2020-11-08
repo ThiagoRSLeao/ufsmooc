@@ -27,7 +27,7 @@
                         <a class='create-account-btn' href={{ route('signup') }}>Criar conta</a>
  
                         <div class='forgot-account-container'>
-                            <a class='forgot-account-btn' href={{ url('/')}}>Esqueceu a senha?</a>
+                            <a class='forgot-account-btn' href={{ route('forgotPass') }}>Esqueceu a senha?</a>
                         </div>
                     </div>                   
                 </div>

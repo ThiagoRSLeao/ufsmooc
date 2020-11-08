@@ -8,7 +8,7 @@
     <link href={{ url('style/layouts/app.css') }} rel="stylesheet" />
     <link href=@yield('style') rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
-    <title> @yield('title') </title>
+    <title> UFSMOOC - @yield('title') </title>
 </head>
 <body>
     <header>
@@ -17,10 +17,10 @@
         </a>
         <div class='nav-container'>
             <div class='nav-box-pages'>            
-                <a href="{{ route('panel') }}">Painel</a>
-                <a href="">Cursos</a>
-                <a href="">Sobre</a>
-                <a href="{{ route('questions') }}">Dúvidas</a>
+                <a class="panel-link" href="{{ route('panel') }}">Painel</a>
+                <a class="courses-link" href="{{ route('about') }}">Cursos</a>
+                <a class="about-link" href="{{ route('about') }}">Sobre</a>
+                <a class="questions-link" href="{{ route('questions') }}">Dúvidas</a>
             </div>
             <div class='nav-box-login'>            
                 <a href="{{ route('login') }}">Entrar</a>

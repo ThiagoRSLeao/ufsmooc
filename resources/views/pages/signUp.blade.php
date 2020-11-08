@@ -4,7 +4,7 @@
     {{ url('style/pages/signUp.css') }}
 @endsection
 
-@section('title', 'Faça o Login')
+@section('title', 'Cadastre-se')
 
 @section('content')
     

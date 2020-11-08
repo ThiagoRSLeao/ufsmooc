@@ -6,6 +6,18 @@ input:focus
 {
     outline: none;
 }
+.questions-link::before 
+{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    background-color: #f19a59;
+    transition: all 0.3s ease;
+    opacity: 100%;
+    left: 0;
+    height: 5px;
+    width: 100%;
+}
 .section-main
 {
     padding-top: 80px;

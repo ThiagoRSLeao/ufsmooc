@@ -36,3 +36,11 @@ Route::get('/panel', function () {
 Route::get('/questions', function () {
     return view('pages.questions');
 }) -> name('questions');
+
+Route::get('/about', function () {
+    return view('pages.about');
+}) -> name('about');
+
+Route::get('/forgotPass', function () {
+    return view('pages.forgotPass');
+}) -> name('forgotPass');

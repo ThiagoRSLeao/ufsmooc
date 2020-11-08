@@ -8,7 +8,7 @@
 
 @section('content')
         <div class="main-header">
-            Meus cursos
+            Cursos do professor
         </div>
         <div class="courses-container">
             <div class="course-box">

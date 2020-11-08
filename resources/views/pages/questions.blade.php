@@ -4,7 +4,7 @@
     {{ url('style/pages/questions.css') }}
 @endsection
 
-@section('title', 'Faça o Login')
+@section('title', 'Dúvidas')
 
 @section('content')
         <div class="section-main-title">
