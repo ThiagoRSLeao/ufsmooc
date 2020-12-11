@@ -17,12 +17,11 @@ Route::get('/', function () {
     return view('pages.landingPage');
 }) -> name('start');
 
-Route::get('/login', function () {
-    return view('pages.login');
-}) -> name('login');
+Route::get('/login', 'ControllerUser@userLogin') -> name('login');
 
 Route::get('/signup', function () {
-    return view('pages.signUp');
+   
+     view('pages.signUp');
 }) -> name('signup');
 
 Route::get('/panel', function () {
