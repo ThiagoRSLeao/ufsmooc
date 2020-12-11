@@ -29,10 +29,6 @@ Route::get('/panel', function () {
     return view('pages.panel');
 }) -> name('panel');
 
-Route::get('/panel', function () {
-    return view('pages.panel');
-}) -> name('panel');
-
 Route::get('/questions', function () {
     return view('pages.questions');
 }) -> name('questions');
@@ -44,3 +40,16 @@ Route::get('/about', function () {
 Route::get('/forgotPass', function () {
     return view('pages.forgotPass');
 }) -> name('forgotPass');
+
+Route::prefix('/student')->group(function()
+{
+    Route::get('/panel', function () {
+        return view('pages.teacherPanel');
+    }) -> name('student.panel');    
+});
+Route::prefix('/teacher')->group(function()
+{
+    Route::get('/panel', function () {
+        return view('pages.teacherPanel');
+    }) -> name('teacher.panel');
+});
