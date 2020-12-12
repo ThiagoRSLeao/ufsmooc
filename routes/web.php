@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*COM CONTROLLER*/
+Route::get('/login', 'ControllerUser@userLogin') -> name('login');
+Route::post('/validateLogin', 'ControllerUser@validateLogin') -> name('login.validate');
+
+/*SEM CONTROLLER*/
 Route::get('/', function () {
     return view('pages.landingPage');
 }) -> name('start');
-
-Route::get('/login', 'ControllerUser@userLogin') -> name('login');
 
 Route::get('/signup', function () {
    

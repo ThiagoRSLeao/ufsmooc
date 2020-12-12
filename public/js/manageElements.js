@@ -246,16 +246,32 @@ function createCourseDetailsWindow(course)
     var informations = document.createElement("div");
     informations.innerHTML = "Informações Gerais";
     informations.setAttribute("class", "create-course-details-option");    
+    resources.addEventListener("click", function(){
+        show();
+        hide();
+    }); 
     menu.appendChild(informations);
 
     var resources = document.createElement("div");
     resources.innerHTML = "Materiais";
-    resources.setAttribute("class", "create-course-details-option");    
+    resources.setAttribute("class", "create-course-details-option");   
+    resources.addEventListener("click", function(){
+        show();
+        hide();
+    }); 
     menu.appendChild(resources);
 
     var body = document.createElement("div");
     body.setAttribute("class", "create-course-details-body");
     containerDetails.appendChild(body);
+
+    var bodyInformation = document.createElement("div");
+    bodyInformation.setAttribute("class", "create-course-details-body-information");
+    body.appendChild(bodyInformation);
+
+    var bodyResources = document.createElement("div");
+    bodyResources.setAttribute("class", "create-course-details-body-resources");
+    body.appendChild(bodyResources);
 
     /*var headSelect = document.createElement("div");
     headSelect.setAttribute("class", "create-course-container-head-select");

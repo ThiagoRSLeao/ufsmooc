@@ -7,13 +7,14 @@
 @section('title', 'Faça o Login')
 
 @section('content')
-        <form>
+        <form method="POST" action={!! Route('login.validate') !!}>
+            @csrf
             <div class="main-container">            
                 <div>
                     <div class='main-title'> Faça seu login </div>
                     <div class='main-box'>
-                        <input class='email-input' type="text" value="" placeholder="E-mail"/>
-                        <input class='password-input' type="password" value="" placeholder="Senha"/>
+                        <input class='email-input' type="text" value="" name='email' placeholder="E-mail"/>
+                        <input class='password-input' type="password" value="" name='password' placeholder="Senha"/>
                         <div class='remind-login-container'>
                             <input class='remind-login-checkbox' type="checkbox" /> Lembrar minha senha 
                         </div>
