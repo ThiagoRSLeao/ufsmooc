@@ -10,6 +10,9 @@ class ControllerUser extends Controller
 
     public function userLogin()
     {
+        if (Auth::check()){
+            return view('authenticated.login');
+        }
         return view('pages.login');
     }
 
@@ -28,7 +31,7 @@ class ControllerUser extends Controller
         ]);
     }
 
-    public function endSession(Request $request){
+    public function userLogout(Request $request){
         Auth::logout();
 
         $request->session()->invalidate();
@@ -38,7 +41,22 @@ class ControllerUser extends Controller
         return redirect('/');
     }
 
-    public function registerUser(){
+    public function userSignup(){
+        if (Auth::check()){
+            return view('authenticated.login');
+        }
+        return view('pages.signUp');
+    }
+
+    public function validateSignup(Request $request){
+
+    }
+
+    public function userForgotPass(){
+        return view('pages.forgotPass');
+    }
+
+    public function validateForgotPass(){
 
     }
 }
