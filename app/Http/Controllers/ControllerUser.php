@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ControllerUser extends Controller
 {
@@ -12,16 +13,17 @@ class ControllerUser extends Controller
     }
     public function validateLogin(Request $request)
     {
-        $req =  $request->only(['email','password']);
-        $_SESSION['email'] = $req['email']; 
-        $_SESSION['password'] = $req['password']; 
-        if($_SESSION['email'] == 'augusto@safadinha.xxx' && $_SESSION['password'] = '123')
-        {
-            return view('pages.teacherPanel');
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
         }
-        else
-        {            
-            return view('pages.login');
-        }
+
+        return back()->withErrors([
+            'email' => 'As credenciais inseridas não estão registradas no sistema.',
+        ]);
     }
 }
+
