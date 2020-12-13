@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 /*COM CONTROLLER*/
 Route::get('/login', 'ControllerUser@userLogin') -> name('login');
 Route::post('/validateLogin', 'ControllerUser@validateLogin') -> name('login.validate');
+Route::post('/validateSignup', 'ControllerUser@validateSignup')->name('signup.validate');
 Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
 Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
