@@ -106,7 +106,9 @@
 </script>
 <script>
     document.getElementById('addCourseBtn').addEventListener("click", function(){
-        createCourseCreationWindow();
+        var course = new Course();
+        course.setPathImage({{ $courseImage }});
+        createCourseCreationWindow(course);
     });
 </script>
 @endsection

@@ -13,7 +13,6 @@ class ControllerUser extends Controller
         return view('pages.login');
     }
 
-
     public function validateLogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -40,6 +39,10 @@ class ControllerUser extends Controller
 
     public function registerUser(){
 
+    }
+    public function teacherPanel()
+    {
+        
     }
 }
 
