@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,42 +17,27 @@ use Illuminate\Support\Facades\Route;
 /*COM CONTROLLER*/
 Route::get('/login', 'ControllerUser@userLogin') -> name('login');
 Route::post('/validateLogin', 'ControllerUser@validateLogin') -> name('login.validate');
+Route::post('/validateSignup', 'ControllerUser@validateSignup')->name('signup.validate');
+Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
+Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
+Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
+Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
+Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
+Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');
+Route::get('/panel', 'ControllerUser@userPanel') -> name('panel');
 
 /*SEM CONTROLLER*/
-Route::get('/', function () {
-    return view('pages.landingPage');
-}) -> name('start');
-
-Route::get('/signup', function () {
-   
-     view('pages.signUp');
-}) -> name('signup');
-
-Route::get('/panel', function () {
-    return view('pages.panel');
-}) -> name('panel');
-
-Route::get('/questions', function () {
-    return view('pages.questions');
-}) -> name('questions');
-
-Route::get('/about', function () {
-    return view('pages.about');
-}) -> name('about');
-
-Route::get('/forgotPass', function () {
-    return view('pages.forgotPass');
-}) -> name('forgotPass');
 
 Route::prefix('/student')->group(function()
 {
     Route::get('/panel', function () {
-        return view('pages.teacherPanel');
-    }) -> name('student.panel');    
+        return view('pages.studentPanel');
+    }) -> name('student.panel')-> Middleware('auth');
 });
+
 Route::prefix('/teacher')->group(function()
 {
     Route::get('/panel', function () {
         return view('pages.teacherPanel');
-    }) -> name('teacher.panel');
+    }) -> name('teacher.panel')-> Middleware('auth');
 });
