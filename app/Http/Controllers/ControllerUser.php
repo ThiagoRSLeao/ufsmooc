@@ -16,6 +16,10 @@ class ControllerUser extends Controller
         }
         return view('pages.login');
     }
+    
+    public function userPanel(){
+        return view('pages.panel');
+    }
 
 
     public function validateLogin(Request $request)

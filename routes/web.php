@@ -24,13 +24,9 @@ Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');
+Route::get('/panel', 'ControllerUser@userPanel') -> name('panel');
 
 /*SEM CONTROLLER*/
-
-
-Route::get('/panel', function () {
-    return view('pages.panel');
-}) -> name('panel');
 
 Route::prefix('/student')->group(function()
 {
