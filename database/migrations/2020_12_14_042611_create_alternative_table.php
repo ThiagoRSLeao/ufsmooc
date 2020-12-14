@@ -17,7 +17,7 @@ class CreateAlternativeTable extends Migration
             $table->id();
             $table->longText('alternative_description');
             $table->boolean('right');
-            $table->bigInteger('alternative_question_id');
+            $table->bigInteger('alternative_question_id')->unsigned()->index();
             $table->foreign('alternative_question_id')->references('id')->on('alternative_question');
             $table->timestamps();
         });

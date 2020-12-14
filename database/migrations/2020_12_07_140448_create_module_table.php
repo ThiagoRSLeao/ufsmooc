@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModuloTable extends Migration
+class CreateModuleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateModuloTable extends Migration
             $table->id();
             $table->string('name_title_module');
             $table->string('name_route_archive_module');
-            $table->bigInteger('course_id');
+            $table->bigInteger('course_id')->unsigned()->index();
             $table->foreign('course_id')->references('id')->on('course');
             $table->timestamps();
         });

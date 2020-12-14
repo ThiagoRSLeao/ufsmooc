@@ -19,7 +19,8 @@ class CreateQuestionaryTable extends Migration
             $table->timestamps();
             $table->text('text_questionary');
             $table->char('type_question', 1);
-            $table->integer('module_id');
+            $table->bigInteger('module_id')->unsigned()->index();
+            $table->foreign('module_id')->references('id')->on('module');
         });
     }
 

@@ -23,8 +23,8 @@ class CreateMinisteringTable extends Migration
             $table->boolean('acess_evaluate_questionary');
             $table->boolean('acess_evaluate_work');
             $table->text('reason_tutor');
-            $table->bigInteger('users_id');
-            $table->bigInteger('course_id');
+            $table->bigInteger('users_id')->unsigned()->index();
+            $table->bigInteger('course_id')->unsigned()->index();
             $table->boolean('is_temporary');
             $table->timeStamp('dt_begin_ministering');
             $table->timeStamp('dt_end_ministering');

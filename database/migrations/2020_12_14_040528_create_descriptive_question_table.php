@@ -19,7 +19,7 @@ class CreateDescriptiveQuestionTable extends Migration
             $table->integer('number_question');
             $table->text('description_question');
             $table->text('answer_question');
-            $table->bigInteger('questionary_id');
+            $table->bigInteger('questionary_id')->unsigned()->index();
             $table->foreign('questionary_id')->references('id')->on('questionary');
             $table->timestamps();
         });
