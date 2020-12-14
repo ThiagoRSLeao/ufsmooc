@@ -17,7 +17,7 @@
                         </div>
                         <input class='email-input' type="text" value="" placeholder="E-mail"/>                        
                         
-                        <input class='send-email-btn' type="submit" value="Entrar" />
+                        <input class='send-email-btn' type="submit" value="Entrar" name="email"/>
 
                         <div class='lines-container'>
                             <div class="line"></div>ou<div class="line"></div>

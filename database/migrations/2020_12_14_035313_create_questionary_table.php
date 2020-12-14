@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseCategoryTable extends Migration
+class CreateQuestionaryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCourseCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_category', function (Blueprint $table) {
+        Schema::create('questionary', function (Blueprint $table) {
             $table->id();
-            $table->string('course_cartegory', 50);
-            $table->string('route_picture_course_cartegory', 80);
+            $table->string('name_title', 50);
             $table->timestamps();
+            $table->text('text_questionary');
+            $table->char('type_question', 1);
+            $table->integer('module_id');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateCourseCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_category');
+        Schema::dropIfExists('questionary');
     }
 }

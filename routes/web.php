@@ -41,3 +41,5 @@ Route::prefix('/teacher')->group(function()
         return view('pages.teacherPanel');
     }) -> name('teacher.panel')-> Middleware('auth');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');

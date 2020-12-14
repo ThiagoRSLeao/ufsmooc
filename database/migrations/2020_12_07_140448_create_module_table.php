@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseCategoryTable extends Migration
+class CreateModuloTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCourseCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_category', function (Blueprint $table) {
+        Schema::create('module', function (Blueprint $table) {
             $table->id();
-            $table->string('course_cartegory', 50);
-            $table->string('route_picture_course_cartegory', 80);
+            $table->string('name_title_module');
+            $table->string('name_route_archive_module');
+            $table->bigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('course');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCourseCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_category');
+        Schema::dropIfExists('modulo');
     }
 }

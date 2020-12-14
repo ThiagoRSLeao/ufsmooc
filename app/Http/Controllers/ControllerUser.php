@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 class ControllerUser extends Controller
 {
@@ -55,11 +56,10 @@ class ControllerUser extends Controller
     }
 
     public function validateSignup(Request $request){
-        //VERIFICAR SE ESTA CHAMANDO O VALIDATE SIGNUP
-        $user = User::create($request->only('email', 'password', 'name'));
-        //printr($user);
-        //$user = User::create(['name'=> $name, 'password'=> $password, 'email'=>$email);
-        $user->save();
+        $user = User::create($request->only('email', 'password', 'name', 'name', 'surname', 'CPF', 'city'));
+        print_r($user);
+        //$user = User::create(['name'=> 'genovaldo', 'password'=> '123', 'email'=>'genovaldo@teste.com']);
+        //$user->save();
         
         //return redirect()->intended('/');
     }
@@ -68,11 +68,21 @@ class ControllerUser extends Controller
         return view('pages.forgotPass');
     }
 
-    public function validateForgotPass(){
+    public function validateForgotPass(Request $request){
+        //NAO TESTADO
+        /*
+        $request->validate(['email' => 'required|email']);
 
-    }
-    public function teacherPanel()
-    {
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);*/
+        }
+    
+    public function teacherPanel(){
         
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseCategoryTable extends Migration
+class CreateAlternativeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCourseCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_category', function (Blueprint $table) {
+        Schema::create('alternative', function (Blueprint $table) {
             $table->id();
-            $table->string('course_cartegory', 50);
-            $table->string('route_picture_course_cartegory', 80);
+            $table->longText('alternative_description');
+            $table->boolean('right');
+            $table->bigInteger('alternative_question_id');
+            $table->foreign('alternative_question_id')->references('id')->on('alternative_question');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCourseCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_category');
+        Schema::dropIfExists('alternative');
     }
 }

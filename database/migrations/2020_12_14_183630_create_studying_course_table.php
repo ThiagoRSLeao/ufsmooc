@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModuloTable extends Migration
+class CreateStudyingCourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateModuloTable extends Migration
      */
     public function up()
     {
-        Schema::create('modulo', function (Blueprint $table) {
+        Schema::create('studying_course', function (Blueprint $table) {
             $table->id();
+            $table->bigInt('course_id');
+            $table->bigInt('student_id');
+            $table->foreign('course_id')->references('id')->on('course');
+            $table->foreign('student_id')->references('id')->on('student');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateModuloTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modulo');
+        Schema::dropIfExists('studying_course');
     }
 }
