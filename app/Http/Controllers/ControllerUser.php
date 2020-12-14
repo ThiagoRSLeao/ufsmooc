@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Illuminate\Contracts\Auth\CanResetPassword;
+//use Illuminate\Contracts\Auth\CanResetPassword;
 
 class ControllerUser extends Controller
 {
@@ -57,11 +57,10 @@ class ControllerUser extends Controller
 
     public function validateSignup(Request $request){
         $user = User::create($request->only('email', 'password', 'name', 'name', 'surname', 'CPF', 'city'));
-        print_r($user);
-        //$user = User::create(['name'=> 'genovaldo', 'password'=> '123', 'email'=>'genovaldo@teste.com']);
-        //$user->save();
+        $user = User::create($request);
+        $user->save();
         
-        //return redirect()->intended('/');
+        return redirect()->intended('/');
     }
 
     public function userForgotPass(){

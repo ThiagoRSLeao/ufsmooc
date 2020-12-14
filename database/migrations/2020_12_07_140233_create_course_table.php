@@ -27,7 +27,7 @@ class CreateCourseTable extends Migration
             $table->timestamp('begin_course_date');
             $table->timestamp('end_course_date');
             $table->bigInteger('course_cartegory_id')->unsigned()->index();
-            $table->foreign('course_cartegory_id')->references('id')->on('course_cartegory');
+            //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory');
             $table->timestamps();
         });
     }
