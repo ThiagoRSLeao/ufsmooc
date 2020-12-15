@@ -292,7 +292,8 @@ function createCourseCreationWindow(course)
             footCreateButton.setAttribute("class", "create-course-container-foot-create-btn");    
             foot.appendChild(footCreateButton);
 
-    //Eventos 
+    //Eventos
+     
     footCancelButton.addEventListener("click", function() {
         deleteCourtain();
     }); 
@@ -484,17 +485,31 @@ function setCourseDetailsWindow(course)
                         var descriptionTextarea = document.createElement("textarea");
                         descriptionTextarea.setAttribute("id", "descriptionTextarea");
                         descriptionTextarea.setAttribute("class", "create-course-details-body-information-description-textarea");
-                        descriptBox.appendChild(descriptionTextarea);
+                        descriptBox.appendChild(descriptionTextarea);                
+                        
+                        var buttonContainer = document.createElement("div");
+                        buttonContainer.setAttribute("class", "create-course-details-body-information-button-container");
+                        descriptBox.appendChild(buttonContainer);
+
+                            var cancelButton = document.createElement("input");
+                            cancelButton.setAttribute("type", "button");
+                            cancelButton.setAttribute("value", "Cancelar");
+                            cancelButton.setAttribute("class", "create-course-container-body-information-cancel-course-button");    
+                            cancelButton.addEventListener("click", function() {
+                                deleteCourtain();
+                            }); 
+                            buttonContainer.appendChild(cancelButton); 
                 
-                        var createButton = document.createElement("input");
-                        createButton.course = course;
-                        createButton.setAttribute("class", "create-course-details-body-information-create-course-button");
-                        createButton.setAttribute("type", "button");
-                        createButton.addEventListener("click", function(){
-                            deleteCourtain();
-                            putCourse();
-                        });
-                        descriptionContainer.appendChild(createButton);
+                            var createButton = document.createElement("input");
+                            createButton.course = course;
+                            createButton.setAttribute("class", "create-course-details-body-information-create-course-button");
+                            createButton.setAttribute("value", "Criar curso");
+                            createButton.setAttribute("type", "button");
+                            createButton.addEventListener("click", function(){
+                                deleteCourtain();
+                                putCourse();
+                            });
+                            buttonContainer.appendChild(createButton);
     appendCourtain(containerDetails);
 }
 function putCourse()

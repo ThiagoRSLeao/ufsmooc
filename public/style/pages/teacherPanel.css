@@ -583,6 +583,7 @@ input[type=number] {
 .create-course-details-body-information-description-box
 {
     width: 90%;
+    display: flex;
 }
 .create-course-details-body-information-description-textarea
 {
@@ -600,11 +601,48 @@ input[type=number] {
     box-shadow: none;
     border: 2px #21376B solid;
 }
+.create-course-details-body-information-button-container
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: inherit;
+    margin-bottom: 12px;
+}
+.create-course-container-body-information-cancel-course-button
+{
+    font-size: 15pt;
+    height: 45px;
+    width: 140px;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+    border: 1px black solid;
+    transition: 0.35s 0s ease;
+    margin-right: 20px;
+}
 .create-course-details-body-information-create-course-button
 {
-    width: 60px;
-    height: 30px;
+    font-size: 15pt;
+    height: 45px;
+    width: 140px;
+    color: white;
+    background-color: #202124;
+    border-radius: 5px;
+    border: 1px black solid;
+    transition: 0.35s 0s ease;
 }
+.create-course-container-body-information-cancel-course-button:hover
+{
+    cursor: pointer;    
+    color: rgb(143, 5, 5);
+}
+.create-course-details-body-information-create-course-button:hover
+{
+    cursor: pointer;    
+    color: #2859ca;
+}
+
 
 /*
 .create-course-details-option::after {

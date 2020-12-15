@@ -83,7 +83,6 @@ class ControllerUser extends Controller
     
     public function teacherPanel(){
         
->>>>>>> d62b3dd4ce25da9a7db2b5cf66079ae8a3792767
     }
 }
 

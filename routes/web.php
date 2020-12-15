@@ -38,7 +38,7 @@ Route::prefix('/student')->group(function()
 Route::prefix('/teacher')->group(function()
 {
     Route::get('/panel', function () {
-        return view('pages.studentPanel');
+        return view('pages.teacherPanel');
     }) -> name('teacher.panel')-> Middleware('auth');
 });
 
