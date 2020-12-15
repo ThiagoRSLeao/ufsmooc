@@ -25,9 +25,10 @@
             </div>
         </div>
         <div class="wrapper-courses-container">
-            <div class="courses-container">
+            <div id="coursesContainer" class="courses-container">
                 <div class="course-box">
-                    <div class="course-name"> Curso de Introdução a Mecânica Quântica</div>
+                    <div class="course-title"> Curso de Javascript</div>
+                    <div class="course-subtitle"> Validação de formulários</div>
                     <div class="course-body"> 
                         <div class="course-alert-title">
                             Notificações
@@ -51,7 +52,8 @@
                     </div>
                 </div>
                 <div class="course-box">
-                    <div class="course-name"> Curso de Javascript</div>
+                    <div class="course-title"> Curso de Javascript</div>
+                    <div class="course-subtitle"> Validação de formulários</div>
                     <div class="course-body"> 
                         <div class="course-alert-title">
                             Notificações
@@ -75,7 +77,8 @@
                     </div>
                 </div>
                 <div class="course-box">
-                    <div class="course-name"> Curso de Javascript</div>
+                    <div class="course-title"> Curso de Javascript</div>
+                    <div class="course-subtitle"> Validação de formulários</div>
                     <div class="course-body"> 
                         <div class="course-alert-title">
                             Notificações
@@ -105,10 +108,9 @@
 <script src="{{ url('js/manageElements.js')}}">    
 </script>
 <script>
-    document.getElementById('addCourseBtn').addEventListener("click", function(){
-        var course = new Course();
-        course.setPathImage({{ $courseImage }});
-        createCourseCreationWindow(course);
+    var standardCourseImage = "{{ url('img/panel/imagePlaceholder.png') }}";
+    document.getElementById('addCourseBtn').addEventListener("click", function(){        
+        createCourseCreationWindow();
     });
 </script>
 @endsection

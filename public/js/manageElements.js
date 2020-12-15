@@ -79,6 +79,11 @@ class Course
     have_certification;
     have_tutor;
 
+    worksNotificationNumber;
+    questionsNotificationNumber;
+    doubtsNotificationNumber;
+    muralNotificationNumber;
+
     constructor() 
     {
         this.title = null;
@@ -92,7 +97,12 @@ class Course
         this.timeduration = null;
         this.have_certification = null;
         this.have_tutor = null;
-        this.pathImage = 
+        this.pathImage = null;
+
+        this.worksNotificationNumber = 10;
+        this.questionsNotificationNumber = 20;
+        this.doubtsNotificationNumber = 30;
+        this.muralNotificationNumber = 40;
     }
     getTitle(){
         return this.title;
@@ -112,6 +122,18 @@ class Course
     getPathImage(){
         return this.pathImage;
     }
+    getWorksNotificationNumber(){
+        return this.worksNotificationNumber;
+    }
+    getQuestionsNotificationNumber(){
+        return this.questionsNotificationNumber;
+    }
+    getDoubtsNotificationNumber(){
+        return this.doubtsNotificationNumber;
+    }
+    getMuralNotificationNumber(){
+        return this.muralNotificationNumber;
+    }
 
     setTitle(title){
         this.title = title;
@@ -130,6 +152,18 @@ class Course
     }
     setPathImage(pathImage){
         this.pathImage = pathImage;
+    }
+    setWorksNotificationNumber(worksNotificationNumber){
+        this.worksNotificationNumber = worksNotificationNumber;
+    }
+    setQuestionsNotificationNumber(questionsNotificationNumber){
+        this.questionsNotificationNumber = questionsNotificationNumber;
+    }
+    setDoubtsNotificationNumber(doubtsNotificationNumber){
+        this.doubtsNotificationNumber = doubtsNotificationNumber;
+    }
+    setMuralNotificationNumber(muralNotificationNumber){
+        this.muralNotificationNumber = muralNotificationNumber;
     }
 }
 
@@ -261,15 +295,16 @@ function createCourseCreationWindow(course)
     //Eventos 
     footCancelButton.addEventListener("click", function() {
         deleteCourtain();
-    });
-
-    footCreateButton.addEventListener("click", function(course) {
+    }); 
+    
+    footCreateButton.addEventListener("click", function (){
         deleteCourtain();
+        var course = new Course();
+        course.setPathImage(standardCourseImage);
         course.setTitle(bodyInputTitle.value);
         course.setSubtitle(bodyInputSubtitle.value);
         setCourseDetailsWindow(course);
     });
-
     appendCourtain(container);
 }
 
@@ -291,31 +326,29 @@ function setCourseDetailsWindow(course)
             header.setAttribute("class", "create-course-details-header");
             head.appendChild(header);
 
-                var title = document.createElement("div");
-                title.innerHTML = course.getTitle(); 
-                title.setAttribute("class", "create-course-details-title"); 
-                header.appendChild(title);
+                headerWrapper = new Array();
+                headerWrapper[0] = document.createElement("div");
+                headerWrapper[0].setAttribute("class", "create-course-details-header-wrapper");
+                                
+                    var title = document.createElement("input");
+                    title.value = course.getTitle();                 
+                    title.disabled = "true"; 
+                    title.setAttribute("class", "create-course-details-title"); 
+                    headerWrapper[0].appendChild(title);
 
-                var subtitle = document.createElement("div");
-                subtitle.innerHTML = course.getSubtitle();
-                subtitle.setAttribute("class", "create-course-details-subtitle");    
-                header.appendChild(subtitle);
+                headerWrapper[1] = document.createElement("div");
+                headerWrapper[1].setAttribute("class", "create-course-details-header-wrapper");
+                    
+                    var subtitle = document.createElement("input");
+                    subtitle.setAttribute("TYPE", "text");
+                    subtitle.value = course.getSubtitle();            
+                    subtitle.disabled = "true";     
+                    subtitle.setAttribute("class", "create-course-details-subtitle");    
+                    headerWrapper[1].appendChild(subtitle);
 
+                header.appendChild(headerWrapper[0]);
+                header.appendChild(headerWrapper[1]);
             //Menu
-            var menu = document.createElement("div");
-            menu.setAttribute("class", "create-course-details-menu");    
-            head.appendChild(menu);
-
-                var informations = document.createElement("div");
-                informations.innerHTML = "Informações Gerais";
-                informations.setAttribute("class", "create-course-details-option");    
-                menu.appendChild(informations);
-    
-                var resources = document.createElement("div");
-                resources.innerHTML = "Materiais";
-                resources.setAttribute("class", "create-course-details-option");       
-                menu.appendChild(resources);
-
         var body = document.createElement("div");
         body.setAttribute("class", "create-course-details-body");
         containerDetails.appendChild(body);
@@ -349,56 +382,174 @@ function setCourseDetailsWindow(course)
                     var fieldSelect = createSelect(selectAttributes, options);
                     boxWrapper[0].appendChild(fieldSelect);
 
+                    var numHourWrapper = document.createElement("div");
+                    numHourWrapper.setAttribute("class", "create-course-details-body-information-number-hours-wrapper");
+                    boxWrapper[0].appendChild(numHourWrapper);
+
+                        var numHourLabel = document.createElement("div");
+                        numHourLabel.setAttribute("class", "create-course-details-body-information-number-hours-label");
+                        numHourLabel.innerHTML = "Número de Horas:";
+                        numHourWrapper.appendChild(numHourLabel);
+
+                        var numHourInput = document.createElement("input");
+                        numHourInput.setAttribute("class", "create-course-details-body-information-number-hours-input");
+                        numHourInput.setAttribute("Type", "number");
+                        numHourInput.setAttribute("placeholder", "Ex: 40");
+                        numHourInput.maxLength = "4";
+                        numHourInput.innerHTML = "Número de Horas:";
+                        numHourWrapper.appendChild(numHourInput);
+
                 boxWrapper[1] = document.createElement("div");
                 boxWrapper[1].setAttribute("class", "create-course-details-body-information-box-half-wrapper");
                 bodyInformation.appendChild(boxWrapper[1]);
+                
+                    
+                    checkboxContainer = document.createElement("div");
+                    checkboxContainer.setAttribute("class", "create-course-details-body-information-box-checkbox-container");
+                    boxWrapper[1].appendChild(checkboxContainer);
 
-            var bodyResources = document.createElement("div");
-            bodyResources.setAttribute("class", "create-course-details-body-resources");
-            body.appendChild(bodyResources);
+                        var checkboxWrapper = new Array();
+                        var checkboxes = new Array();
+                        var labels = new Array();
+                        var inputs = new Array();
+                        var checkboxesId = ['possuiInscricao','ministradoGradualmente','possuiCertificado','possuiTutoria', 'possuiMensagemPrivada'];
+                        var labelsInnerHTML = ['Possui período de inscrição','Será ministrado gradualmente','Possui certificação','Possui tutoria', 'Possui comentários anônimos'];
+                        
+                        for(let count = 0; count < checkboxesId.length; count++)
+                        {
+                            checkboxWrapper[count] = document.createElement("div");
+                            checkboxWrapper[count].setAttribute('class', 'create-course-details-body-information-checkbox-wrapper');
+                                
+                                checkboxes[count] = document.createElement("input");
+                                checkboxes[count].setAttribute("type", "checkbox");
+                                checkboxes[count].setAttribute("class", "create-course-details-body-information-checkbox");
+                                checkboxes[count].setAttribute('id', checkboxesId[count]);
+                                checkboxWrapper[count].appendChild(checkboxes[count]);
 
+                                labels[count] = document.createElement("div");
+                                labels[count].setAttribute("class", "create-course-details-body-information-checkbox-label");
+                                labels[count].innerHTML = labelsInnerHTML[count];
+                                checkboxWrapper[count].appendChild(labels[count]);
+                            
+                                checkboxContainer.appendChild(checkboxWrapper[count]); 
+                        }
 
+                        var inputsId = [['inicioDataInscricao', 'fimDataInscricao'], ['inicioDataMinistrado', 'fimDataMinistrado']];
+                        
+                        for(let count = 0; count < inputsId.length; count++)
+                        {
+                            var inicio = count * 2;
+                            var fim = count * 2 + 1;
 
-    informations.addEventListener("click", function(){
-        show(bodyInformation);
-        hide(bodyResources);
-    }); 
-    resources.addEventListener("click", function(){
-        show(bodyResources);
-        hide(bodyInformation);
-    }); 
+                            inputs[inicio] = document.createElement("input");
+                            inputs[inicio].setAttribute("type", "text");
+                            inputs[inicio].setAttribute("placeholder", "Data início");
+                            inputs[inicio].setAttribute('class', 'create-course-details-body-information-checkbox-number');
+                            inputs[inicio].setAttribute('id', inputsId[count][0]);
 
-    /*var headSelect = document.createElement("div");
-    headSelect.setAttribute("class", "create-course-container-head-select");
-    var options = [['Publico','publico'], ['Privado', 'privado']]
-    createSelectOptions(headSelect, options);
-    head.appendChild(headSelect);
+                            inputs[fim] = document.createElement("input");
+                            inputs[fim].setAttribute("type", "text");
+                            inputs[fim].setAttribute("placeholder", "Data fim");
+                            inputs[fim].setAttribute('class', 'create-course-details-body-information-checkbox-number');
+                            inputs[fim].setAttribute('id', inputsId[count][1]);
 
-    //BODY OF WINDOW OF COURSE CREATION
-    
-    
+                            checkboxWrapper[count].appendChild(inputs[inicio]);
+                            checkboxWrapper[count].appendChild(inputs[fim]);
 
-    var bodyInputsWrapper = document.createElement("div");
-    bodyInputsWrapper.setAttribute("class", "create-course-container-body-inputs-wrapper");
-    body.appendChild(bodyInputsWrapper);
+                            checkboxes[count].addEventListener('click', function (){
+                                if(checkboxes[count].checked == true)
+                                {
+                                    checkboxWrapper[count].classList.add('expand');
+                                }
+                                else
+                                {
+                                    checkboxWrapper[count].classList.remove('expand');
+                                }
+                            });
+                        }
 
-    var bodyInputName = document.createElement("input");
-    bodyInputName.setAttribute("type", "text");
-    bodyInputName.setAttribute("placeholder", "Título do curso");
-    bodyInputName.setAttribute("name", "courseName");
-    bodyInputName.setAttribute("class", "create-course-container-body-name-input");
-    bodyInputsWrapper.appendChild(bodyInputName);
+                var descriptionContainer = document.createElement("div");
+                descriptionContainer.setAttribute("class", "create-course-details-body-information-description-container");
+                bodyInformation.appendChild(descriptionContainer);
 
-    var bodyInputNumberModules = document.createElement("input");
-    bodyInputNumberModules.setAttribute("type", "text");
-    bodyInputNumberModules.setAttribute("placeholder", "Subtitulo do curso");
-    bodyInputNumberModules.setAttribute("name", "courseNumberModules");
-    bodyInputNumberModules.setAttribute("class", "create-course-container-body-number-modules-input");
-    bodyInputsWrapper.appendChild(bodyInputNumberModules);*/
-    
-    
+                    var descriptionLabel = document.createElement("div");
+                    descriptionLabel.innerHTML = "Descrição do curso";
+                    descriptionLabel.setAttribute("class", "create-course-details-body-information-description-label");
+                    descriptionContainer.appendChild(descriptionLabel);
 
+                    var descriptBox = document.createElement("div");
+                    descriptBox.setAttribute("class", "create-course-details-body-information-description-box");
+                    descriptionContainer.appendChild(descriptBox);
 
-
+                        var descriptionTextarea = document.createElement("textarea");
+                        descriptionTextarea.setAttribute("id", "descriptionTextarea");
+                        descriptionTextarea.setAttribute("class", "create-course-details-body-information-description-textarea");
+                        descriptBox.appendChild(descriptionTextarea);
+                
+                        var createButton = document.createElement("input");
+                        createButton.course = course;
+                        createButton.setAttribute("class", "create-course-details-body-information-create-course-button");
+                        createButton.setAttribute("type", "button");
+                        createButton.addEventListener("click", function(){
+                            deleteCourtain();
+                            putCourse();
+                        });
+                        descriptionContainer.appendChild(createButton);
     appendCourtain(containerDetails);
+}
+function putCourse()
+{
+    
+    var container = document.getElementById('coursesContainer');
+
+        var courseBox = document.createElement("div");
+        courseBox.setAttribute("class","course-box");
+        container.appendChild(courseBox);
+
+            var courseTitle = document.createElement("div");
+            courseTitle.setAttribute("class","course-title");
+            courseTitle.innerHTML = event.target.course.getTitle();
+            courseBox.appendChild(courseTitle);
+
+            var courseSubtitle = document.createElement("div");
+            courseSubtitle.setAttribute("class","course-subtitle");
+            courseSubtitle.innerHTML = event.target.course.getSubtitle();
+            courseBox.appendChild(courseSubtitle);
+
+            var courseBody = document.createElement("div");
+            courseBody.setAttribute("class","course-body");
+            courseBox.appendChild(courseBody);
+
+                var courseAlertTitle = document.createElement("div");
+                courseAlertTitle.setAttribute("class","course-alert-title");
+                courseAlertTitle.innerHTML ="Notificações";
+                courseBody.appendChild(courseAlertTitle);
+
+                courseAlert = [];
+                courseAlertName = [];
+                courseAlertValue = [];
+                courseAlertInfo = [
+                    ['Trabalhos', event.target.course.getWorksNotificationNumber()], 
+                    ['Questões', event.target.course.getQuestionsNotificationNumber()], 
+                    ['Dúvidas', event.target.course.getDoubtsNotificationNumber()], 
+                    ['Mural', event.target.course.getMuralNotificationNumber()]
+                ];
+                
+                for(let count = 0; count < courseAlertInfo.length; count++)
+                {
+                    courseAlert[count] = document.createElement("div");
+                    courseAlert[count].setAttribute("class","course-alert");
+                    courseBody.appendChild(courseAlert[count]);
+
+                        courseAlertName[count] = document.createElement("div");
+                        courseAlertName[count].setAttribute("class","course-alert-name");
+                        courseAlertName[count].innerHTML = courseAlertInfo[count][0];
+                        courseAlert[count].appendChild(courseAlertName[count]);
+                        
+                        courseAlertValue[count] = document.createElement("div");
+                        courseAlertValue[count].setAttribute("class","course-alert-value");
+                        courseAlertValue[count].innerHTML = courseAlertInfo[count][1];
+                        courseAlert[count].appendChild(courseAlertValue[count]);
+                }
+                
 }

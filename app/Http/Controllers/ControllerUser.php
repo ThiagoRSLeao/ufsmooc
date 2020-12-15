@@ -71,9 +71,9 @@ class ControllerUser extends Controller
     public function validateForgotPass(){
 
     }
-    public function teacherPanel()
+    public function userTeacherPanel()
     {
-        
+        return view('pages.teacherPanel');
     }
 }
 
