@@ -72,12 +72,6 @@ class ControllerUser extends Controller
         /*
         $request->validate(['email' => 'required|email']);
 
-<<<<<<< HEAD
-    }
-    public function userTeacherPanel()
-    {
-        return view('pages.teacherPanel');
-=======
         $status = Password::sendResetLink(
             $request->only('email')
         );
