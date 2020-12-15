@@ -18,6 +18,30 @@ class ControllerUser extends Controller
         return view('pages.login');
     }
     
+    public function createUser(Request $request)
+    {
+        $data = $request->only('email','password','passwordConfirmation','name','surname','cpf','uf','city');
+        if($data['passwordConfirmation'] == $data['password'])
+        {
+            $user = [
+                "email" => $data['email'],
+                "password" => bcrypt($data['password']),
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'CPF' => $data['cpf'],
+                'UF' => $data['uf'],
+                'city' => $data['city'],
+                'type_user' => 's'
+            ];
+            User::create($user);
+            return $this->userLogin();
+        }
+        else
+        {
+            return $this->userSignup();            
+        }
+    }
+
     public function userPanel(){
         return view('pages.panel');
     }

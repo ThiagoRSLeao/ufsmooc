@@ -8,7 +8,9 @@
 
 @section('content')
     
-        <form>
+        <form action="{{ route('user.create') }}" method="POST">
+            @method('POST')
+            @csrf
             <div class="main-container">            
                 <div>
                     <div class='main-title'> Faça seu Cadastro </div>
@@ -16,15 +18,15 @@
                         <input class='email-input' type="text" value="" placeholder="E-mail" name = 'email'/>
                         <input class='password-input' type="password" value="" placeholder="Senha" name = 'password'/>
                         <input class='passwordconfirmation-input' type="password" value="" placeholder="Confirmar Senha" name = 'passwordConfirmation'/>
-  
+
                         <div class='main-box-subtitle'> Outras Informações </div>
                         <input class='name-input' type="text" value="" placeholder="Nome" name = 'name'/>
                         <input class='surname-input' type="text" value="" placeholder="Sobrenome" name = 'surname'/>
-                        <input class='cpf-input' maxlength="14" type="text" value="" placeholder="CPF" name = 'CPF'/>
+                        <input class='cpf-input' maxlength="14" type="text" value="" placeholder="CPF" name = 'cpf'/>
                         
                         <div class='city-container'>
-                            <input class='city-input' type="text" value="" placeholder="Cidade/Município" name = 'UF'/>
-                            <select class='state-Select' name='state'>
+                            <input class='city-input' type="text" value="" placeholder="Cidade/Município" name = 'city'/>
+                            <select class='state-Select' name='uf'>
                                 <option>UF</option><option value='AC'>AC</option><option value='AL'>AL</option><option value='AP'>AP</option>
                                 <option value='AM'>AM</option><option value='BA'>BA</option><option value='CE'>CE</option><option value='DF'>DF</option>
                                 <option value='ES'>ES</option><option value='GO'>GO</option><option value='MA'>MA</option><option value='MT'>MT</option>
@@ -36,12 +38,12 @@
                         </div>
 
                         <div class='btn-container'>
-                            <a class='create-account-btn' href={{ url('/')}}>Criar conta</a>
+                            <input class='create-account-btn' type='submit' value='Criar conta' />
                             <a class='cancel-btn' href={{ url('/')}}>Cancelar</a>
                         </div>                        
-                    </div>                   
+                    </div>               
                 </div>
-            </div>
-        </form>
+            </div>  
+        </form>  
         
 @endsection

@@ -42,4 +42,5 @@ Route::prefix('/teacher')->group(function()
     }) -> name('teacher.panel')-> Middleware('auth');
 });
 
+Route::post('/createUser', 'ControllerUser@createUser' ) -> name('user.create');
 Route::get('/home', 'HomeController@index')->name('home');
