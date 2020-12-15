@@ -15,6 +15,8 @@ class CreateCourseCategoryTable extends Migration
     {
         Schema::create('course_category', function (Blueprint $table) {
             $table->id();
+            $table->string('course_general_cartegory', 50);
+            $table->string('route_picture_course_cartegory', 80);
             $table->timestamps();
         });
     }
