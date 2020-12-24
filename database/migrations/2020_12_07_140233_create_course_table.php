@@ -16,17 +16,18 @@ class CreateCourseTable extends Migration
         Schema::create('course', function (Blueprint $table) {
             $table->id();
             $table->string('course_title', 40);
+            $table->string('course_subtitle', 40);
+            $table->string('path_picture_course', 80);
             $table->text('course_description');
-            $table->string('route_picture_course', 80);
             $table->boolean('has_tutoring');
             $table->boolean('has_certification');
             $table->boolean('has_deadline');
             $table->boolean('has_end');
-            $table->timestamp('begin_subscriptions_date');
-            $table->timestamp('end_subscriptions_date');
-            $table->timestamp('begin_course_date');
-            $table->timestamp('end_course_date');
-            $table->bigInteger('course_cartegory_id')->unsigned()->index();
+            $table->dateTime('begin_subscriptions_date');
+            $table->dateTime('end_subscriptions_date');
+            $table->dateTime('begin_course_date');
+            $table->dateTime('end_course_date');
+            $table->string('course_cartegory');
             //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory');
             $table->timestamps();
         });
