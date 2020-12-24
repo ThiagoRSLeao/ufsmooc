@@ -18,7 +18,7 @@ class CreateStudentWorkTable extends Migration
             $table->bigInteger('student_id')->unsigned()->index();
             $table->bigInteger('work_id')->unsigned()->index();
             $table->bigInteger('minister_id')->unsigned()->index();
-            $table->string('name_work_route');
+            $table->string('name_work_path');
             $table->timestamp('deadline_work');
             $table->boolean('rated');
             $table->float('grade', 4, 2);

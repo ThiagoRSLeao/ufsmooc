@@ -31,7 +31,7 @@ class ControllerUser extends Controller
                 'CPF' => $data['cpf'],
                 'UF' => $data['uf'],
                 'city' => $data['city'],
-                'type_user' => 's'
+                'type_user' => '1'
             ];
             User::create($user);
             return $this->userLogin();
@@ -96,24 +96,6 @@ class ControllerUser extends Controller
         return $status === Password::RESET_LINK_SENT
             ? back()->with(['status' => __($status)])
             : back()->withErrors(['email' => __($status)]);*/
-        }
-    
-
-    public function createCourse(Request $request){
-        $data = $request->only('center, name, description, has_tutoring, has_certificate, has_deadline, has_end, date');
-            $course = [
-                "center" => $data['course_title'],
-                "name" => $data['name'],
-                "description" => $data['course_description'],
-                "has_tutoring" => $data['has_tutoring'],
-                "has_certificate" => $data['has_certificate'],
-                "has_deadline" => $data['has_deadline'],
-                "has_end" => $data['has_end'],
-
-
-            ];
-            //$course->save();
-            return $this->userLogin();
         }
 
 

@@ -17,7 +17,7 @@ class CreateWorkTable extends Migration
             $table->id();
             $table->string('name_title_work')->nullable();
             $table->float('work_weight', 5, 2)->nullable();
-            $table->string('name_work_route')->nullable();
+            $table->string('name_work_path')->nullable();
             $table->bigInteger('module_id')->unsigned()->index();
             $table->foreign('module_id')->references('id')->on('module');
             $table->timestamps();
