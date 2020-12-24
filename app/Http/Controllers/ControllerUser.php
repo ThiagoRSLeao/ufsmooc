@@ -79,13 +79,6 @@ class ControllerUser extends Controller
         return view('pages.signUp');
     }
 
-    public function validateSignup(Request $request){
-        $user = User::create($request->only('email', 'password', 'name', 'name', 'surname', 'CPF', 'city'));
-        $user = User::create($request);
-        $user->save();
-        
-        return redirect()->intended('/');
-    }
 
     public function userForgotPass(){
         return view('pages.forgotPass');
@@ -105,6 +98,25 @@ class ControllerUser extends Controller
             : back()->withErrors(['email' => __($status)]);*/
         }
     
+
+    public function createCourse(Request $request){
+        $data = $request->only('center, name, description, has_tutoring, has_certificate, has_deadline, has_end, date');
+            $course = [
+                "center" => $data['course_title'],
+                "name" => $data['name'],
+                "description" => $data['course_description'],
+                "has_tutoring" => $data['has_tutoring'],
+                "has_certificate" => $data['has_certificate'],
+                "has_deadline" => $data['has_deadline'],
+                "has_end" => $data['has_end'],
+
+
+            ];
+            //$course->save();
+            return $this->userLogin();
+        }
+
+
     public function teacherPanel(){
         
     }
