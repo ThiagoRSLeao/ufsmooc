@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Contracts\Auth\CanResetPassword;
 
 class ControllerUser extends Controller
@@ -102,5 +103,22 @@ class ControllerUser extends Controller
     public function teacherPanel(){
         
     }
+
+    public function updateRegister(Request $request){
+        $id = $request->only('id');
+        $data = $request->only('name, surname, CPF, email, UF, city, password, description');
+        DB::table('users')->where('id', $id)->update([
+            "email" => $data['email'],
+            "password" => bcrypt($data['password']),
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'surname' => $data['surname'],
+            'CPF' => $data['cpf'],
+            'UF' => $data['uf'],
+            'city' => $data['city'],
+            'type_user' => '1',
+        ]);
+    }
+
 }
 

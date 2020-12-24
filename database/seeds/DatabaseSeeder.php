@@ -67,7 +67,14 @@ class DatabaseSeeder extends Seeder
             "alternative_description" => 'esta e a correta',
             "right" => '1',
         ]);
-
+        
+        DB::table('descriptive_question')->insert([
+            "question_weight" => '3',
+            "number_question" => '1',
+            "description_question" => 'teste descritiva',
+            "answer_question" => 'teste resposta',
+            "questionary_id" => '1',
+        ]);
         
     }
 }

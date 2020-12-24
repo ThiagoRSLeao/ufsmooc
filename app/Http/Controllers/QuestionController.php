@@ -19,7 +19,15 @@ class QuestionController extends Controller
     }
 
     public function createDescriptiveQuestion(Request $request){
+        $data = $request->only('question_weight', 'number_question', 'description_question', 'answer_question', 'questionary_id');
 
+        DB::table('descriptive_question')->insert([
+            "question_weight" => $data['question_weight'],
+            "number_question" => $data['number_question'],
+            "description_question" => $data['description_question'],
+            "answer_question" => $data['answer_question'],
+            "questionary_id" => $data['questionary_id'],
+        ]);
     }
 
     public function createAlternativeQuestion(Request $request){
@@ -41,6 +49,8 @@ class QuestionController extends Controller
             "right" => $data['right'],
         ]);
     }
+
+    
 
 
 
