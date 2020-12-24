@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +13,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'id' => '1',
+            'name' => 'batata',
+            'surname' => 'voadora',
+            'email' => 'batata@gmail.com',
+            'password' => bcrypt('123'),
+            'CPF' => '11111111111',
+            'UF' => 'RJ',
+            'city' => 'volta redonda',
+            'type_user' => 's',
         ]);
     }
 }
