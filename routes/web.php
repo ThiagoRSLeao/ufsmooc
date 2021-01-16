@@ -18,13 +18,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', 'ControllerUser@userLogin') -> name('login');
 Route::post('/validateLogin', 'ControllerUser@validateLogin') -> name('login.validate');
 Route::post('/validateSignup', 'ControllerUser@validateSignup')->name('signup.validate');
-Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
-Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
+
+Route::post('/createCourse', 'CourseController@createCourse')->name('course.create');
+Route::post('/createModule', 'CourseController@createModule')->name('module.create');
+
+Route::post('/createQuestionary', 'QuestionController@createQuestionary')->name('questionary.create');
+Route::post('/createDescriptiveQuestion', 'QuestionController@createDescriptiveQuestion')->name('descriptiveQuestion.create');
+Route::post('/createAlternativeQuestion', 'QuestionController@createAlternativeQuestion')->name('alternativeQuestion.create');
+Route::post('/createAlternative', 'QuestionController@createAlternative')->name('alternative.create');
+
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
-Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
-Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');
 Route::get('/panel', 'ControllerUser@userPanel') -> name('panel');
+Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
+Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
+
+Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
+Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
+
 
 /*SEM CONTROLLER*/
 

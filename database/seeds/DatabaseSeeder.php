@@ -40,6 +40,23 @@ class DatabaseSeeder extends Seeder
             "end_course_date" => '2000/01/01',
         ]);
 
+        DB::table('course')->insert([
+            "course_title" => 'Curso teste2',
+            "course_subtitle" => 'teste zzz2',
+            "course_subtitle" => 'sim2',
+            "course_cartegory" => 'CT2',
+            "path_picture_course" => '2C:\batata',
+            "course_description" => 'T2este epico',
+            "has_tutoring" => '1',
+            "has_certification" => '1',
+            "has_deadline" => '0',
+            "has_end" => '0',
+            "begin_subscriptions_date" => '2000/01/01',
+            "end_subscriptions_date" => '2000/01/01',
+            "begin_course_date" => '2000/01/01',
+            "end_course_date" => '2000/01/01',
+        ]);
+
         DB::table('module')->insert([
             "course_id" => '1',
             "name_title_module" => 'modulo teste',
