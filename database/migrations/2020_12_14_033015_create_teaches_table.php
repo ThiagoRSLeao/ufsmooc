@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMinisteringTable extends Migration
+class CreateTeachesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMinisteringTable extends Migration
      */
     public function up()
     {
-        Schema::create('ministering', function (Blueprint $table) {
+        Schema::create('teaches', function (Blueprint $table) {
             $table->id();
-            $table->char('tp_ministering', 1);
+            $table->char('type', 1)->default('0');
             $table->boolean('acess_doubts');
             $table->boolean('acess_manage_modules');
             $table->boolean('acess_manage_questionary');
@@ -23,13 +23,13 @@ class CreateMinisteringTable extends Migration
             $table->boolean('acess_evaluate_questionary');
             $table->boolean('acess_evaluate_work');
             $table->text('reason_tutor');
-            $table->bigInteger('users_id')->unsigned()->index();
+            $table->bigInteger('user_id')->unsigned()->index();
             $table->bigInteger('course_id')->unsigned()->index();
             $table->boolean('is_temporary');
-            $table->timeStamp('dt_begin_ministering');
-            $table->timeStamp('dt_end_ministering');
+            $table->datetime('dt_begin_ministering');
+            $table->datetime('dt_end_ministering');
             $table->timestamps();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('course');
         });
     }

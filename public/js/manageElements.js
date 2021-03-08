@@ -6,7 +6,6 @@ backgroundCourtain.setAttribute("src", "backgroundCourtain");
 backgroundCourtain.setAttribute("type", "text/stylesheet");
 */
 /**Cria a cortina, elemento responsável por impedir o contato com os demais elementos */
-
 function createCourtain()
 {
     if(!checkCourtain("backgroundCourtain"))
@@ -346,7 +345,7 @@ function setCourseDetailsWindow(course)
                     subtitle.disabled = "true";     
                     subtitle.setAttribute("class", "create-course-details-subtitle");    
                     headerWrapper[1].appendChild(subtitle);
-
+                    
                 header.appendChild(headerWrapper[0]);
                 header.appendChild(headerWrapper[1]);
             //Menu
@@ -382,16 +381,16 @@ function setCourseDetailsWindow(course)
                     ];
                     var fieldSelect = createSelect(selectAttributes, options);
                     boxWrapper[0].appendChild(fieldSelect);
-
+                   
                     var numHourWrapper = document.createElement("div");
                     numHourWrapper.setAttribute("class", "create-course-details-body-information-number-hours-wrapper");
                     boxWrapper[0].appendChild(numHourWrapper);
-
+                    
                         var numHourLabel = document.createElement("div");
                         numHourLabel.setAttribute("class", "create-course-details-body-information-number-hours-label");
                         numHourLabel.innerHTML = "Número de Horas:";
                         numHourWrapper.appendChild(numHourLabel);
-
+                        
                         var numHourInput = document.createElement("input");
                         numHourInput.setAttribute("class", "create-course-details-body-information-number-hours-input");
                         numHourInput.setAttribute("Type", "number");
@@ -399,7 +398,7 @@ function setCourseDetailsWindow(course)
                         numHourInput.maxLength = "4";
                         numHourInput.innerHTML = "Número de Horas:";
                         numHourWrapper.appendChild(numHourInput);
-
+                        
                 boxWrapper[1] = document.createElement("div");
                 boxWrapper[1].setAttribute("class", "create-course-details-body-information-box-half-wrapper");
                 bodyInformation.appendChild(boxWrapper[1]);
@@ -506,6 +505,25 @@ function setCourseDetailsWindow(course)
                             createButton.setAttribute("value", "Criar curso");
                             createButton.setAttribute("type", "button");
                             createButton.addEventListener("click", function(){
+                                var form = document.getElementById('newCourseForm');
+
+                                form.innerHTML= 
+                                `
+                                <input type='text' name='name' value=` + 'Augusto' + `/>
+                                <input type='text' name='course_subtitle' value=` + 'Peruano' + `/>
+                                <input type='text' name='center' value=` + 'NCC' + `/>
+                                <input type='text' name='course_description' value=` + 'Não tem Descrição' + `/>
+                                <input type='text' name='has_tutoring' value=` + '1' + `/>
+                                <input type='text' name='has_certification' value=` + '1' + `/>
+                                <input type='text' name='has_deadline' value=` + '1' + `/>
+                                <input type='text' name='has_end' value=` + '1' + `/>
+                                <input type='text' name='path_picture_course' value=` + 'AugustoPhotografias' + `/>
+                                <input type='text' name='begin_subscriptions_date' value=` + '2021-10-11' + `/>
+                                <input type='text' name='end_subscriptions_date' value=` + '2021-10-15' + `/>
+                                <input type='text' name='begin_course_date' value=` + '2021-11-11' + `/>
+                                <input type='text' name='end_course_date' value=` + '2022-10-11' + `/>
+                                `
+                                form.submit();
                                 deleteCourtain();
                                 putCourse();
                             });
@@ -565,6 +583,9 @@ function putCourse()
                         courseAlertValue[count].setAttribute("class","course-alert-value");
                         courseAlertValue[count].innerHTML = courseAlertInfo[count][1];
                         courseAlert[count].appendChild(courseAlertValue[count]);
-                }
-                
+                }                
+}
+function defineRoute(routeDefined)
+{
+    route = routeDefined;
 }

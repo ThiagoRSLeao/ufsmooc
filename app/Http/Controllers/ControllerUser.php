@@ -53,7 +53,8 @@ class ControllerUser extends Controller
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials, 0)) {
                 $request->session()->regenerate();
-
+                $user = User::where('email', '=', $credentials['email'])->first();
+                session()->put('userId', $user->id);
                 return redirect()->intended('/');
             }
     

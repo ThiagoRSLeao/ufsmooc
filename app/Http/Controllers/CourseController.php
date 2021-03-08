@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Course;
+use App\Teaches;
+use App\Studies;
 
 class CourseController extends Controller
-{
-    
+{    
+    public function courseShowForm(){
+        return view('views.pages.teacherPanelCreateCourse');
+    }
+
     public function createCourse(Request $request){
-        $data = $request->only('center, name, course_description, has_tutoring, has_certification, has_deadline, has_end, begin_subscriptions_date,
-        end_subscriptions_date, begin_course_date, end_course_date, course_subtitle');
-            DB::table('course')->insert([
+        $data = $request->only('center', 'name', 'course_description', 'has_tutoring', 'has_certification', 'has_deadline', 'has_end', 'path_picture_course','begin_subscriptions_date',
+        'end_subscriptions_date', 'begin_course_date', 'end_course_date', 'course_subtitle');
+            $course = Course::create([
                 "course_title" => $data['name'],
                 "course_subtitle" => $data['course_subtitle'],
                 "course_cartegory" => $data['center'],
@@ -26,9 +32,51 @@ class CourseController extends Controller
                 "begin_course_date" => $data['begin_course_date'],
                 "end_course_date" => $data['end_course_date'],
             ]);
-            return ('/');
+
+
+        $teacherId = session()->get('userId');
+        $teaches = $course->taughtBy()->create([
+            "type" => '0',
+            "acess_doubts" => 1,
+            "acess_manage_modules" => 1,
+            "acess_manage_questionary" => 1,
+            "acess_manage_work" => 1,
+            "acess_evaluate_questionary" => 1,
+            "acess_evaluate_work" => 1,
+            "reason_tutor" => 'Dono do Curso',
+            "user_id" => $teacherId,
+            "course_id" => $course->id,
+            "is_temporary" => 0,
+            "dt_begin_ministering" => date("Y-m-d H:i:s"),
+            "dt_end_ministering" => date("Y-m-d H:i:s"),
+        ]);
+                return redirect()->route('teacher.panel');
         }
-    
+
+    public function showCoursesStudent()
+    {
+        $userId = session()->get('userId');
+        $studies = Studies::Where('user_id', '=', $userId)->get();
+        $courses = Array();
+        foreach($studies as $study)
+        {
+            array_push($courses, Course::find($teach->course_id));
+        }
+        return view('pages.studentPanel', ['studies' => $studies, 'courses' => $courses]);
+    }
+
+    public function showCoursesTeaches()
+    {
+        $userId = session()->get('userId');
+        $teaches = Teaches::Where('user_id', '=', $userId)->get();
+        $courses = Array();
+        foreach($teaches as $teach)
+        {
+            array_push($courses, Course::find($teach->course_id));
+        }
+        return view('pages.teacherPanel', ['courses' => $courses]);
+    }
+
     public function createModule(Request $request){
         $data = $request->only('course_id', 'name_title_module', 'name_path_archive_module');
         DB::table('module')->insert([

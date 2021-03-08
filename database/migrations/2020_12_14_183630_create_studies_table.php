@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudyingCourseTable extends Migration
+class CreateStudiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateStudyingCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('studying_course', function (Blueprint $table) {
-            $table->id();
+        Schema::create('studies', function (Blueprint $table) {
+            $table->text('data_json');
+
             $table->bigInteger('course_id')->unsigned()->index();
             $table->bigInteger('student_id')->unsigned()->index();
             $table->foreign('course_id')->references('id')->on('course');
@@ -30,6 +31,6 @@ class CreateStudyingCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studying_course');
+        Schema::dropIfExists('studies');
     }
 }
