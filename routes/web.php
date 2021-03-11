@@ -28,6 +28,8 @@ Route::post('/createQuestionary', 'QuestionController@createQuestionary')->name(
 Route::post('/createDescriptiveQuestion', 'QuestionController@createDescriptiveQuestion')->name('descriptiveQuestion.create');
 Route::post('/createAlternativeQuestion', 'QuestionController@createAlternativeQuestion')->name('alternativeQuestion.create');
 Route::post('/createAlternative', 'QuestionController@createAlternative')->name('alternative.create');
+Route::get('/subscribe_course', 'CourseController@subscribe_course')->name('subscribe_course'); //TROCAR O METODO DA ROTA
+Route::get('/myCourses', 'CourseController@showMyCoursesStudent')->name('myCourses'); //TROCAR O METODO DA ROTA
 
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
 Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');
@@ -37,6 +39,7 @@ Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
 
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
+Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_courses');
 
 
 /*SEM CONTROLLER*/
@@ -50,5 +53,17 @@ Route::prefix('/teacher')->group(function()
     Route::get('/panel', 'CourseController@showCoursesTeaches') -> name('teacher.panel')-> Middleware('auth');
 });
 
+Route::prefix('/teacher')->group(function()
+{
+    Route::get('/panel', function () {
+        return view('pages.teacherPanel');
+    }) -> name('teacher.panel')-> Middleware('auth');
+});
+
 Route::post('/createUser', 'ControllerUser@createUser' ) -> name('user.create');
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Rota do editar professor
+Route::get('/edit_teacher', function () {
+    return view('auth.edit_teacher');
+}) -> name('teacher.edit')-> Middleware('auth');
