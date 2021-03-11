@@ -17,7 +17,7 @@ class CreateStudentWorkTable extends Migration
             $table->id();
             $table->bigInteger('student_id')->unsigned()->index();
             $table->bigInteger('work_id')->unsigned()->index();
-            $table->bigInteger('minister_id')->unsigned()->index();
+            $table->bigInteger('teacher_id')->unsigned()->index();
             $table->string('name_work_path');
             $table->timestamp('deadline_work');
             $table->boolean('rated');
@@ -25,7 +25,7 @@ class CreateStudentWorkTable extends Migration
             $table->text('description_rating');
             $table->foreign('student_id')->references('id')->on('student');
             $table->foreign('work_id')->references('id')->on('work');
-            $table->foreign('minister_id')->references('id')->on('minister');
+            $table->foreign('teacher_id')->references('id')->on('teacher');
             $table->timestamps();
         });
     }

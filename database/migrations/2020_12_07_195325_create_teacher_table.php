@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMinisterTable extends Migration
+class CreateTeacherTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMinisterTable extends Migration
      */
     public function up()
     {
-        Schema::create('minister', function (Blueprint $table) {
+        Schema::create('teacher', function (Blueprint $table) {
             $table->id();
-            $table->char('minister_tp', 1);
+            $table->char('teacher_tp', 1);
             $table->text('curriculum');
             $table->bigInteger('users_id')->unsigned()->index();
             $table->foreign('users_id')->references('id')->on('users');
@@ -30,6 +30,6 @@ class CreateMinisterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('minister');
+        Schema::dropIfExists('teacher');
     }
 }

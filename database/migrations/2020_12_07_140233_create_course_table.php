@@ -28,7 +28,7 @@ class CreateCourseTable extends Migration
             $table->dateTime('begin_course_date');
             $table->dateTime('end_course_date');
             $table->string('course_cartegory');
-            //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory');
+            //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory'); --> TABLE COURSE_CARTEGORY DOESN'T EXIST
             $table->timestamps();
         });
     }
