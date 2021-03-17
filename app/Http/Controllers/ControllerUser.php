@@ -119,6 +119,7 @@ class ControllerUser extends Controller
             'city' => $data['city'],
             'type_user' => '1',
         ]);
+        return response()->json(['message' => 'Atualizacao bem sucedida.']);
     }
 
 }

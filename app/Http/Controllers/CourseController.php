@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Course;
 use App\Teaches;
 use App\Studies;
@@ -53,16 +54,28 @@ class CourseController extends Controller
                 return redirect()->route('teacher.panel');
         }
 
-    public function showCoursesStudent()
+    /*public function showCoursesStudent()
     {
         $userId = session()->get('userId');
         $studies = Studies::Where('user_id', '=', $userId)->get();
         $courses = Array();
         foreach($studies as $study)
         {
-            array_push($courses, Course::find($teach->course_id));
+            //array_push($courses, Course::find($teach->course_id));
         }
-        return view('pages.studentPanel', ['studies' => $studies, 'courses' => $courses]);
+        //return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        return view('pages.show_courses_student');
+    }*/
+
+    public function showCoursesStudent(){
+        $course_properties = array();
+        $course_ids = DB::table('studies')->select('course_id')->where('student_id', Auth::id())->get();
+        foreach ($course_ids as $course_id){
+            array_push($course_properties, DB::table('course')->select('id', 'course_title', 'course_cartegory', 'has_tutoring', 'path_picture_course')
+        ->where('id', $course_id->course_id)->get()); //Ele esta armazenando, mas na variavel course_properties fica so o ultimo valor
+        }
+        
+        return view ('pages.show_courses_student', ['data' => $course_ids]);
     }
 
     public function showCoursesTeaches()
@@ -88,10 +101,10 @@ class CourseController extends Controller
     }
 
     public function showCoursesPublic(Request $request){
-        $db_courses = DB::table('course')->select('id', 'course_title', 'course_cartegory', 'has_tutoring', 'path_picture_course')
+        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'course_cartegory', 'has_tutoring', 'path_picture_course')
         ->orderBy('course_title')->get();
         
-        return view ('pages.show_courses', ['data' => $db_courses]);
+        return view ('pages.show_courses', ['datas' => $db_courses]);
     }
 
 

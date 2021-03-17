@@ -12,6 +12,7 @@
     <title>Editar Professor</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
 
@@ -308,13 +309,13 @@
             
         </div>
         <form id = "form1" name = "form1" v-if="this.data_show == true" @submit.prevent = "submit">
-            <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form">
-            <input class = "form_template" type = "text" id = "email_form" name = "email_form">
+            <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form"  v-model="name">
+            <input class = "form_template" type = "text" id = "email_form" name = "email">
             <textarea rows = "5" class = "form_template" type = "text" id = "teacher_description_input" name = "text_description_input"></textarea>
             <input class = "form_template" id = "CPF_input" name = "CPF_input" type = "text">
             <input class = "form_template" id = "city_input" name = "city input">
             <input class = "form_template" id = "country_input" type = "text" name = "country_input">
-            <button type = "submit" class = "btn btn-primary">Enviar</button>
+            <input type = "submit" value = "submit">Enviar</button>
         </form>
 
         <div id = form_2_header name = "form_2_header" v-if="this.data_show == false">
@@ -336,13 +337,11 @@
 
 
     <script>
-
     const app = Vue.createApp({
         
         data(){
             return{
-                fields: {},
-                errors: {},
+                name: '',
                 success: false,
                 loaded: true,
                 data_show: true,
@@ -357,9 +356,13 @@
                     this.data_show = true;
                 },
 
+
                 submit() {
+                    alert('batata');
                     this.errors = {};
-                    axios.post('/submit', this.fields).then(response => {
+                    axios.post('/updateRegisterForm', {
+                        name: this.name
+                        },).then(response => {
                         alert('Message sent!');
                     }).catch(error => {
                         if (error.response.status === 422) {

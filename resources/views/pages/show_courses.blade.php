@@ -23,46 +23,68 @@
             
         }
 
+        div#modal_window{
+            background-color: red;
+            height: 50%;
+            width: 50%;
+            top: 30%;
+        }
+
+        /*body > *:not(#modal) {
+            filter: blur(3px);
+        }*/
+
     </style>
 
 </head>
-<body>
+<body id = "body">
     
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">        
-        <div></div>
-            @foreach ($data as $data)
-                <div id = "wrapper_courses_container">
-                    <div id = "courses_container">
-                        <div id = "course_box" name = "course_box">
-                            <div id = "course_title" name = "course_title">{{$data->course_title}}</div>
-                            <div id = "course_cartegory" name = "course_cartegory"><br>{{$data->course_cartegory}}</div>
-                            <div id = "has_tutoring" name = "has_tutoring"><br>{{$data->has_tutoring}}</div>
-                            <div id = "image_path" name = "image_path">
-                                <img src = "{{$data->path_picture_course}}">
-                            </div>
-                            <a id = "subscribe" name = "subscribe" href = {{ route('subscribe_course', ['id'=>1]) }}><br>Inscrever-se</a>
+        <div id = "courses_loop" name = "courses_loop" v-for="data in datas">
+            <div id = "wrapper_courses_container">
+                <div id = "courses_container">
+                        <div id = "course_box" name = "course_box"> </div>
+                        <div id = "course_title" name = "course_title">@{{data.course_title}}</div>
+                        <div id = "course_cartegory" name = "course_cartegory"><br>@{{data.course_cartegory}}</div>
+                        <div id = "has_tutoring" name = "has_tutoring"><br>@{{data.has_tutoring}}</div>
+                        <div id = "image_path" name = "image_path">
+                            colocar o img source aqui
                         </div>
-                    </div>
-                </div>
-            @endforeach
+                        <button id = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(data)" >Inscrever-se</button>
+                </div>        
+            </div>
+        </div>
+
+        <div id = "modal" v-if= "this.modal_visible==true">
+            <div id = "modal_window" name = "modal_window">
+                @{{temp_course_data.course_title}}
+                <br>
+                @{{temp_course_data.course_description}}
+                <br>
+                <button id = "subscribe">Inscrever-se</button>
+            </div>
+        </div>
     </div>
     <script>
-
         const app = Vue.createApp({
-            
             data(){
                 return{
-                    data: {!! json_encode($data) !!},
+                    datas: {!! json_encode($datas) !!},
+                    modal_visible: false,
+                    temp_course_data: null,
                 }
             },
             mounted(){
-                
+
             },
 
             methods: {
-                teste(){
-                    data.forEach(element => console.log(element));
-                    console.log(data.course_title.lenght);
+
+
+                show_modal(data){
+                    this.modal_visible = true;
+                    this.temp_course_data = data;
+                    
                 }
             },
 
