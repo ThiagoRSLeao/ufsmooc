@@ -54,20 +54,23 @@ class CourseController extends Controller
                 return redirect()->route('teacher.panel');
         }
 
-    /*public function showCoursesStudent()
+    public function showCoursesStudent()
     {
         $userId = session()->get('userId');
-        $studies = Studies::Where('user_id', '=', $userId)->get();
+        if ($userId == NULL){
+            echo "voce precisa estar logado para acessar essa pagina";
+        }
+        $studies = Studies::Where('student_id', '=', $userId)->get();
         $courses = Array();
         foreach($studies as $study)
         {
-            //array_push($courses, Course::find($teach->course_id));
+            array_push($courses, Course::find($study->course_id));
         }
-        //return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
-        return view('pages.show_courses_student');
-    }*/
+        return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        //return view('pages.show_courses_student');
+    }
 
-    public function showCoursesStudent(){
+    /*public function showCoursesStudent(){
         $course_properties = array();
         $course_ids = DB::table('studies')->select('course_id')->where('student_id', Auth::id())->get();
         foreach ($course_ids as $course_id){
@@ -76,7 +79,7 @@ class CourseController extends Controller
         }
         
         return view ('pages.show_courses_student', ['data' => $course_ids]);
-    }
+    }*/
 
     public function showCoursesTeaches()
     {
@@ -104,7 +107,7 @@ class CourseController extends Controller
         $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'course_cartegory', 'has_tutoring', 'path_picture_course')
         ->orderBy('course_title')->get();
         
-        return view ('pages.show_courses', ['datas' => $db_courses]);
+        return view ('pages.show_courses', ['courses' => $db_courses]);
     }
 
 

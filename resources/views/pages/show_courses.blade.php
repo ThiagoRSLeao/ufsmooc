@@ -40,13 +40,13 @@
 <body id = "body">
     
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">        
-        <div id = "courses_loop" name = "courses_loop" v-for="data in datas">
+        <div id = "courses_loop" name = "courses_loop" v-for="course in courses">
             <div id = "wrapper_courses_container">
                 <div id = "courses_container">
                         <div id = "course_box" name = "course_box"> </div>
-                        <div id = "course_title" name = "course_title">@{{data.course_title}}</div>
-                        <div id = "course_cartegory" name = "course_cartegory"><br>@{{data.course_cartegory}}</div>
-                        <div id = "has_tutoring" name = "has_tutoring"><br>@{{data.has_tutoring}}</div>
+                        <div id = "course_title" name = "course_title">@{{course.course_title}}</div>
+                        <div id = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
+                        <div id = "has_tutoring" name = "has_tutoring"><br>@{{course.has_tutoring}}</div>
                         <div id = "image_path" name = "image_path">
                             colocar o img source aqui
                         </div>
@@ -69,7 +69,7 @@
         const app = Vue.createApp({
             data(){
                 return{
-                    datas: {!! json_encode($datas) !!},
+                    courses: {!! json_encode($courses) !!},
                     modal_visible: false,
                     temp_course_data: null,
                 }
@@ -81,9 +81,9 @@
             methods: {
 
 
-                show_modal(data){
+                show_modal(course){
                     this.modal_visible = true;
-                    this.temp_course_data = data;
+                    this.temp_course_data = course;
                     
                 }
             },

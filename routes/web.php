@@ -40,6 +40,7 @@ Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_courses');
+Route::get('/show_courses_student', 'CourseController@showCoursesStudent')-> name ('show_courses_student');
 Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
 
 
