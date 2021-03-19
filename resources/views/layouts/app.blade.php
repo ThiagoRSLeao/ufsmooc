@@ -9,6 +9,7 @@
     <link href=@yield('style') rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
     <title> UFSMOOC - @yield('title') </title>
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
     <header>

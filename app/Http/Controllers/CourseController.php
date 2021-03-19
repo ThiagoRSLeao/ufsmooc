@@ -140,11 +140,12 @@ class CourseController extends Controller
     }
     
     public function subscribe_course(Request $request){
-        DB::table('studying_course')->insert([
+        echo "batata";
+        /*DB::table('studying_course')->insert([
             "course_id" => $request['course_id'],
             "student_id" => Auth::user()->id->get(),
         ]);
-        return ('/');
+        return ('/');*/
     }
 
 }

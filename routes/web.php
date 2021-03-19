@@ -28,7 +28,7 @@ Route::post('/createQuestionary', 'QuestionController@createQuestionary')->name(
 Route::post('/createDescriptiveQuestion', 'QuestionController@createDescriptiveQuestion')->name('descriptiveQuestion.create');
 Route::post('/createAlternativeQuestion', 'QuestionController@createAlternativeQuestion')->name('alternativeQuestion.create');
 Route::post('/createAlternative', 'QuestionController@createAlternative')->name('alternative.create');
-Route::get('/subscribe_course', 'CourseController@subscribe_course')->name('subscribe_course'); //TROCAR O METODO DA ROTA
+Route::post('/subscribe_course', 'CourseController@subscribe_course')->name('subscribe_course'); //TROCAR O METODO DA ROTA
 Route::get('/myCourses', 'CourseController@showCoursesStudent')->name('myCourses'); //TROCAR O METODO DA ROTA
 
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
@@ -40,7 +40,6 @@ Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_courses');
-Route::get('/show_courses_student', 'CourseController@showCoursesStudent')-> name ('show_courses_student');
 Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
 
 

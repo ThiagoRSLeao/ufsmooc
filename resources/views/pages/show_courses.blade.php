@@ -1,58 +1,40 @@
 @extends('layouts.app')
 
+@section('style')/style/pages/show_courses.css
+@endsection
+
+@section('title', 'pedro cursos')
 @section('content')
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://unpkg.com/vue@next"></script>
 
-    <style>
-        div#wrapper_courses_container{
-            top: 200px;
-            position: absolute;
-            align-items: center;
-            justify-content: center;
-            margin: 20px;
-        }
 
-        div#courses_container{
-            
-        }
+    <div id = "vue_jurisdiction" name = "vue_jurisdiction">
+        <div id = "wrapper_courses_container">
 
-        div#modal_window{
-            background-color: red;
-            height: 50%;
-            width: 50%;
-            top: 30%;
-        }
 
-        /*body > *:not(#modal) {
-            filter: blur(3px);
-        }*/
+            <div class = "courses-container">
+                <div class = "courses-container-title">Cursos disponíveis</div>
 
-    </style>
+                <div class = "courses-container-body" name = "courses_loop" >
+                    <div class = "course-box" v-for="course in courses">
 
-</head>
-<body id = "body">
-    
-    <div id = "vue_jurisdiction" name = "vue_jurisdiction">        
-        <div id = "courses_loop" name = "courses_loop" v-for="course in courses">
-            <div id = "wrapper_courses_container">
-                <div id = "courses_container">
-                        <div id = "course_box" name = "course_box"> </div>
-                        <div id = "course_title" name = "course_title">@{{course.course_title}}</div>
-                        <div id = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
-                        <div id = "has_tutoring" name = "has_tutoring"><br>@{{course.has_tutoring}}</div>
-                        <div id = "image_path" name = "image_path">
-                            colocar o img source aqui
+                        <div class = "img-container">
+                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
                         </div>
-                        <button id = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(data)" >Inscrever-se</button>
-                </div>        
+                        <div class = "info-container"></div>
+                        <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
+                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
+                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
+                        <div class = "progress-bar"></div>
+                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(course)" >Ver detalhes</button>
+
+                    </div>        
+                </div>  
+
+
             </div>
+            
+            
+
         </div>
 
         <div id = "modal" v-if= "this.modal_visible==true">
@@ -61,10 +43,12 @@
                 <br>
                 @{{temp_course_data.course_description}}
                 <br>
-                <button id = "subscribe">Inscrever-se</button>
+                <button id = "subscribe" v-on:click="subscribe(this.temp_course_data.course_id)">Inscrever-se</button>
             </div>
         </div>
     </div>
+    @endsection
+    @section('script')
     <script>
         const app = Vue.createApp({
             data(){
@@ -85,7 +69,15 @@
                     this.modal_visible = true;
                     this.temp_course_data = course;
                     
-                }
+                },
+
+                async subscribe(course_id){
+                    axios.post('/subscribe_course',{
+                        course_id: course_id,
+                    }).then(function (response){
+                        console.log(response);
+                    });
+                },
             },
 
 
@@ -93,6 +85,5 @@
               
         
         app.mount('#vue_jurisdiction');
-    </script>
-</body>
-</html>
+</script>
+    @endsection

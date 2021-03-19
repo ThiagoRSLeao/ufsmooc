@@ -119,12 +119,14 @@ input[type=number] {
     font-size: 32pt;
     font-weight: bold;
 }
+
 .main-container > .main-box > .main-box-content
 {
     max-width: 400px;
     height: inherit;
     width: inherit;
 }
+
 .main-container > .main-box > a
 {
     font-size: 14pt;
@@ -138,16 +140,19 @@ input[type=number] {
     transition: .3s ease;
     align-self: center;    
 }
+
 .main-container > .main-box > a:hover
 {
     color: #acacac;    
 }
+
 .main-container> img
 {
     width: 50vw;
     max-height: 490px;
     max-width: 490px;
 } 
+
 .wrapper-courses-container
 {
     width: inherit;    
@@ -157,6 +162,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
 }
+
 .courses-container
 {
     display: flex;
@@ -166,6 +172,7 @@ input[type=number] {
     width: 100%;  
     margin-bottom: 60px;
 }
+
 .course-box
 {
     background: #F3F3FA;
@@ -180,6 +187,7 @@ input[type=number] {
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .course-title
 {
     width: 100%;
