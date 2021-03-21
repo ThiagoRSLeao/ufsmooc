@@ -36,6 +36,7 @@ Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass')
 Route::get('/panel', 'ControllerUser@userPanel') -> name('panel');
 Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
 Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
+Route::get('/manage-courses', "CourseController@manageCourses") -> name('manage-courses');
 
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');

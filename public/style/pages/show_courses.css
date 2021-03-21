@@ -69,6 +69,9 @@ div#wrapper_courses_container{
 .show_details{
     
 }
+
+
+
 .course-box{
     height: 280px;
     width: 240px;
@@ -94,6 +97,11 @@ div#modal_window{
     height: 50%;
     width: 50%;
     top: 30%;
+    left:50%;
+    position: absolute;
+    margin-left: -450px;
+    z-index: 1;
+    flex-wrap: wrap;
 }
 
 

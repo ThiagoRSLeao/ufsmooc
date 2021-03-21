@@ -43,7 +43,7 @@
                 <br>
                 @{{temp_course_data.course_description}}
                 <br>
-                <button id = "subscribe" v-on:click="subscribe(this.temp_course_data.course_id)">Inscrever-se</button>
+                <button id = "subscribe" v-on:click="subscribe(this.temp_course_data.id)">Inscrever-se</button>
             </div>
         </div>
     </div>

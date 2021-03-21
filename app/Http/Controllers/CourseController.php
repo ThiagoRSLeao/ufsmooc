@@ -70,17 +70,6 @@ class CourseController extends Controller
         //return view('pages.show_courses_student');
     }
 
-    /*public function showCoursesStudent(){
-        $course_properties = array();
-        $course_ids = DB::table('studies')->select('course_id')->where('student_id', Auth::id())->get();
-        foreach ($course_ids as $course_id){
-            array_push($course_properties, DB::table('course')->select('id', 'course_title', 'course_cartegory', 'has_tutoring', 'path_picture_course')
-        ->where('id', $course_id->course_id)->get()); //Ele esta armazenando, mas na variavel course_properties fica so o ultimo valor
-        }
-        
-        return view ('pages.show_courses_student', ['data' => $course_ids]);
-    }*/
-
     public function showCoursesTeaches()
     {
         $userId = session()->get('userId');
@@ -140,12 +129,16 @@ class CourseController extends Controller
     }
     
     public function subscribe_course(Request $request){
-        echo "batata";
-        /*DB::table('studying_course')->insert([
+        DB::table('studies')->insert([
+            "data_json" => "batata",
             "course_id" => $request['course_id'],
-            "student_id" => Auth::user()->id->get(),
+            "student_id" => Auth::id(),
         ]);
-        return ('/');*/
+        return ('/');
+    }
+
+    public function manageCourses(){
+        return view('auth.manage-courses');
     }
 
 }
