@@ -26,8 +26,8 @@ class CreateTeachesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->index();
             $table->bigInteger('course_id')->unsigned()->index();
             $table->boolean('is_temporary');
-            $table->datetime('dt_begin_ministering');
-            $table->datetime('dt_end_ministering');
+            $table->datetime('dt_begin_teaches');
+            $table->datetime('dt_end_teaches');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('course');

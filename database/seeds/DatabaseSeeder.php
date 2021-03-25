@@ -138,6 +138,22 @@ class DatabaseSeeder extends Seeder
             "student_id" => '2',
         ]);
 
+        DB::table('teaches')->insert([
+            
+            "acess_doubts" => '1',
+            "acess_manage_modules" =>'1',
+            "acess_manage_questionary" => '1',
+            "acess_manage_work" => '1',
+            "acess_evaluate_questionary" => '1',
+            "acess_evaluate_work" => '1',
+            "reason_tutor" => 'tutor',
+            "user_id" => '1',
+            "course_id" => '1',
+            "is_temporary" => '0',
+            "dt_begin_teaches" => '2000/01/01',
+            "dt_end_teaches" => '2000/01/01',
+        ]);
+
 
     }
 }

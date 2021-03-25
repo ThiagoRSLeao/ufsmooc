@@ -56,6 +56,7 @@
                     courses: {!! json_encode($courses) !!},
                     modal_visible: false,
                     temp_course_data: null,
+                    auth: {!!json_encode(Auth::check())!!},
                 }
             },
             mounted(){
