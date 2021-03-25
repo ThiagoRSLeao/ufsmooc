@@ -7,6 +7,7 @@
 @section('content')
 
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
+        <input type ='button' value = 'batata' v-on:click='getUserData()'>
         <div id = big-box>
             <div id = "my-courses-title">
                 <strong> Meus cursos - participantes </strong>
@@ -22,55 +23,82 @@
                 <div id = "student-bar"></div>
                 <div id = "teacher-bar"></div>
                 <br>
-
+            </div>
+            <div id = 'info-container'>
                 <div id = "current-course-box">
-                    <img id = "current-course-image" href="https://static.wixstatic.com/media/894d3e_1ddace316ca84f08bf03e65c46edbf9e~mv2.jpeg/v1/fill/w_760,h_500,al_c,q_90/894d3e_1ddace316ca84f08bf03e65c46edbf9e~mv2.webp">
+                    <div id = 'current-course-info'>
+                        <img id = "current-course-image" src="https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
+                        <div id = 'title-course'> <strong>@{{this.courseName}}</strong></div>
+                    </div>
+                    <div id='select-all'>
+                        <input type = "checkbox" id = "select-all-checkbox">
+                        <div id = select-all-text>Selecionar tudo</div>
+                    </div>
+                    <div class = 'student-content' v-for="student in students">
+                        
+                        <input type = 'checkbox' class = 'student-checkbox'>
+
+                        <img src="https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg" class = 'student-picture'>
+
+                        <div class = 'student-name'>
+                            <strong>@{{student}}</strong>
+                        </div>
+
+                        <div class = 'student-more-options'>
+                            ...
+                        </div> 
+
+                    </div>
+
+                    <div id = 'see-more'> Ver mais </div>
+
 
                 </div>
-
                 <div id = "other-courses-box">
-
+                    <div class = 'other-course-box'>
+                        <img class = 'other-course-image' src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
+                        
+                        <div class = 'other-course-name'>
+                            <strong>Curso de python</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-
+            <div id = 'save'>
+                Salvar
+            </div>
         </div>
-
     </div>
     @endsection
     @section('script')
     <script>
         const app = Vue.createApp({
+            
             data(){
                 return{
-                    modal_visible: false,
-                    temp_course_data: null,
+                    students:'',
+                    courseName: 'Introdução ao HTML',
+
                 }
             },
-            mounted(){
 
+            methods:{
+                getUserData(){
+                    axios.get('/returnStudentsInfo').then(function(response){
+                        this.students = response.data;
+                        console.log(this.students);
+                    })
+                }
             },
 
-            methods: {
-
-
-                show_modal(course){
-                    this.modal_visible = true;
-                    this.temp_course_data = course;
-                    
-                },
-
-                async subscribe(course_id){
-                    axios.post('/subscribe_course',{
-                        course_id: course_id,
-                    }).then(function (response){
-                        console.log(response);
-                    });
-                },
+            beforeMount(){
+                this.getUserData();
             },
+
 
 
         });
+
               
         
         app.mount('#vue_jurisdiction');

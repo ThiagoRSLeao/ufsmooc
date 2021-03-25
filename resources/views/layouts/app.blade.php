@@ -8,6 +8,7 @@
     <link href={{ url('style/layouts/app.css') }} rel="stylesheet" />
     <link href=@yield('style') rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <title> UFSMOOC - @yield('title') </title>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

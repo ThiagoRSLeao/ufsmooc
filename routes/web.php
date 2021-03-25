@@ -42,6 +42,7 @@ Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questi
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_courses');
 Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
+Route::get('/returnStudentsInfo', 'CourseController@returnCoursesStudents')-> name('returnCoursesStudents');
 
 
 /*SEM CONTROLLER*/
