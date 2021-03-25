@@ -73,6 +73,11 @@ div#current-course-box{
     flex-direction: column;
 }
 
+#current-course-expand{
+    align-self: flex-end;
+    padding-right:30px;
+}
+
 
 
 img#current-course-image{
@@ -157,15 +162,21 @@ div#other-courses-box{
     padding-top: 20px;
 
 }
+
 #other-courses-box > .other-course-box > .other-course-image{
     width: 50px;
     float:left;
 }
 
 #other-courses-box > .other-course-box > .other-course-name{
-    
+    min-height: 50px;
 }
 
 #save{
     align-self: flex-end;
+}
+
+.expand{
+    align-self: flex-end;
+    padding-right: 10px;
 }

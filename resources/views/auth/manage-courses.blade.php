@@ -7,7 +7,7 @@
 @section('content')
 
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
-        <input type ='button' value = 'batata' v-on:click='getUserData()'>
+        <input type ='button' value = 'batata' v-on:click='setData()'>
         <div id = big-box>
             <div id = "my-courses-title">
                 <strong> Meus cursos - participantes </strong>
@@ -26,6 +26,7 @@
             </div>
             <div id = 'info-container'>
                 <div id = "current-course-box">
+                    <div id = 'current-course-expand' v-on:click='getUserData()'> > </div>
                     <div id = 'current-course-info'>
                         <img id = "current-course-image" src="https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
                         <div id = 'title-course'> <strong>@{{this.courseName}}</strong></div>
@@ -55,12 +56,13 @@
 
                 </div>
                 <div id = "other-courses-box">
-                    <div class = 'other-course-box'>
+                    <div class = 'other-course-box' v-for='otherCourseName in otherCoursesNames'>
                         <img class = 'other-course-image' src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
                         
                         <div class = 'other-course-name'>
-                            <strong>Curso de python</strong>
+                            <strong>@{{otherCourseName}}</strong>
                         </div>
+                        <div class = 'expand' v-on:click='maxCourse()'> > </div>
                     </div>
                 </div>
             </div>
@@ -76,23 +78,36 @@
             
             data(){
                 return{
-                    students:'',
+                    students: '',
                     courseName: 'Introdução ao HTML',
+                    otherCoursesNames: ['Introdução ao HTML', 'Curso de Python', 'Curso teste sem criatividade'],
 
                 }
             },
 
             methods:{
-                getUserData(){
-                    axios.get('/returnStudentsInfo').then(function(response){
-                        this.students = response.data;
-                        console.log(this.students);
-                    })
+                async getUserData(){
+                    course_id = 1;
+                    response = await axios.get('/returnStudentsInfo',{
+                        params: {
+                            course_id: course_id,
+                        }
+                    });
+                    this.students = response.data;
+                },
+
+                maxCourse(){
+                    this.courseName = this.otherCoursesNames[1];
                 }
+
+                async getCourses(){
+                    response = await axios.get()
+                }
+
             },
 
-            beforeMount(){
-                this.getUserData();
+            created:async function(){
+                //this.getUserData();
             },
 
 

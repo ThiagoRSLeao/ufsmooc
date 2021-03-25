@@ -23,6 +23,17 @@ class DatabaseSeeder extends Seeder
             'type_user' => '1',
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'batatao',
+            'surname' => 'voadora',
+            'email' => 'batatao@gmail.com',
+            'password' => bcrypt('123'),
+            'CPF' => '999999999',
+            'UF' => 'RJ',
+            'city' => 'volta redonda',
+            'type_user' => '1',
+        ]);
+
         DB::table('course')->insert([
             "course_title" => 'Curso teste',
             "course_subtitle" => 'teste zzz',
@@ -32,12 +43,15 @@ class DatabaseSeeder extends Seeder
             "course_description" => 'Teste epico',
             "has_tutoring" => '1',
             "has_certification" => '1',
-            "has_deadline" => '0',
-            "has_end" => '0',
             "begin_subscriptions_date" => '2000/01/01',
             "end_subscriptions_date" => '2000/01/01',
             "begin_course_date" => '2000/01/01',
             "end_course_date" => '2000/01/01',
+            "students_limit" => '60',
+            "work_notifications" => '40',
+            "question_notifications" => '23',
+            "forum_notifications" => '68',
+            "doubt_notifications" => '983'
         ]);
 
         DB::table('course')->insert([
@@ -49,12 +63,15 @@ class DatabaseSeeder extends Seeder
             "course_description" => 'T2este epico',
             "has_tutoring" => '1',
             "has_certification" => '1',
-            "has_deadline" => '0',
-            "has_end" => '0',
             "begin_subscriptions_date" => '2000/01/01',
             "end_subscriptions_date" => '2000/01/01',
             "begin_course_date" => '2000/01/01',
             "end_course_date" => '2000/01/01',
+            "students_limit" => '30',
+            "work_notifications" => '20',
+            "question_notifications" => '15',
+            "forum_notifications" => '4',
+            "doubt_notifications" => '3'
         ]);
 
         DB::table('module')->insert([
@@ -92,6 +109,35 @@ class DatabaseSeeder extends Seeder
             "answer_question" => 'teste resposta',
             "questionary_id" => '1',
         ]);
+
+        DB::table('student')->insert([
+            "CPF" => '11111111111',
+            "users_id" => '1',
+        ]);
         
+        DB::table('student')->insert([
+            "CPF" => '9999999999',
+            "users_id" => '2',
+        ]);
+
+        DB::table('studies')->insert([
+            "data_json" => 'dado',
+            "course_id" => '1',
+            "student_id" => '1',
+        ]);
+
+        DB::table('studies')->insert([
+            "data_json" => 'dado',
+            "course_id" => '1',
+            "student_id" => '2',
+        ]);
+
+        DB::table('studies')->insert([
+            "data_json" => 'dado',
+            "course_id" => '2',
+            "student_id" => '2',
+        ]);
+
+
     }
 }

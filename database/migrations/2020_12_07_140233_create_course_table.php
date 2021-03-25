@@ -21,12 +21,15 @@ class CreateCourseTable extends Migration
             $table->text('course_description');
             $table->boolean('has_tutoring');
             $table->boolean('has_certification');
-            $table->boolean('has_deadline');
-            $table->boolean('has_end');
             $table->dateTime('begin_subscriptions_date');
             $table->dateTime('end_subscriptions_date');
             $table->dateTime('begin_course_date');
             $table->dateTime('end_course_date');
+            $table->integer('students_limit');
+            $table->integer('work_notifications');
+            $table->integer('question_notifications');
+            $table->integer('forum_notifications');
+            $table->integer('doubt_notifications');
             $table->string('course_cartegory');
             //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory'); --> TABLE COURSE_CARTEGORY DOESN'T EXIST
             $table->timestamps();
