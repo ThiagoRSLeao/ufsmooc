@@ -106,15 +106,8 @@ class ControllerUser extends Controller
     }
 
     public function updateRegister(Request $request){
-<<<<<<< HEAD
         /*$id = $request->only('id');
         $data = $request->only('name, surname, CPF, email, UF, city, password, description');
-=======
-        echo "teste";
-        $id = Auth::id();
-        $data = $request->only('name, CPF, email, city, password, description');//arrumar pra colocar sobrenome e UF
-        echo "funciona ate aq";
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
         DB::table('users')->where('id', $id)->update([
             "email" => $data['email'],
             "password" => bcrypt($data['password']),
@@ -124,7 +117,6 @@ class ControllerUser extends Controller
             'CPF' => $data['cpf'],
             'UF' => 'XX',
             'city' => $data['city'],
-<<<<<<< HEAD
             'type_user' => '1',
         ]);*/
         $name = $request->only('name');
@@ -143,11 +135,6 @@ class ControllerUser extends Controller
 
         
         return response()->json(['message' => 'Atualizacao bem sucedida.']);
-=======
-            'type_user' => '1'
-        ]);
-        //return response()->json(['message' => 'Atualizacao bem sucedida.']);
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
     }
 
 }

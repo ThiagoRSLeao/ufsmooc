@@ -100,7 +100,7 @@ div#modal_window{
     left:50%;
     position: absolute;
     margin-left: -450px;
-    z-index: ;
+    z-index: 50;
     flex-wrap: wrap;
 }
 
