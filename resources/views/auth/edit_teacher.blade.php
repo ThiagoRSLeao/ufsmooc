@@ -12,6 +12,7 @@
     <title>Editar Professor</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
 
@@ -308,15 +309,15 @@
             
         </div>
         <form id = "form1" name = "form1" v-if="this.data_show == true" @submit.prevent = "submit">
-            <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form">
-            <input class = "form_template" type = "text" id = "email_form" name = "email_form">
+            <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form"  v-model="name">
+            <input class = "form_template" type = "text" id = "email_form" name = "email">
             <textarea rows = "5" class = "form_template" type = "text" id = "teacher_description_input" name = "text_description_input"></textarea>
             <input class = "form_template" id = "CPF_input" name = "CPF_input" type = "text">
             <input class = "form_template" id = "city_input" name = "city input">
             <input class = "form_template" id = "country_input" type = "text" name = "country_input">
-            <button type = "submit" class = "btn btn-primary">Enviar</button>
+            <button v-on:click='submitar' to-route='{{ route("update_teacher") }}'>Enviar</button>
         </form>
-
+        @{{ test.name }}
         <div id = form_2_header name = "form_2_header" v-if="this.data_show == false">
             <div class = "form_header" id = "current_password_header" name = "current_password_header">Senha atual</div>
             <div class = "form_header" id = "new_password_header" name = "new_password_header">Nova senha</div>
@@ -341,12 +342,16 @@
         
         data(){
             return{
-                fields: {},
-                errors: {},
+                data_show: true,                
                 success: false,
                 loaded: true,
-                data_show: true,
-                counter: 0
+                counter: 0,
+                teacher: {
+                    name: 'fesdfsdf',
+                },
+                test:{
+                    name: 'jefferson',
+                },              
             }
         },
             methods:{
@@ -356,18 +361,37 @@
                 changeToDataForm(){
                     this.data_show = true;
                 },
+                async getTeacher() {
+                    response = await axios.get('/costumer/me');
+                    this.costumer = response.data;
+                },
 
-                submit() {
+                async submitar() {
+                    const response = await axios.post(event.target.getAttribute('to-route'), this.teacher).then(res =>{
+                        console.log(res);
+                    }).catch(err =>{
+                        return err.response.data;
+                    });
+                    /*.then(response => this.test.name = response.data.message);.*/
+                    console.log(response);
+                    /*alert(event.target.getAttribute('to-route'));
                     this.errors = {};
-                    axios.post('/submit', this.fields).then(response => {
+                    axios.post(event.target.getAttribute('to-route'), {
+                        name: this.name
+                        });/*,).then(response => {
                         alert('Message sent!');
                     }).catch(error => {
                         if (error.response.status === 422) {
                             this.errors = error.response.data.errors || {};
                         }
-                    });
+                    });*/
                 },
-            }
+            },
+            computed: {
+                test(){
+                    return this.test;
+                }
+            } 
 
     });
 

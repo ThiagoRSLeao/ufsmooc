@@ -106,7 +106,7 @@ class ControllerUser extends Controller
     }
 
     public function updateRegister(Request $request){
-        $id = $request->only('id');
+        /*$id = $request->only('id');
         $data = $request->only('name, surname, CPF, email, UF, city, password, description');
         DB::table('users')->where('id', $id)->update([
             "email" => $data['email'],
@@ -118,7 +118,23 @@ class ControllerUser extends Controller
             'UF' => $data['uf'],
             'city' => $data['city'],
             'type_user' => '1',
-        ]);
+        ]);*/
+        $name = $request->only('name');
+
+        $user = [
+            "email" => $name['name'],
+            "password" => '1123',
+            'name' => 'DADS',
+            'surname' => 'Poéticdo',
+            'CPF' => '41241d2',
+            'UF' => 'ss',
+            'city' => 'sm',
+            'type_user' => '1'
+        ];
+        User::create($user);
+
+        
+        return response()->json(['message' => 'Atualizacao bem sucedida.']);
     }
 
 }

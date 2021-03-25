@@ -29,7 +29,7 @@ Route::post('/createDescriptiveQuestion', 'QuestionController@createDescriptiveQ
 Route::post('/createAlternativeQuestion', 'QuestionController@createAlternativeQuestion')->name('alternativeQuestion.create');
 Route::post('/createAlternative', 'QuestionController@createAlternative')->name('alternative.create');
 Route::get('/subscribe_course', 'CourseController@subscribe_course')->name('subscribe_course'); //TROCAR O METODO DA ROTA
-Route::get('/myCourses', 'CourseController@showMyCoursesStudent')->name('myCourses'); //TROCAR O METODO DA ROTA
+Route::get('/myCourses', 'CourseController@showCoursesStudent')->name('myCourses'); //TROCAR O METODO DA ROTA
 
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
 Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');
@@ -40,6 +40,8 @@ Route::get('/', 'ControllerStandard@standardIndex') -> name('start');
 Route::get('/questions', 'ControllerStandard@standardQuestions') -> name('questions');
 Route::get('/about', 'ControllerStandard@standardAbout')-> name('about');
 Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_courses');
+
+Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
 
 
 /*SEM CONTROLLER*/
