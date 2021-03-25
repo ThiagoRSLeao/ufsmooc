@@ -142,12 +142,12 @@ class CourseController extends Controller
     }
 
     public function returnCoursesStudents(Request $request){
-        /*$id = $request['course_id'];*/
-        $id = '1';
+        $id = $request['course_id'];
         $students_ids= DB::table('studies')->where('course_id', '=', $id)->pluck('student_id');
         $users_id = DB::table('student')->whereIn('id', $students_ids)->pluck('users_id');
         $students_name = DB::table('users')->whereIn('id', $users_id)->pluck('name');
         return response()->json($students_name);
+        
     }
 
 }

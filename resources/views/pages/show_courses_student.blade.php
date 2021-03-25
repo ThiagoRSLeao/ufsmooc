@@ -1,106 +1,101 @@
 @extends('layouts.app')
 
-@section('style')/style/pages/show_courses_student.css
-@endsection
-
-@section('title', 'pedro cursos')
 @section('content')
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>document</title>
+    <script src="https://unpkg.com/vue@next"></script>
 
+    <style>
+    
+    div#course_box{
+        background: #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.25), 0px 0px 3px #FFFFFF, 0px 0px 3px rgba(31, 42, 139, 0.48);
+        top: 1000px;
+        border: 2px solid #F3F3F4;
+        min-height: 180px;
+        min-width: 300px;
+        width: 450px;
+        margin-top: 15px;
+        justify-content: center;
+        position:absolute;
+    }
 
-    <div id = "vue_jurisdiction" name = "vue_jurisdiction">
-        <div id = "wrapper_courses_container">
+    div#image_path{
 
+    }
 
-            <div class = "courses-container">
-                <div class = "courses-container-title">Em andamento</div>
+    div#wrapper_courses_container{
+        width: inherit;    
+        padding-left: 37.5px;
+        padding-right: 37.5px;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-                <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="course in courses">
+    div#courses_container{
+        
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;  
+        margin-bottom: 60px;
 
-                        <div class = "img-container">
-                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
+    }
+
+    div#subscribe{
+        cursor:pointer;
+    }
+
+    </style>
+
+</head>
+<body>
+    
+    <div id = "vue_jurisdiction" name = "vue_jurisdiction">        
+        <div></div>
+            @foreach ($data as $data)
+                <div id = "wrapper_courses_container">
+                    <div id = "courses_container">
+                        <div id = "course_box" name = "course_box">
+                            <div id = "course_title" name = "course_title">{{$data->course_id}} BATATA</div>
+                            <div id = "course_cartegory" name = "course_cartegory"><br></div>
+                            <div id = "has_tutoring" name = "has_tutoring"><br></div>
+                            <div id = "image_path" name = "image_path">
+                                <img src = "">
+                            </div>
                         </div>
-                        <div class = "info-container"></div>
-                        <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
-                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
-                        <div class = "progress-bar"></div>
-                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(course)" >Ver detalhes</button>
-
-                    </div>        
-                </div>  
-
-
-            </div>
-
-            <div class = "courses-container">
-                <div class = "courses-container-title">Salvos</div>
-
-                <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="course in courses">
-
-                        <div class = "img-container">
-                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
-                        </div>
-                        <div class = "info-container"></div>
-                        <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
-                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
-                        <div class = "progress-bar"></div>
-                        <button id = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(course)" >Inscrever-se</button>
                     </div>
                 </div>
-            
-
-        </div>
-
-        <div id = "modal" v-if= "this.modal_visible==true">
-            <div id = "modal_window" name = "modal_window">
-                @{{temp_course_data.course_title}}
-                <br>
-                @{{temp_course_data.course_description}}
-                <br>
-                <button id = "subscribe" v-on:click="subscribe(this.temp_course_data.course_id)">Inscrever-se</button>
-            </div>
-        </div>
+            @endforeach
     </div>
-    @endsection
-    @section('script')
     <script>
+
         const app = Vue.createApp({
+            
             data(){
                 return{
-                    courses: {!! json_encode($courses) !!},
-                    modal_visible: false,
-                    temp_course_data: null,
+                    data: {!! json_encode($data) !!},
                 }
-            },
-            mounted(){
-
             },
 
             methods: {
-
-
-                show_modal(course){
-                    this.modal_visible = true;
-                    this.temp_course_data = course;
+                teste(){
                     
-                },
-
-                async subscribe(course_id){
-                    axios.post('/subscribe_course',{
-                        course_id: course_id,
-                    }).then(function (response){
-                        console.log(response);
-                    });
-                },
+                }
             },
 
 
         });
               
-        
         app.mount('#vue_jurisdiction');
-</script>
-    @endsection
+    </script>
+</body>
+</html>

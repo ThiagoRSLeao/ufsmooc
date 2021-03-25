@@ -44,6 +44,8 @@ Route::get('/show_courses', 'CourseController@showCoursesPublic')-> name('show_c
 Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
 Route::get('/returnStudentsInfo', 'CourseController@returnCoursesStudents')-> name('returnCoursesStudents');
 
+Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('update_teacher');
+
 
 /*SEM CONTROLLER*/
 
