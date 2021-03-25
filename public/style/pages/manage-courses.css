@@ -1,0 +1,171 @@
+body{
+    background: #E6E6E6;
+}
+
+div#big-box{
+    position: relative;
+    left: 7.1%;
+    right: 7.1%;
+    top: 23%;
+
+    background: #FFFFFF;
+
+    border: 2px solid #F3F3F4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    max-width: 85.8%;
+    align-items:center;
+
+}
+
+div#my-courses-title{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20pt;
+    font-family: Rubik;
+}
+
+div#teacher-student-option{
+    padding-top: 30px;
+    align-items: center;
+    text-align:center
+}
+
+div#teacher-text, div#student-text{
+    display: inline-block;
+    padding-right:125px;
+    font-size: 16pt;
+    padding-left: 125px;
+}
+
+div#teacher-bar, div#student-bar{
+    min-height: 2px;
+    background-color: gray;
+    border-radius: 20px;
+    width: 28%;
+    display: inline-block;
+    list-style-type: none;
+}
+/*width tem que ser maior*/
+#info-container{
+    min-width: 100%;
+    display: inline-flex;
+    margin:auto;
+
+}
+div#current-course-box{
+    padding-top: 35px;
+
+    
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(205, 205, 205, 0.3);
+    box-sizing: border-box;
+    box-shadow: 0px 15px 30px 4px rgba(134, 134, 134, 0.27);
+    border-radius: 30px;
+    left:10%;
+    min-width:40%;
+    flex-wrap: wrap;
+    align-items: left;
+    display: inline-flex;
+    padding-left: 30px;
+    flex-direction: column;
+}
+
+
+
+img#current-course-image{
+    width:40px;
+    float: left;
+}
+
+div#title-course{
+    font-family: 'Roboto';
+    font-size: 14pt;
+    color: #0C1427;
+    padding-left: 50px
+}
+
+div#select-all{
+    margin-top: 20px;
+}
+input#select-all-checkbox{
+    float:left;
+    vertical-align: middle;
+}
+
+div#select-all-text{
+    padding-left: 50px;
+    font-family: Rubik;
+}
+
+.student-content{
+    margin-top: 10px;
+    vertical-align: center;
+}
+
+.student-checkbox{
+    float:left;
+    top: 10px;
+    position:relative;
+
+}
+
+.student-picture{
+    height: 35px;
+    float:left;
+    padding-left: 7px;
+}
+
+.student-name{
+    float:left;
+    top: 7.5px;
+    position: relative;
+    padding-left: 7px;
+    font-family:Rubik;
+    font-size: 10pt;
+}
+
+.student-more-options{
+    float:right;
+    padding-right: 20px;
+}
+
+#see-more{
+    text-align: center;
+}
+
+div#other-courses-box{
+    
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(205, 205, 205, 0.3);
+    box-sizing: border-box;
+    box-shadow: 0px 15px 30px 4px rgba(134, 134, 134, 0.27);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40%;
+    left: 10%;
+    flex-direction: column;
+}
+
+#other-courses-box > .other-course-box{
+    padding-left: 20px;
+    padding-top: 20px;
+
+}
+#other-courses-box > .other-course-box > .other-course-image{
+    width: 50px;
+    float:left;
+}
+
+#other-courses-box > .other-course-box > .other-course-name{
+    
+}
+
+#save{
+    align-self: flex-end;
+}

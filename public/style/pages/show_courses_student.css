@@ -1,0 +1,105 @@
+.section-main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9fb;
+}
+
+div#wrapper_courses_container{
+    top: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 90vw;
+}
+
+.courses-container{
+    height: 400px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.courses-container-title{
+    height:40px;
+    width:auto;
+    display:flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Rubik;
+}
+
+.courses-container-body{
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.img-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+}
+
+
+.steve{
+    width:100px;
+    text-align: center;
+}
+
+.course_title{
+    width:100%;
+    text-align: center;
+}
+
+.course_cartegory{
+    width:100%;
+    text-align: center;
+}
+
+.has_tutoring{
+    width:100%;
+    text-align: center;
+}
+
+
+
+.show_details{
+    
+}
+
+.course-box{
+    height: 280px;
+    width: 240px;
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius:10%;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 5px 5px 2px rgb(134 134 134 / 27%);
+    overflow:hidden;
+    
+}
+
+.course-box:hover{
+    box-shadow: 0px 15px 21px 10px rgb(134 134 134 / 27%);
+}
+
+div#modal_window{
+    background-color: red;
+    height: 50%;
+    width: 50%;
+    top: 30%;
+}
+
+
+
+/*body > *:not(#modal) {
+    filter: blur(3px);
+}*/

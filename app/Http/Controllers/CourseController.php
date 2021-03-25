@@ -57,10 +57,14 @@ class CourseController extends Controller
     /*public function showCoursesStudent()
     {
         $userId = session()->get('userId');
-        $studies = Studies::Where('user_id', '=', $userId)->get();
+        if ($userId == NULL){
+            echo "voce precisa estar logado para acessar essa pagina";
+        }
+        $studies = Studies::Where('student_id', '=', $userId)->get();
         $courses = Array();
         foreach($studies as $study)
         {
+<<<<<<< HEAD
             //array_push($courses, Course::find($teach->course_id));
         }
         //return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
@@ -76,6 +80,12 @@ class CourseController extends Controller
         }
         
         return view ('pages.show_courses_student', ['data' => $course_ids]);
+=======
+            array_push($courses, Course::find($study->course_id));
+        }
+        return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        //return view('pages.show_courses_student');
+>>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
     }
 
     public function showCoursesTeaches()
@@ -101,10 +111,10 @@ class CourseController extends Controller
     }
 
     public function showCoursesPublic(Request $request){
-        $db_courses = DB::table('course')->select('id', 'course_title', 'course_cartegory', 'has_tutoring', 'path_picture_course')
+        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'course_cartegory', 'has_tutoring', 'path_picture_course')
         ->orderBy('course_title')->get();
         
-        return view ('pages.show_courses', ['data' => $db_courses]);
+        return view ('pages.show_courses', ['courses' => $db_courses]);
     }
 
 
@@ -137,11 +147,25 @@ class CourseController extends Controller
     }
     
     public function subscribe_course(Request $request){
-        DB::table('studying_course')->insert([
+        DB::table('studies')->insert([
+            "data_json" => "batata",
             "course_id" => $request['course_id'],
-            "student_id" => Auth::user()->id->get(),
+            "student_id" => Auth::id(),
         ]);
         return ('/');
+    }
+
+    public function manageCourses(){
+        return view('auth.manage-courses');
+    }
+
+    public function returnCoursesStudents(Request $request){
+        /*$id = $request['course_id'];*/
+        $id = '1';
+        $students_ids= DB::table('studies')->where('course_id', '=', $id)->pluck('student_id');
+        $users_id = DB::table('student')->whereIn('id', $students_ids)->pluck('users_id');
+        $students_name = DB::table('users')->whereIn('id', $users_id)->pluck('name');
+        return response()->json($students_name);
     }
 
 }
