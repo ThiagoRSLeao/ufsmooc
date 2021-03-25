@@ -95,7 +95,6 @@
 
         });
               
-        
         app.mount('#vue_jurisdiction');
     </script>
 </body>
