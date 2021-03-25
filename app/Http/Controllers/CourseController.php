@@ -64,28 +64,10 @@ class CourseController extends Controller
         $courses = Array();
         foreach($studies as $study)
         {
-<<<<<<< HEAD
-            //array_push($courses, Course::find($teach->course_id));
-        }
-        //return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
-        return view('pages.show_courses_student');
-    }*/
-
-    public function showCoursesStudent(){
-        $course_properties = array();
-        $course_ids = DB::table('studies')->select('course_id')->where('student_id', Auth::id())->get();
-        foreach ($course_ids as $course_id){
-            array_push($course_properties, DB::table('course')->select('id', 'course_title', 'course_cartegory', 'has_tutoring', 'path_picture_course')
-        ->where('id', $course_id->course_id)->get()); //Ele esta armazenando, mas na variavel course_properties fica so o ultimo valor
-        }
-        
-        return view ('pages.show_courses_student', ['data' => $course_ids]);
-=======
             array_push($courses, Course::find($study->course_id));
         }
         return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
         //return view('pages.show_courses_student');
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
     }
 
     public function showCoursesTeaches()
