@@ -29,7 +29,7 @@ Route::post('/createDescriptiveQuestion', 'QuestionController@createDescriptiveQ
 Route::post('/createAlternativeQuestion', 'QuestionController@createAlternativeQuestion')->name('alternativeQuestion.create');
 Route::post('/createAlternative', 'QuestionController@createAlternative')->name('alternative.create');
 Route::post('/subscribe_course', 'CourseController@subscribe_course')->name('subscribe_course'); //TROCAR O METODO DA ROTA
-Route::get('/myCourses', 'CourseController@showCoursesStudent')->name('myCourses'); //TROCAR O METODO DA ROTA
+Route::get('/myCourses', 'CourseController@showCoursesStudent')->name('myCourses')->middleware('auth'); //TROCAR O METODO DA ROTA
 
 Route::get('/signup', 'ControllerUser@userSignup' ) -> name('signup');
 Route::get('/forgotPass', 'ControllerUser@userForgotPass') -> name('forgotPass');

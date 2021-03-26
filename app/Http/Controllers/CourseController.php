@@ -69,7 +69,7 @@ class CourseController extends Controller
         {
             array_push($courses, Course::find($study->course_id));
         }
-        return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        return view('auth.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
         //return view('pages.show_courses_student');
     }
 
@@ -137,7 +137,7 @@ class CourseController extends Controller
             "course_id" => $request['course_id'],
             "student_id" => Auth::id(),
         ]);
-        return ('/');
+        return response()->json('Cadastro realizado com sucesso');
     }
 
     public function manageCourses(){

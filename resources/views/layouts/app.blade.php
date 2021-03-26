@@ -91,24 +91,32 @@
                 oneWindowOpen: false, //usar para ver se ha alguma outra janela aberta
             }
         },
-        //necessario colocar um before mount pra pegar o nome do usuario
-
-        beforeMount() {
-
-        },
 
         methods:{
             openUserOptions(){
-                if (this.showUserWindow == false){
+                if (this.oneWindowOpen == false){
                     this.showUserWindow = true;
+                    this.oneWindowOpen = true;
                 }
                 else{
-                    this.showUserWindow = false;
+                    this.closeAllWindows();
                 }
             },
 
+            closeAllWindows(){
+                this.showUserWindow = false;
+                this.showNotificationsWindow = false;
+                this.oneWindowOpen = false;
+            },
+
             openNotifications(){
-                this.showNotificationsWindow = true;
+                if (this.oneWindowOpen == false){
+                    this.showNotificationsWindow = true;
+                    this.oneWindowOpen = true;
+                }
+                else{
+                    this.closeAllWindows();
+                }
             }
         },
     });

@@ -7,7 +7,6 @@
 @section('content')
 
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
-        <input type ='button' value = 'batata' v-on:click='setData()'>
         <div id = big-box>
             <div id = "my-courses-title">
                 <strong> Meus cursos - participantes </strong>
@@ -98,7 +97,7 @@
 
                 maxCourse(){
                     this.courseName = this.otherCoursesNames[1];
-                }
+                },
 
                 async getCourses(){
                     response = await axios.get()
