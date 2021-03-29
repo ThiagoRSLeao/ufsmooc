@@ -70,18 +70,27 @@ class CourseController extends Controller
         //return view('pages.show_courses_student');
     }
 
-    public function showCoursesTeaches()
+    public function showCourseTeaches($id)
+    {
+        $course = Course::find($id);
+        return response()->json($course);
+    }
+    public function showPanelTeacher()
+    {
+        return view('pages.teacherPanel');
+    }
+    public function getCoursesNotifications()
     {
         $userId = session()->get('userId');
         $teaches = Teaches::Where('user_id', '=', $userId)->get();
         $courses = Array();
         foreach($teaches as $teach)
         {
-            array_push($courses, Course::find($teach->course_id));
-        }
-        return view('pages.teacherPanel', ['courses' => $courses]);
+            $course = Course::select('id', 'course_title' , 'work_notifications', 'question_notifications', 'forum_notifications', 'doubt_notifications')->find($teach->course_id);//
+            array_push($courses, $course);
+        }        
+        return response()->json($courses);
     }
-
     public function createModule(Request $request){
         $data = $request->only('course_id', 'name_title_module', 'name_path_archive_module');
         DB::table('module')->insert([

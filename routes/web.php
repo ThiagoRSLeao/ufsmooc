@@ -55,15 +55,18 @@ Route::prefix('/student')->group(function()
 });
 Route::prefix('/teacher')->group(function()
 {
-    Route::get('/panel', 'CourseController@showCoursesTeaches') -> name('teacher.panel')-> Middleware('auth');
+    Route::get('/panel', 'CourseController@showPanelTeacher') -> name('teacher.panel')-> Middleware('auth');
+    Route::get('/showCourseTeaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.course.teaches')-> Middleware('auth');
+    Route::get('/getCoursesNotifications', 'CourseController@getCoursesNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('auth');
+    
 });
 
-Route::prefix('/teacher')->group(function()
+/*Route::prefix('/teacher')->group(function()
 {
-    Route::get('/panel', function () {
+    Route::get('/panel', 'CoursesController@showCoursesTeaches' {
         return view('pages.teacherPanel');
     }) -> name('teacher.panel')-> Middleware('auth');
-});
+});*/
 
 Route::post('/createUser', 'ControllerUser@createUser' ) -> name('user.create');
 Route::get('/home', 'HomeController@index')->name('home');
