@@ -4,7 +4,6 @@
 @section('title', 'pedro edita professor')
 @section('content')
 
-<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="en">
@@ -294,8 +293,6 @@
 </head>
 <body>
 
-=======
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
         <h1 id = "edit_profile" name = "edit_profile">Editar perfil</h1>
         <a ref = "camera.png"></a>
@@ -315,23 +312,13 @@
         </div>
         <form id = "form1" name = "form1" v-if="this.data_show == true" @submit.prevent = "submit">
             <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form"  v-model="name">
-<<<<<<< HEAD
             <input class = "form_template" type = "text" id = "email_form" name = "email">
             <textarea rows = "5" class = "form_template" type = "text" id = "teacher_description_input" name = "text_description_input"></textarea>
             <input class = "form_template" id = "CPF_input" name = "CPF_input" type = "text">
             <input class = "form_template" id = "city_input" name = "city input">
             <input class = "form_template" id = "country_input" type = "text" name = "country_input">
             <button v-on:click='submitar' to-route='{{ route("update_teacher") }}'>Enviar</button>
-=======
-            <input class = "form_template" type = "text" id = "email_form" name = "email" v-model = "email">
-            <textarea rows = "5" class = "form_template" type = "text" id = "teacher_description_input" name = "text_description_input" v-model="teacher_desctiption"></textarea>
-            <input class = "form_template" id = "CPF_input" name = "CPF_input" type = "text" v-model="CPF">
-            <input class = "form_template" id = "city_input" name = "city input" v-model="city">
-            <input class = "form_template" id = "country_input" type = "text" name = "country_input" v-model="country"> <!-- arrumar depois, está como UF-->
-            <input type = "submit" value = "submit">Enviar</button>
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
         </form>
-        @{{ test.name }}
         <div id = form_2_header name = "form_2_header" v-if="this.data_show == false">
             <div class = "form_header" id = "current_password_header" name = "current_password_header">Senha atual</div>
             <div class = "form_header" id = "new_password_header" name = "new_password_header">Nova senha</div>
@@ -356,7 +343,6 @@
         
         data(){
             return{
-<<<<<<< HEAD
                 data_show: true,                
                 success: false,
                 loaded: true,
@@ -367,18 +353,6 @@
                 test:{
                     name: 'jefferson',
                 },              
-=======
-                data_show: true,
-                name: '',
-                email: '',
-                teacher_desctiption: '',
-                CPF: 0,
-                country: '',
-                city: '',
-                success: false,
-                loaded: true,
-                data_show: true
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
             }
         },
             methods:{
@@ -393,7 +367,6 @@
                     this.costumer = response.data;
                 },
 
-<<<<<<< HEAD
                 async submitar() {
                     const response = await axios.post(event.target.getAttribute('to-route'), this.teacher).then(res =>{
                         console.log(res);
@@ -407,20 +380,6 @@
                     axios.post(event.target.getAttribute('to-route'), {
                         name: this.name
                         });/*,).then(response => {
-=======
-
-                async submit() {
-
-                    this.errors = {};
-                    axios.post('/updateRegisterForm', {
-                        name: this.name,
-                        email: this.email,
-                        teacher_desctiption: this.teacher_desctiption,
-                        CPF: this.CPF,
-                        country: this.country,
-                        city: this.city,
-                        },).then(response => {
->>>>>>> 63d84e557f13f052587a3b5efe3fe86f61c360e1
                         alert('Message sent!');
                     }).catch(error => {
                         if (error.response.status === 422) {

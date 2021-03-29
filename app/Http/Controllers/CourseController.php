@@ -17,7 +17,7 @@ class CourseController extends Controller
 
     public function createCourse(Request $request){
         $data = $request->only('center', 'name', 'course_description', 'has_tutoring', 'has_certification', 'has_deadline', 'has_end', 'path_picture_course','begin_subscriptions_date',
-        'end_subscriptions_date', 'begin_course_date', 'end_course_date', 'course_subtitle');
+        'end_subscriptions_date', 'begin_course_date', 'end_course_date', 'course_subtitle', 'students_limit', 'work_notifications', 'question_notifications', 'forum_notifications', 'doubt_notifications');
             $course = Course::create([
                 "course_title" => $data['name'],
                 "course_subtitle" => $data['course_subtitle'],
@@ -25,13 +25,16 @@ class CourseController extends Controller
                 "course_description" => $data['course_description'],
                 "has_tutoring" => $data['has_tutoring'],
                 "has_certification" => $data['has_certification'],
-                "has_deadline" => $data['has_deadline'],
-                "has_end" => $data['has_end'],
                 "path_picture_course" => $data['path_picture_course'],
                 "begin_subscriptions_date" => $data['begin_subscriptions_date'],
                 "end_subscriptions_date" => $data['end_subscriptions_date'],
                 "begin_course_date" => $data['begin_course_date'],
                 "end_course_date" => $data['end_course_date'],
+                "students_limit" => $data['students_limit'],
+                "work_notifications" => '0',
+                "question_notifications" => '0',
+                "forum_notifications" => '0',
+                "doubt_notifications" => '0',
             ]);
 
 
@@ -66,7 +69,7 @@ class CourseController extends Controller
         {
             array_push($courses, Course::find($study->course_id));
         }
-        return view('pages.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        return view('auth.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
         //return view('pages.show_courses_student');
     }
 
@@ -143,7 +146,7 @@ class CourseController extends Controller
             "course_id" => $request['course_id'],
             "student_id" => Auth::id(),
         ]);
-        return ('/');
+        return response()->json('Cadastro realizado com sucesso');
     }
 
     public function manageCourses(){
