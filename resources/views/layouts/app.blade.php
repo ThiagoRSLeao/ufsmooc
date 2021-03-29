@@ -20,7 +20,7 @@
         </a>
         <div class='nav-container'>
             <div class='nav-box-pages'>            
-                <a class="panel-link" href="{{ route('teacher.panel') }}">Painel</a>
+                <a class="panel-link" href="{{ route('show.panel') }}">Painel</a>
                 <a class="courses-link" href="{{ route('show_courses') }}">Cursos</a>
                 <a class="about-link" href="{{ route('about') }}">Sobre</a>
                 <a class="questions-link" href="{{ route('questions') }}">Dúvidas</a>

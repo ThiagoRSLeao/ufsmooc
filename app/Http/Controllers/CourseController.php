@@ -15,50 +15,69 @@ class CourseController extends Controller
         return view('views.pages.teacherPanelCreateCourse');
     }
 
-    public function createCourse(Request $request){
-        $data = $request->only('center', 'name', 'course_description', 'has_tutoring', 'has_certification', 'has_deadline', 'has_end', 'path_picture_course','begin_subscriptions_date',
-        'end_subscriptions_date', 'begin_course_date', 'end_course_date', 'course_subtitle', 'students_limit', 'work_notifications', 'question_notifications', 'forum_notifications', 'doubt_notifications');
-            $course = Course::create([
-                "course_title" => $data['name'],
-                "course_subtitle" => $data['course_subtitle'],
-                "course_cartegory" => $data['center'],
-                "course_description" => $data['course_description'],
-                "has_tutoring" => $data['has_tutoring'],
-                "has_certification" => $data['has_certification'],
-                "path_picture_course" => $data['path_picture_course'],
-                "begin_subscriptions_date" => $data['begin_subscriptions_date'],
-                "end_subscriptions_date" => $data['end_subscriptions_date'],
-                "begin_course_date" => $data['begin_course_date'],
-                "end_course_date" => $data['end_course_date'],
-                "students_limit" => $data['students_limit'],
-                "work_notifications" => '0',
-                "question_notifications" => '0',
-                "forum_notifications" => '0',
-                "doubt_notifications" => '0',
-            ]);
-
+    public function saveCourse(Request $request){
+                              
+        $data = $request->only('course_title', 
+        'path_picture_course', 
+        'course_description', 
+        'has_tutoring', 
+        'has_certification',
+        'begin_subscriptions_date', 
+        'end_subscriptions_date', 
+        'begin_course_date',
+        'end_course_date',
+        'students_limit', 
+        'course_category');
+        
+        $course = Course::create([
+            "course_title" => $data['course_title'],
+            "course_subtitle" => "a",
+            "course_category" => $data['course_category'],
+            "course_description" => $data['course_description'],
+            "has_tutoring" => $data['has_tutoring'],
+            "has_certification" => $data['has_certification'],
+            "path_picture_course" => $data['path_picture_course'],
+            "begin_subscriptions_date" => $data['begin_subscriptions_date'],
+            "end_subscriptions_date" => $data['end_subscriptions_date'],
+            "begin_course_date" => $data['begin_course_date'],
+            "end_course_date" => $data['end_course_date'],
+            "students_limit" => $data['students_limit'],
+            "work_notifications" => 0,
+            "question_notifications" => 0,
+            "forum_notifications" => 0,
+            "doubt_notifications" => 0,
+        ]);
 
         $teacherId = session()->get('userId');
+
         $teaches = $course->taughtBy()->create([
             "type" => '0',
-            "acess_doubts" => 1,
-            "acess_manage_modules" => 1,
-            "acess_manage_questionary" => 1,
-            "acess_manage_work" => 1,
-            "acess_evaluate_questionary" => 1,
-            "acess_evaluate_work" => 1,
+            "acess_doubts" => true,
+            "acess_manage_modules" => true,
+            "acess_manage_questionary" => true,
+            "acess_manage_work" => true,
+            "acess_evaluate_questionary" => true,
+            "acess_evaluate_work" => true,
             "reason_tutor" => 'Dono do Curso',
             "user_id" => $teacherId,
             "course_id" => $course->id,
-            "is_temporary" => 0,
-            "dt_begin_ministering" => date("Y-m-d H:i:s"),
-            "dt_end_ministering" => date("Y-m-d H:i:s"),
+            "is_temporary" => false,
+            "dt_begin_teaches" => date("Y-m-d H:i:s"),
+            "dt_end_teaches" => date("Y-m-d H:i:s"),            
         ]);
-                return redirect()->route('teacher.panel');
-        }
+        return response()->json($course->id);
+    }
 
-    public function showCoursesStudent()
+    
+    
+
+    public function showCourseTeaches($id)
     {
+        $course = Course::find($id);
+        return response()->json($course);
+    }
+    public function getCoursesStudies()
+    {        
         $userId = session()->get('userId');
         if ($userId == NULL){
             echo "voce precisa estar logado para acessar essa pagina";
@@ -69,18 +88,13 @@ class CourseController extends Controller
         {
             array_push($courses, Course::find($study->course_id));
         }
-        return view('auth.show_courses_student', ['studies' => $studies, 'courses' => $courses]);
+        
+        return response()->json(['studies' => $courses, 'favorites' => null]);
         //return view('pages.show_courses_student');
     }
-
-    public function showCourseTeaches($id)
+    public function showPanel()
     {
-        $course = Course::find($id);
-        return response()->json($course);
-    }
-    public function showPanelTeacher()
-    {
-        return view('pages.teacherPanel');
+        return view('auth.panel');
     }
     public function getCoursesNotifications()
     {
@@ -92,7 +106,7 @@ class CourseController extends Controller
             $course = Course::select('id', 'course_title' , 'work_notifications', 'question_notifications', 'forum_notifications', 'doubt_notifications')->find($teach->course_id);//
             array_push($courses, $course);
         }        
-        return response()->json($courses);
+        return response()->json(['teaches' => $courses]);
     }
     public function createModule(Request $request){
         $data = $request->only('course_id', 'name_title_module', 'name_path_archive_module');

@@ -30,7 +30,7 @@ class CreateCourseTable extends Migration
             $table->integer('question_notifications');
             $table->integer('forum_notifications');
             $table->integer('doubt_notifications');
-            $table->string('course_cartegory');
+            $table->string('course_category');
             //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory'); --> TABLE COURSE_CARTEGORY DOESN'T EXIST
             $table->timestamps();
         });

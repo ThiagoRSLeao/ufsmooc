@@ -9,8 +9,6 @@
 
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
         <div id = "wrapper_courses_container">
-
-
             <div class = "courses-container">
                 <div class = "courses-container-title">Cursos disponíveis</div>
 
@@ -23,18 +21,13 @@
                         <div class = "info-container"></div>
                         <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
                         <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
+                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>TutoriSDDSa</div>
                         <div class = "progress-bar"></div>
                         <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(course)" >Ver detalhes</button>
 
                     </div>        
                 </div>  
-
-
-            </div>
-            
-            
-
+            </div>    
         </div>
 
         <div id = "modal" v-if= "this.modal_visible==true" v-on:click='closeModal'>

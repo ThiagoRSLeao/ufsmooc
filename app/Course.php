@@ -17,13 +17,16 @@ class Course extends Model
         'course_description',
         'has_tutoring',
         'has_certification',
-        'has_deadline',
-        'has_end',
         'begin_subscriptions_date',
         'end_subscriptions_date',
         'begin_course_date',
         'end_course_date',
-        'course_cartegory'
+        'course_category',
+        "students_limit",
+        "work_notifications",
+        "question_notifications",
+        "forum_notifications",
+        "doubt_notifications",
     ];
 
     public function taughtBy(){

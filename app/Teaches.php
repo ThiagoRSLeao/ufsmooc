@@ -20,7 +20,7 @@ class Teaches extends Model
         'user_id',
         'course_id',
         'is_temporary',
-        'dt_begin_ministering',        
-        'dt_end_ministering'
+        'dt_begin_teaches',        
+        'dt_end_teaches'
     ];
 }

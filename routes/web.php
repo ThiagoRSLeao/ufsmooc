@@ -20,7 +20,6 @@ Route::post('/validateLogin', 'ControllerUser@validateLogin') -> name('login.val
 Route::post('/validateSignup', 'ControllerUser@validateSignup')-> name('signup.validate');
 
 Route::post('/showCourseForm', 'CourseController@showCourseForm')->name('show.course.form');
-Route::post('/createCourse', 'CourseController@createCourse')->name('course.create');
 Route::post('/createCourse', 'CourseController@courseShowForm')->name('course.show.form');
 Route::post('/createModule', 'CourseController@createModule')->name('module.create');
 
@@ -51,15 +50,18 @@ Route::post('/updateRegisterForm', 'ControllerUser@updateRegister')-> name ('upd
 
 Route::prefix('/student')->group(function()
 {
-    Route::get('/panel', 'CourseController@showCoursesStudent') -> name('student.panel')-> Middleware('auth');
+    Route::get('/getStudies', 'CourseController@getCoursesStudies') -> name('get.courses.studies')-> Middleware('auth');
 });
 Route::prefix('/teacher')->group(function()
 {
     Route::get('/panel', 'CourseController@showPanelTeacher') -> name('teacher.panel')-> Middleware('auth');
+        
     Route::get('/showCourseTeaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.course.teaches')-> Middleware('auth');
     Route::get('/getCoursesNotifications', 'CourseController@getCoursesNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('auth');
     
+    Route::post('/saveCourse', 'CourseController@saveCourse')->name('course.create');
 });
+Route::get('/showPanel', 'CourseController@showPanel') -> name('show.panel')-> Middleware('auth');
 
 /*Route::prefix('/teacher')->group(function()
 {

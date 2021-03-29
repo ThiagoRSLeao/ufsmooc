@@ -1,10 +1,82 @@
 .section-main{
     display:flex;
     justify-content: center;
-    align-items: center;
     background-color: #f7f9fb;
 }
 
+#courseCreateWindow
+{
+    top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 15px;
+    width: 700px;
+    height: 1000px;
+    background-color: #FFFFFF;    
+    box-shadow: 0px 5px 5px 2px rgb(134 134 134 / 27%);
+    margin-bottom: 90px;
+}
+.course-form-input
+{
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    height: 40px;
+    padding-left: 5px;
+    width: 100%;
+}
+#courseCreateBox
+{
+    width: 500px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.course-form-title
+{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    font-size: 15pt;
+}
+.course-checkbox
+{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.course-date
+{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    margin-left: 10px;
+    text-align: center;
+}
+.date-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.course-box-hidden
+{
+    width: 100%;
+}
+#courseDescription
+{
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    padding: 10px;
+    width: 480px;
+    height: 200px;
+    resize: none;
+}
 div#wrapper_courses_container{
     top: 200px;
     align-items: center;
@@ -29,11 +101,33 @@ div#wrapper_courses_container{
     font-size: 14pt;
     font-weight: bold;
     font-family: Rubik;
+    justify-content: space-between;
 }
 
 .courses-container-body{
     display:flex;
     flex-wrap:nowrap;
+}
+
+.button-create
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 40px;
+    border: 0;
+    font-size: 15pt;
+    background: #FFFFFF;
+    color: #395EB7;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px 2px rgb(134 134 134 / 27%);
+    transition: 0.25s 0s ease;
+}
+.button-create:hover
+{
+    box-shadow: 0px 3px 8px 5px rgb(134 134 134 / 27%);
+    cursor: pointer;
 }
 
 .img-container{
@@ -64,13 +158,9 @@ div#wrapper_courses_container{
     text-align: center;
 }
 
-
-
 .show_details{
     
 }
-
-
 
 .course-box{
     height: 280px;
@@ -84,12 +174,98 @@ div#wrapper_courses_container{
     justify-content: center;
     transition: 0.35s 0s ease;
     box-shadow: 0px 5px 5px 2px rgb(134 134 134 / 27%);
-    overflow:hidden;
-    
+    overflow:hidden;    
 }
-
+.no-courses-container
+{
+    margin-top:30px;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.no-courses-box
+{
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.no-courses-title
+{
+    font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgba(12, 30, 39, 0.589);
+}
+.create-button
+{
+    height: 50px;
+    width: 230px;
+    background-color: #ffffff;
+    color: #395EB7;
+    font-size: 18pt;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 1px 1px 1px rgb(134 134 134 / 27%);
+    border: 0;
+    overflow:hidden; 
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-position: 10px 10px;
+    background-size: 30px 30px;
+    background-image:url('/../../img/panel/create.png');
+}
+.create-button:hover
+{
+    background-color: rgba(57, 94, 183, 0.08);
+    cursor: pointer;
+}
+.no-courses-button-create, .no-courses-button-explore
+{
+    height: 100px;
+    width: 400px;
+    background-color: #ffffff;
+    color: #395EB7;
+    font-size: 18pt;
+    margin: 20px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 1px 1px 1px rgb(134 134 134 / 27%);
+    overflow:hidden; 
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-position: 35px 25px;
+    background-size: 50px 50px;
+}
+.no-courses-button-explore
+{
+    background-image:url('/../../img/panel/explore.png');
+}
+.no-courses-button-create
+{
+    background-image:url('/../../img/panel/create.png');
+}
+.no-courses-button-create:hover, .no-courses-button-explore:hover
+{
+    background-color: rgba(57, 94, 183, 0.08);
+    cursor: pointer;
+}
 .course-box:hover{
     box-shadow: 0px 15px 21px 10px rgb(134 134 134 / 27%);
+    cursor: pointer;
 }
 
 div#modal{
