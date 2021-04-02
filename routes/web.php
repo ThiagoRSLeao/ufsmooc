@@ -46,7 +46,7 @@ Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
 
 
 
-Route::post('/update-register-form', 'ControllerUser@userUpdateRegister')-> name ('post.data.teacher.update');
+Route::post('/update-register', 'ControllerUser@userUpdateRegister')-> name ('post.data.teacher.update');
 
 Route::prefix('/teacher')->group(function()
 {
