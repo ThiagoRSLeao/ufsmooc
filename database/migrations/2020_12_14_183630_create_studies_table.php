@@ -19,7 +19,7 @@ class CreateStudiesTable extends Migration
             $table->bigInteger('course_id')->unsigned()->index();
             $table->bigInteger('student_id')->unsigned()->index();
             $table->foreign('course_id')->references('id')->on('course');
-            $table->foreign('student_id')->references('id')->on('student');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -76,6 +76,8 @@ class CourseController extends Controller
         $course = Course::find($id);
         return response()->json($course);
     }
+
+
     public function getCoursesStudies()
     {        
         $userId = session()->get('userId');
@@ -119,7 +121,7 @@ class CourseController extends Controller
     }
 
     public function showCoursesPublic(Request $request){
-        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'course_cartegory', 'has_tutoring', 'path_picture_course')
+        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')
         ->orderBy('course_title')->get();
         
         return view ('pages.show_courses', ['courses' => $db_courses]);
@@ -155,12 +157,19 @@ class CourseController extends Controller
     }
     
     public function subscribe_course(Request $request){
-        DB::table('studies')->insert([
-            "data_json" => "batata",
-            "course_id" => $request['course_id'],
-            "student_id" => Auth::id(),
-        ]);
-        return response()->json('Cadastro realizado com sucesso');
+        $testes = DB::table('studies')->where('student_id', '=', Auth::id())->where('course_id', '=', $request['course_id'])->pluck('student_id');
+        if (count($testes) == 0){
+            DB::table('studies')->insert([
+                "data_json" => "batata",
+                "course_id" => $request['course_id'],
+                "student_id" => Auth::id(),
+            ]);
+            return response()->json('Cadastro realizado com sucesso');
+        }
+        else{
+            echo 'Você já está inscrito';
+        }
+
     }
 
     public function manageCourses(){
@@ -170,8 +179,8 @@ class CourseController extends Controller
     public function returnCoursesStudents(Request $request){
         $id = $request['course_id'];
         $students_ids= DB::table('studies')->where('course_id', '=', $id)->pluck('student_id');
-        $users_id = DB::table('student')->whereIn('id', $students_ids)->pluck('users_id');
-        $students_name = DB::table('users')->whereIn('id', $users_id)->pluck('name');
+        $usersId = DB::table('student')->whereIn('id', $students_ids)->pluck('users_id');
+        $students_name = DB::table('users')->whereIn('id', $usersId)->pluck('name');
         return response()->json($students_name);
         
     }

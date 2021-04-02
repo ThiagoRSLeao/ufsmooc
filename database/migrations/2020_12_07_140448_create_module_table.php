@@ -15,8 +15,8 @@ class CreateModuleTable extends Migration
     {
         Schema::create('module', function (Blueprint $table) {
             $table->id();
-            $table->string('name_title_module');
-            $table->string('name_path_archive_module');
+            $table->string('title_module');
+            $table->string('path_archive_module');
             $table->bigInteger('course_id')->unsigned()->index();
             $table->foreign('course_id')->references('id')->on('course');
             $table->timestamps();

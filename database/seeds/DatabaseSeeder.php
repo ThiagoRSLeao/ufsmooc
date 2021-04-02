@@ -76,8 +76,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('module')->insert([
             "course_id" => '1',
-            "name_title_module" => 'modulo teste',
-            "name_path_archive_module" => 'C:\teste',
+            "title_module" => 'modulo teste',
+            "path_archive_module" => 'C:\teste',
         ]);
         
         DB::table('questionary')->insert([
@@ -108,16 +108,6 @@ class DatabaseSeeder extends Seeder
             "description_question" => 'teste descritiva',
             "answer_question" => 'teste resposta',
             "questionary_id" => '1',
-        ]);
-
-        DB::table('student')->insert([
-            "CPF" => '11111111111',
-            "users_id" => '1',
-        ]);
-        
-        DB::table('student')->insert([
-            "CPF" => '9999999999',
-            "users_id" => '2',
         ]);
 
         DB::table('studies')->insert([

@@ -23,9 +23,9 @@ class CreateStudentWorkTable extends Migration
             $table->boolean('rated');
             $table->float('grade', 4, 2);
             $table->text('description_rating');
-            $table->foreign('student_id')->references('id')->on('student');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->foreign('work_id')->references('id')->on('work');
-            $table->foreign('teacher_id')->references('id')->on('teacher');
+            $table->foreign('teacher_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
