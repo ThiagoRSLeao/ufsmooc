@@ -11,15 +11,9 @@ use Illuminate\Support\Facades\DB;
 class ControllerUser extends Controller
 {
 
-    public function userLogin()
-    {
-        if (Auth::check()){
-            return view('pages.authenticated');
-        }
-        return view('pages.login');
-    }
+
     
-    public function createUser(Request $request)
+    public function userCreate(Request $request)
     {
         $data = $request->only('email','password','passwordConfirmation','name','surname','cpf','uf','city');
         if($data['passwordConfirmation'] == $data['password'])
@@ -43,11 +37,7 @@ class ControllerUser extends Controller
         }
     }
 
-    public function userPanel(){
-        return view('pages.panel');
-    }
-
-    public function validateLogin(Request $request)
+    public function userValidateLogin(Request $request)
     {
         if (!(Auth::check())){
             $credentials = $request->only('email', 'password');
@@ -74,19 +64,11 @@ class ControllerUser extends Controller
         return redirect('/');
     }
 
-    public function userSignup(){
-        if (Auth::check()){
-            return view('pages.authenticated');
-        }
-        return view('pages.signUp');
-    }
 
 
-    public function userForgotPass(){
-        return view('pages.forgotPass');
-    }
 
-    public function validateForgotPass(Request $request){
+
+    public function userValidateForgotPass(Request $request){
         //NAO TESTADO
         /*
         $request->validate(['email' => 'required|email']);
@@ -101,11 +83,8 @@ class ControllerUser extends Controller
         }
 
 
-    public function teacherPanel(){
-        
-    }
 
-    public function updateRegister(Request $request){
+    public function userUpdateRegister(Request $request){
         /*$id = $request->only('id');
         $data = $request->only('name, surname, CPF, email, UF, city, password, description');
         DB::table('users')->where('id', $id)->update([

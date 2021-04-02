@@ -81,11 +81,11 @@
         },
         methods: {
             async loadData(){
-                response = await axios.get('/teacher/getCoursesNotifications');
+                response = await axios.get('/teacher/course-get-notifications');
                 this.courses = response.data;
             },
             async loadCourse(id){
-                response = await axios.get('/teacher/showCourseTeaches/' + id);
+                response = await axios.get('/teacher/course-get-teaches/' + id);
                 this.selectedCourse = response.data;
                 console.log(response.data);
                 this.showSelectedCourse = true;

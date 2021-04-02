@@ -15,15 +15,15 @@
 </head>
 <body>
     <header id = 'vue_jurisdiction_template'>
-        <a href="{{ route('start') }}">
+        <a href="{{ route('get.view.index') }}">
             <img src={{url('img/landing/universityEmblem.png')}} alt="" />
         </a>
         <div class='nav-container'>
             <div class='nav-box-pages'>            
-                <a class="panel-link" href="{{ route('show.panel') }}">Painel</a>
-                <a class="courses-link" href="{{ route('show_courses') }}">Cursos</a>
-                <a class="about-link" href="{{ route('about') }}">Sobre</a>
-                <a class="questions-link" href="{{ route('questions') }}">Dúvidas</a>
+                <a class="panel-link" href="{{ route('get.view.teacherPanel') }}">Painel</a>
+                <a class="courses-link" href="{{ route('get.view.showCoursesPublic') }}">Cursos</a>
+                <a class="about-link" href="{{ route('get.view.about') }}">Sobre</a>
+                <a class="questions-link" href="{{ route('get.view.questions') }}">Dúvidas</a>
                       
             </div>
 
@@ -45,12 +45,12 @@
 
             <div class='nav-box-login' v-if="this.auth==false">            
                 <a href="{{ route('login') }}">Entrar</a>
-                <a class='register-btn' href="{{ route('signup') }}">Cadastrar</a>
+                <a class='register-btn' href="{{ route('get.view.userSignup') }}">Cadastrar</a>
             </div>
         </div>
         
         <span class = "user-options-window" v-if="this.showUserWindow">
-            <div class = "edit-profile" href = "{{route('teacher.edit')}}">Editar Perfil</div>
+            <div class = "edit-profile" href = "{{route('get.view.teacherEdit')}}">Editar Perfil</div>
             <div class = "exit" href="{{route('logout')}}">Sair</div>
         </span>
 

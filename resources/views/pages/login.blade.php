@@ -7,7 +7,7 @@
 @section('title', 'Faça o Login')
 
 @section('content')
-        <form method="POST" action={!! Route('login.validate') !!}>
+        <form method="POST" action={!! Route('post.data.login.validate') !!}>
             @csrf
             <div class="main-container">            
                 <div>
@@ -25,10 +25,10 @@
                             <div class="line"></div>ou<div class="line"></div>
                         </div>
 
-                        <a class='create-account-btn' href={{ route('signup') }}>Criar conta</a>
+                        <a class='create-account-btn' href={{ route('get.view.userSignup') }}>Criar conta</a>
  
                         <div class='forgot-account-container'>
-                            <a class='forgot-account-btn' href={{ route('forgotPass') }}>Esqueceu a senha?</a>
+                            <a class='forgot-account-btn' href={{ route('get.view.userForgotPass') }}>Esqueceu a senha?</a>
                         </div>
                     </div>                   
                 </div>

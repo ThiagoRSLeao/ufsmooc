@@ -87,7 +87,7 @@
             methods:{
                 async getUserData(){
                     course_id = 1;
-                    response = await axios.get('/returnStudentsInfo',{
+                    response = await axios.get('/get-students-info',{
                         params: {
                             course_id: course_id,
                         }

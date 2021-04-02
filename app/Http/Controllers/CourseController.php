@@ -11,11 +11,9 @@ use App\Studies;
 
 class CourseController extends Controller
 {    
-    public function courseShowForm(){
-        return view('views.pages.teacherPanelCreateCourse');
-    }
 
-    public function saveCourse(Request $request){
+
+    public function courseSave(Request $request){
                               
         $data = $request->only('course_title', 
         'path_picture_course', 
@@ -71,14 +69,14 @@ class CourseController extends Controller
     
     
 
-    public function showCourseTeaches($id)
+    public function courseGetTeaches($id)
     {
         $course = Course::find($id);
         return response()->json($course);
     }
 
 
-    public function getCoursesStudies()
+    public function courseGetStudies()
     {        
         $userId = session()->get('userId');
         if ($userId == NULL){
@@ -94,11 +92,8 @@ class CourseController extends Controller
         return response()->json(['studies' => $courses, 'favorites' => null]);
         //return view('pages.show_courses_student');
     }
-    public function showPanel()
-    {
-        return view('auth.panel');
-    }
-    public function getCoursesNotifications()
+
+    public function courseGetNotifications()
     {
         $userId = session()->get('userId');
         $teaches = Teaches::Where('user_id', '=', $userId)->get();
@@ -110,7 +105,8 @@ class CourseController extends Controller
         }        
         return response()->json(['teaches' => $courses]);
     }
-    public function createModule(Request $request){
+
+    public function courseCreateModule(Request $request){
         $data = $request->only('course_id', 'name_title_module', 'name_path_archive_module');
         DB::table('module')->insert([
             "course_id" => $data['course_id'],
@@ -120,17 +116,12 @@ class CourseController extends Controller
         return ('/');
     }
 
-    public function showCoursesPublic(Request $request){
-        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')
-        ->orderBy('course_title')->get();
-        
-        return view ('pages.show_courses', ['courses' => $db_courses]);
-    }
 
 
 
 
-    public function giveTutorPermission(Request $request){
+
+    public function courseGiveTutorPermission(Request $request){
         $data = $request->only('tp_ministering, acess_doubts, acess_manage_modules, acess_manage_questionary,
         acess_manage_work, acess_evaluate_questionary, acess_evaluate_work, reason_tutor, users_id, course_id, is_temporary,
         dt_begin_ministering, dt_end_ministering');
@@ -156,7 +147,7 @@ class CourseController extends Controller
 
     }
     
-    public function subscribe_course(Request $request){
+    public function courseSubscribe(Request $request){
         $testes = DB::table('studies')->where('student_id', '=', Auth::id())->where('course_id', '=', $request['course_id'])->pluck('student_id');
         if (count($testes) == 0){
             DB::table('studies')->insert([
@@ -172,16 +163,18 @@ class CourseController extends Controller
 
     }
 
-    public function manageCourses(){
-        return view('auth.manage-courses');
+    public function courseShowCreateForm(){
+        return view('views.pages.teacherPanelCreateCourse');
     }
 
-    public function returnCoursesStudents(Request $request){
+
+
+    public function courseGetStudents(Request $request){
         $id = $request['course_id'];
-        $students_ids= DB::table('studies')->where('course_id', '=', $id)->pluck('student_id');
-        $usersId = DB::table('student')->whereIn('id', $students_ids)->pluck('users_id');
-        $students_name = DB::table('users')->whereIn('id', $usersId)->pluck('name');
-        return response()->json($students_name);
+        $studentsIds= DB::table('studies')->where('course_id', '=', $id)->pluck('student_id');
+        $usersId = DB::table('student')->whereIn('id', $studentsIds)->pluck('users_id');
+        $studentsName = DB::table('users')->whereIn('id', $usersId)->pluck('name');
+        return response()->json($studentsName);
         
     }
 

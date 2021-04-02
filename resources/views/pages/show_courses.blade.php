@@ -75,7 +75,7 @@
                 },
 
                 async subscribe(course_id){
-                    response = await axios.post('/subscribe_course',{
+                    response = await axios.post('/subscribe-course',{
                         course_id: course_id,
                     });
                     alert(response.data);
