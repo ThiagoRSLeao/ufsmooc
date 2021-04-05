@@ -19,6 +19,8 @@ class CreateModuleTable extends Migration
             $table->string('path_archive_module');
             $table->bigInteger('course_id')->unsigned()->index();
             $table->foreign('course_id')->references('id')->on('course');
+            $table->integer('module_position');
+            $table->boolean('is_additional');
             $table->timestamps();
         });
     }

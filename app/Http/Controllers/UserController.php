@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 //use Illuminate\Contracts\Auth\CanResetPassword;
 
-class ControllerUser extends Controller
+class UserController extends Controller
 {
 
 

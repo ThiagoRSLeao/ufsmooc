@@ -78,6 +78,50 @@ class DatabaseSeeder extends Seeder
             "course_id" => '1',
             "title_module" => 'modulo teste',
             "path_archive_module" => 'C:\teste',
+            "module_position" => 1,
+            "is_additional" => 0,
+        ]);
+
+        DB::table('module')->insert([
+            "course_id" => '1',
+            "title_module" => 'modulo teste 2',
+            "path_archive_module" => 'C:\teste2',
+            "module_position" => 2,
+            "is_additional" => 0,
+        ]);
+
+        DB::table('module')->insert([
+            "course_id" => '2',
+            "title_module" => 'modulo teste 3',
+            "path_archive_module" => 'C:\teste3',
+            "module_position" => 1,
+            "is_additional" => 0,
+        ]);
+
+        DB::table('module_partition')->insert([
+            "name" => 'particao 1',
+            "type" => '1',
+            "sequence_position" => 1,
+            "content" => 'primeira particao do primeiro modulo',
+            "id_module" => 1,
+
+        ]);
+
+        DB::table('module_partition')->insert([
+            "name" => 'particao 1',
+            "type" => '1',
+            "sequence_position" => 2,
+            "content" => 'segunda particao do primeiro modulo',
+            "id_module" => 1,
+        ]);
+
+        DB::table('module_partition')->insert([
+            "name" => 'particao 1',
+            "type" => '1',
+            "sequence_position" => 1,
+            "content" => 'primeira particao do segundo modulo',
+            "id_module" => 2,
+
         ]);
         
         DB::table('questionary')->insert([

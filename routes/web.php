@@ -29,8 +29,8 @@ Route::get('/edit-teacher', function () {
     return view('auth.edit_teacher');
 }) -> name('get.view.teacherEdit')-> Middleware('auth');
 
-Route::post('/validate-login', 'ControllerUser@userValidateLogin') -> name('post.data.login.validate');
-Route::post('/create-user', 'ControllerUser@userCreate' ) -> name('post.data.user.create');
+Route::post('/validate-login', 'UserController@userValidateLogin') -> name('post.data.login.validate');
+Route::post('/create-user', 'UserController@userCreate' ) -> name('post.data.user.create');
 
 Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')->name('show.course.formCreate');
 
@@ -39,14 +39,14 @@ Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post
 Route::get('/get-students-info', 'CourseController@returnCoursesStudents')-> name('get.data.courseStudentsInfo');
 
 
-Route::get('/logout', 'ControllerUser@userLogout') -> name('logout');
+Route::get('/logout', 'UserController@userLogout') -> name('logout');
 
 
 
 
 
 
-Route::post('/update-register', 'ControllerUser@userUpdateRegister')-> name ('post.data.teacher.update');
+Route::post('/update-register', 'UserController@userUpdateRegister')-> name ('post.data.teacher.update');
 
 Route::prefix('/teacher')->group(function()
 {
