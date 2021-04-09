@@ -24,6 +24,7 @@ Route::get('/signup', 'ViewController@showUserSignup' ) -> name('get.view.userSi
 Route::get('/forgot-pass', 'ViewController@showUserForgotPass') -> name('get.view.userForgotPass');
 Route::get('/show-panel', 'ViewController@showPanel') -> name('get.view.panel')-> Middleware('auth');
 Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view.showCoursesPublic');
+Route::get('/participate-course', 'ViewController@participateCourse')-> name('get.view.participateCourse');
 
 Route::get('/edit-teacher', function () {
     return view('auth.edit_teacher');

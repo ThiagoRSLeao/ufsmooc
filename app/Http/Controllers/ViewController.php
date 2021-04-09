@@ -36,6 +36,10 @@ class ViewController extends Controller
         return view('pages.signUp');
     }
 
+    public function participateCourse(){
+        return view ('auth.view_course');
+    }
+
 
     
 
