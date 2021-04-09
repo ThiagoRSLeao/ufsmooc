@@ -19,8 +19,8 @@ class CreateModulePartitionTable extends Migration
             $table->char('type');
             $table->integer('sequence_position');
             $table->text('content');
-            $table->bigInteger('id_module');
-            //$table->foreign('id_module')->references('id')->on('module');
+            $table->bigInteger('module_id')->unsigned()->index();
+            //$table->foreign('module_id')->references('id')->on('module');
             $table->timestamps();
         });
     }
