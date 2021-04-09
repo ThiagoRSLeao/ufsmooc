@@ -29,11 +29,20 @@
 #courseCreateBox
 {
     width: 500px;
-    height: 800px;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+.course-form-title-main
+{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18pt;
 }
 .course-form-title
 {

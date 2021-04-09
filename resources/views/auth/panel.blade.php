@@ -14,6 +14,8 @@
 
             <div id='courseCreateBox'>
 
+                <div class='course-form-title-main'>Cadastro de Curso</div>
+
                 <div class='course-form-title'>Título</div>
                 <input type='text' class='course-form-input' name='name' v-model='newCourse.course_title'/>
                 
@@ -77,7 +79,7 @@
                     </div>        
                 </div>  
                 
-                <div class='no-courses-container'  v-show="coursesTeaches == null">   
+                <div class='no-courses-container'  v-show="coursesTeaches == {}">   
                     <div class='no-courses-box'>
                         <div class = "no-courses-title">
                             Parece que você ainda não administra
