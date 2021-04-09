@@ -46,6 +46,7 @@ body{
     margin-left: 20px;
     font-family: Rubik;
     color: #21376B;
+    font-size: 16pt;
 }
 
 #content{
@@ -54,26 +55,37 @@ body{
 }
 
 #module-navigation-box{
-    width: 175px;
+    width: 250px;
     height: 350px;
     margin-left: 75px;
     background-color: #FFFFFF;
     position: relative;
-    border-radius: 7.5px;
+    border-radius: 15px;
     flex-direction: column;
     overflow: auto;
 }
 
-.module-navigation-title{
+.module-navigation-title-box{
     height: 30px;
     background-color: #21376B;
+}
+
+.module-navigation-title-text{
+    font-family: Rubik;
+    color: #FFFFFF;
+    padding-top: 5px;
     text-align: center;
-    color: #FFFFFF
 }
 
 .module-navigation{
-    border-bottom: solid gray;
-    height: 50px;
+    border: 0.7px solid rgba(12, 20, 39, 0.3);
+    min-height: 50px;
     display: flex;
     text-align: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.module-navigation-text{
+    font-family: Rubik;
 }

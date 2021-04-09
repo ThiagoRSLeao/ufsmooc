@@ -16,11 +16,11 @@ class CreateModulePartitionTable extends Migration
         Schema::create('module_partition', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->type('char');
+            $table->char('type');
             $table->integer('sequence_position');
             $table->text('content');
             $table->bigInteger('id_module');
-            $table->foreign('id_module')->references('id')->on('module');
+            //$table->foreign('id_module')->references('id')->on('module');
             $table->timestamps();
         });
     }
