@@ -17,6 +17,7 @@ body{
     min-height: 400px;
     background-color: #FFFFFF;
     border-radius: 7.5px;
+    margin-bottom: 75px;
 
 }
 
@@ -66,26 +67,37 @@ body{
 }
 
 .module-navigation-title-box{
-    height: 30px;
+    height: 40px;
     background-color: #21376B;
 }
 
 .module-navigation-title-text{
     font-family: Rubik;
     color: #FFFFFF;
-    padding-top: 5px;
+    padding-top: 10px;
     text-align: center;
 }
 
 .module-navigation{
     border: 0.7px solid rgba(12, 20, 39, 0.3);
-    min-height: 50px;
+    min-height: 80px;
     display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    align-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.module-text-icon{
+    margin-left: 10px;
+    transform: scale(0.7,0.7);
 }
 
 .module-navigation-text{
     font-family: Rubik;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    word-wrap: break-word;
+    color: #0C1427;
+    width: 200px;
 }

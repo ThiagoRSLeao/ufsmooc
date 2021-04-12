@@ -27,42 +27,7 @@
                         </div>
                     </div>
                     <div id = 'content'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, commodi. Ipsa id culpa et voluptate error at dolorem accusamus optio. Quasi cumque minus, velit suscipit fugiat nulla soluta aut aperiam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id asperiores. Repellendus dolorum quas cupiditate corrupti. Esse quos est corporis dolorum, reiciendis tempora nobis voluptates neque aliquam omnis molestias quas.
+                        @{{this.content}}
                     </div>
                 </div>
             </div>
@@ -71,23 +36,59 @@
                 <div class = 'module-navigation-title-box'>
                     <div class = 'module-navigation-title-text'>Módulo 1</div>
                 </div>
-                <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>Introdução ao javascript</div>
+                <div class = 'module-navigation'>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
                 <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>Bom dia meu caro amigo como você está Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error, illo rerum non quaerat iusto dolorem id minus dolorum unde autem, repudiandae natus aliquid illum enim! Suscipit doloremque vitae reprehenderit.</div>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
                 <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>ksadpoaksdakdposkdpasdkoapokspaodkop</div>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
                 <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>skjadksajdkjasdk</div>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
                 <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>Módulo</div>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
                 <div class = 'module-navigation'> 
-                    <div class = 'module-navigation-text'>sim</div>
+                    <div class = 'module-text-icon'>
+                        <svg class = 'module-text-icon-redimension'width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" fill="#21376B"/>
+                            <path d="M20.4444 0H3.83333C2.29233 0 0 1.1186 0 4.2V23.8C0 26.8814 2.29233 28 3.83333 28H23V25.2H3.84867C3.25833 25.1832 2.55556 24.927 2.55556 23.8C2.55556 23.6586 2.56706 23.5326 2.58622 23.4178C2.72933 22.6128 3.33117 22.414 3.84739 22.4H21.7222C21.7343 22.4 21.7446 22.3965 21.755 22.393C21.7644 22.3899 21.7739 22.3867 21.7848 22.386H23V2.8C23 1.2558 21.8538 0 20.4444 0ZM20.4444 19.6H2.55556V4.2C2.55556 3.0716 3.25833 2.8168 3.83333 2.8H12.7778V12.6L15.3333 11.2L17.8889 12.6V2.8H20.4444V19.6Z" stroke="#395EB7"/>
+                        </svg>   
+                    </div>
+                    <div class = 'module-navigation-text'> 1 - Introdução ao javascript</div>
                 </div>
 
             </div>
@@ -100,11 +101,54 @@
     <script>
         const app = Vue.createApp({
 
+            data(){
+                return{
+                    content: '',
+                    modules: '',
+                    texts: [
+                        {
+                            style: "text-font: comic-sans;",
+                            content: 'Augusto é ',
+                            breakAfter: false,
+                        },
+                        {
+                            style: "text-font: comic-sans;font-weight: bold;",
+                            content: 'Baiano ',
+                            breakAfter: false,
+                        }
+                    ],
+                }
+            },
 
+            methods:{
+
+                async getContent(){
+                    response = await axios.get('get-content-info',{
+                        params: {
+                            courseId : '1',
+                            moduleId: '1',
+                            modulePartitionId: '1',
+                        }
+                    });
+                    this.content = JSON.parse(response.data);
+                    
+                },
+
+                async getModulesNames(){
+                    response = await axios.get('get-modules-info', {
+                        params: {
+                            courseId: '1',
+                        }
+                    });
+                    this.modules = response;
+                }
+            },
+
+            mounted(){
+                this.getContent();
+            }
 
         });
-
-              
         
         app.mount('#vue_jurisdiction');
 </script>

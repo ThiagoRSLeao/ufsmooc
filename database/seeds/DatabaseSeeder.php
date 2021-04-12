@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
             "name" => 'particao 1',
             "type" => '1',
             "sequence_position" => 1,
-            "content" => 'primeira particao do primeiro modulo',
+            "content" => '[{"style":"text-font: comic-sans;","content":"Augusto é ","breakAfter":false},{"style":"text-font: comic-sans;font-weight: bold;","content":"Baiano ","breakAfter":false}]',
             "module_id" => 1,
 
         ]);

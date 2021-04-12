@@ -1,0 +1,177 @@
+body{
+    background-color: #E6E6E6;
+}
+
+#big-box{
+    position: relative;
+    
+    min-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #FFFFFF;
+    min-height: 500px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction:column;
+    margin-bottom: 100px;
+}
+
+#title{
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16pt;
+    line-height: 100%;
+    margin-top: 30px;
+}
+
+#teacher-content{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin-top: 15px;
+    font-size: 12pt;
+}
+
+#teacher-pic{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+
+
+
+#modules-alignment{
+    margin-top: 40px;
+    width: 65%;
+    align-self: center;
+}
+
+#change-window-buttons{
+    width: 100%;
+    align-self:center;
+    border: 1px solid gray;
+    box-shadow: 0px 15px 30px 4px #868686 27%;
+    display: flex;
+    height: 40px;
+    text-align: center;
+    flex-direction: row;
+    align-items:center;
+    border-radius: 15px;
+    
+}
+
+#module-button{
+    position: relative;
+    height: 90%;
+    background-color: #395EB7;
+    width: 50%;
+    align-items: center;
+    border-radius:15px;
+    display:flex;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#module-button-text{
+    color: #FFFFFF;
+}
+
+#about-button{
+    position: relative;
+    height: 90%;
+    background-color: #FFFFFF;
+    width: 50%;
+    align-items: center;
+    border-radius:15px;
+    display:flex;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#about-button-text{
+    color: rgba(12, 20, 39, 0.4);
+}
+
+.modules-container{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.module-box{
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+.module-elements-margin{
+    margin: 15px;
+}
+
+.module-title{
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14pt;
+    line-height: 100%;
+    /* or 21px */
+
+
+color: rgba(12, 20, 39, 0.7);
+}
+
+.module-top-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.module-expand{
+    font-family: Rubik;
+    font-size: 12pt;
+    color: black;
+    cursor: pointer;
+}
+
+.content{
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.content-text{
+    margin-left: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 100%;
+
+    letter-spacing: 0.02em;
+
+    color: rgba(12, 20, 39, 0.6);
+    cursor: pointer;
+}
+
+#subscribe{
+    align-self: flex-end;
+    margin-right: 60px;
+    margin-top: 40px;
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    margin-bottom: 40px;
+    cursor: pointer;
+}

@@ -152,7 +152,7 @@ class CourseController extends Controller
         if (count($testes) == 0){
             DB::table('studies')->insert([
                 "data_json" => "batata",
-                "course_id" => $request['course_id'],
+                "course_id" => $request['courseId'],
                 "student_id" => Auth::id(),
             ]);
             return response()->json('Cadastro realizado com sucesso');
@@ -176,6 +176,19 @@ class CourseController extends Controller
         $studentsName = DB::table('users')->whereIn('id', $usersId)->pluck('name');
         return response()->json($studentsName);
         
+    }
+
+    public function courseModuleGetContent(Request $request){
+        $courseId = $request['courseId'];
+        $moduleId = $request['moduleId'];
+        $modulePartitionId = $request['modulePartitionId'];
+        $content = DB::table('module_partition')->where('module_id', '=', $moduleId)->where('id', '=', $modulePartitionId)->pluck('content');
+        return response()->json($content);
+    }
+
+    public function courseModuleGetInfo(Request $request){
+        $courseId = $request['courseId'];
+
     }
 
 }

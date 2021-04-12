@@ -64,4 +64,8 @@ class ViewController extends Controller
         return view('auth.manage-courses');
     }
 
+    public function showCourseExternal(){
+        return view('pages.view_course_external');
+    }
+
 }
