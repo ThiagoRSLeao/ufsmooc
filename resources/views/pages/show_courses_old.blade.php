@@ -77,7 +77,9 @@
                     await axios.get('/show-course-external',{
                         courseId: courseId,
                     });
-                }
+                },
+
+                
             },
 
 

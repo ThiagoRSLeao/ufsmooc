@@ -68,17 +68,17 @@
                 </div>
                 <div class = 'modules-container' v-if='this.currentCourse.showModules==true'>
                     <div class = 'module-box'>
-                        <div class ='module-elements-margin'>
+                        <div class ='module-elements-margin' v-for='module in this.currentCourse.modules'>
                             <div class = 'module-top-container'>
-                                <div class = 'module-title'>@{{currentCourse.courseData.course_title}}</div>
+                                <div class = 'module-title'>@{{module.title_module}}</div>
                                 <div class = 'module-expand' v-on:click='expandModule'>Expandir</div>
                             </div>
 
-                            <div class = 'content-container' v-if ='this.currentCourse.expand == true'>
+                            <div class = 'content-container' v-if ='this.currentCourse.expand == true' v-for='modulePartition in module.modulePartition'>
 
                                 <div class = 'content'>
                                     <div class = 'content-icon'> .. </div>
-                                    <div class = 'content-text'> Como fazer bla bla bla</div>
+                                    <div class = 'content-text'>@{{modulePartition.name}}</div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class = 'about-box' v-if='this.currentCourse.showModules==false'>
-                    @{{currentCourse.courseData.course_description}}
+                    <div class = 'about-text'>@{{currentCourse.courseData.course_description}}</div>
                 </div>
                 
             </div>
@@ -115,6 +115,18 @@
                         teste: 'batata',
                         showModules: true,
                         courseData: null,
+                        modules:[{
+                            titleModule: '',
+                            id: '',
+                            modulePartition:[],
+                            },
+                            {
+                            titleModule: '',
+                            id: '',
+                            modulePartition:[],
+                            },
+                        
+                        ],
                     },
                 }
             },
@@ -139,8 +151,21 @@
                 },
 
                 seeMore(courseId){
+                    this.getModulesData(courseId);
                     this.openCourse = true;
                 },
+
+                async getModulesData(courseId){
+                    console.log(courseId);
+                    response = await axios.get('/get-modules-info',{
+                        params:{
+                            courseId: courseId,
+                        }
+                        });
+                    this.currentCourse.modules = response.data;
+                },   
+
+                
 
                 openAboutWindow(){
                     this.currentCourse.showModules = false;
@@ -169,15 +194,12 @@
                 },
 
                 expandModule(){
-                    console.log('batata1');
                     if (this.currentCourse.expand == false){
                         this.currentCourse.expand = true;
                         var moduleExpand = window.document.getElementsByClassName('module-expand');
                         for (var i = 0; i < moduleExpand.lenght; i++){
                             //moduleExpand[i].innerText = 'Recolher';
-                            console.log('batata');
                         };
-                        console.log('batata2');
                     }
                     else{
                         this.currentCourse.expand = false;
@@ -186,13 +208,16 @@
                 },
 
                 async subscribe(courseId){
-                    console.log(courseId);
                     
-                    response = await axios.post('/subscribe-course',{
-                        courseId: courseId,
-                    });
-                    alert(response.data);
+                    if (confirm('Você realmente deseja se inscrever no curso?')){
+                        response = await axios.post('/subscribe-course',{
+                            courseId: courseId,
+                        });
+                        alert(response.data);
+                    }
                 },
+
+
             },
 
 

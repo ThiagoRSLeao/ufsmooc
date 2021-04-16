@@ -41,8 +41,12 @@ Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post
 Route::get('/get-students-info', 'CourseController@returnCoursesStudents')-> name('get.data.courseStudentsInfo');
 Route::get('get-content-info', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
 Route::get('get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
+Route::get('get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
 
 Route::get('/logout', 'UserController@userLogout') -> name('logout');
+
+
+Route::get('/teste', 'CourseController@teste')->name('teste');
 
 
 

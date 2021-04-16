@@ -528,3 +528,9 @@ color: rgba(12, 20, 39, 0.7);
     min-height: 300px;
 
 }
+
+.about-text{
+    padding-top: 20px;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
