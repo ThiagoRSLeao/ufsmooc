@@ -54,7 +54,7 @@ Route::prefix('/teacher')->group(function()
     Route::get('/panel', 'ViewController@showPanel') -> name('get.view.teacherPanel')-> Middleware('auth');
     Route::get('/course-manage', "ViewController@showCoursesManage") -> name('get.view.coursesManage');
     Route::get('/course-get-teaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.courseTeaches')-> Middleware('auth');
-    Route::get('/course-get-notifications', 'CourseController@courseGetNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('auth');
+    Route::get('/get-course-notifications', 'CourseController@courseGetNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('auth');
 
     Route::post('/save-course', 'CourseController@courseSave')->name('post.data.course.create');
 });

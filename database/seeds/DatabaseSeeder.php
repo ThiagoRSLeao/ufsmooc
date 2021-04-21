@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
             "type" => '1',
             "sequence_position" => 1,
             "content" => 'primeira particao do primeiro modulo',
-            "id_module" => 1,
+            "module_id" => 1,
 
         ]);
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
             "type" => '1',
             "sequence_position" => 2,
             "content" => 'segunda particao do primeiro modulo',
-            "id_module" => 1,
+            "module_id" => 1,
         ]);
 
         DB::table('module_partition')->insert([
@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder
             "type" => '1',
             "sequence_position" => 1,
             "content" => 'primeira particao do segundo modulo',
-            "id_module" => 2,
+            "module_id" => 2,
 
         ]);
         

@@ -25,7 +25,8 @@ class CourseController extends Controller
         'begin_course_date',
         'end_course_date',
         'students_limit', 
-        'course_category');
+        'course_category',
+        'modules');
         
         $course = Course::create([
             "course_title" => $data['course_title'],
@@ -34,7 +35,7 @@ class CourseController extends Controller
             "course_description" => $data['course_description'],
             "has_tutoring" => $data['has_tutoring'],
             "has_certification" => $data['has_certification'],
-            "path_picture_course" => $data['path_picture_course'],
+            "path_picture_course" => 'NULL',//$data['path_picture_course']
             "begin_subscriptions_date" => $data['begin_subscriptions_date'],
             "end_subscriptions_date" => $data['end_subscriptions_date'],
             "begin_course_date" => $data['begin_course_date'],
@@ -46,6 +47,26 @@ class CourseController extends Controller
             "doubt_notifications" => 0,
         ]);
 
+        foreach($data['modules'] as $module)
+        {            
+            $mod_id = DB::table('module')->insertGetId([
+                "title_module" => $module['name'],
+                "path_archive_module" => 'apagar',
+                "course_id" => $course->id,
+                "module_position" => $module['index'],
+                "is_additional" => true,
+            ]);
+            foreach($module['partitions'] as $partition)
+            {         
+                $part_db = DB::table('module_partition')->insert([
+                    "name" => $partition['name'],
+                    "type" => $partition['type'],
+                    "content" => json_encode($partition['content']),
+                    "sequence_position" => $partition['index'],
+                    "module_id" => $mod_id,
+                ]);
+            }
+        }
         $teacherId = session()->get('userId');
 
         $teaches = $course->taughtBy()->create([

@@ -8,56 +8,17 @@
 
 
 
-    <div id = "vue_jurisdiction" name = "vue_jurisdiction">
+    <div id = "vue_jurisdiction" name = "vue_jurisdiction">        
 
-        <div id='courseCreateWindow' v-if='showCourseCreateWindow'>
-
-            <div id='courseCreateBox'>
-
-                <div class='course-form-title-main'>Cadastro de Curso</div>
-
-                <div class='course-form-title'>Título</div>
-                <input type='text' class='course-form-input' name='name' v-model='newCourse.course_title'/>
-                
-                <div class='course-form-title'>Descrição do Curso</div>
-                <textarea id='courseDescription' v-model='newCourse.course_description'></textarea>
-                
-                <div class='course-form-title'>Categoria</div>
-
-                <input type='text' class='course-form-input' v-model='newCourse.course_category'/>
-                <!--select v-model='newCourse.course_category'>
-                    <option></option>
-                </select-->
-                <div class='course-form-title'>Imagem do Curso</div>
-                <input type='file' />    
-                <input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/>            
-                
-                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_certification' v-model='newCourse.has_certification'/> Possui certificação </div>
-                    <div class='course-box-hidden' v-if='newCourse.has_certification'>
-                        Horas: <input type='number' v-model='newCourse.hours'/>
-                    </div>
-                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_deadline' v-model='newCourse.has_inscription'/>Possui periodo de inscrição </div>
-                    <div class='course-box-hidden date-container' v-if='newCourse.has_inscription'>
-                        <input type='text' class='course-date' name='begin_subscriptions_date' placeholder='Data de inicio' v-model='newCourse.begin_subscriptions_date'/>
-                        <input type='text' class='course-date' name='end_subscriptions_date' placeholder='Data de Fim' v-model='newCourse.end_subscriptions_date'/>
-                    </div>
-                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_end' v-model='newCourse.is_temporary'/> O curso é lecionado de maneira gradual </div>
-                    <div class='course-box-hidden date-container' v-if='newCourse.is_temporary'>
-                        <input type='text' class='course-date' name='begin_course_date' placeholder='Data de inicio' v-model='newCourse.begin_course_date'/>
-                        <input type='text' class='course-date' name='end_course_date' placeholder='Data de Fim' v-model='newCourse.end_course_date'/>
-                    </div>
-                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_end' v-model='newCourse.has_limit'/> Possui limite de alunos </div>
-                    <div class='course-box-hidden' v-if='newCourse.has_limit'>
-                        Número de Alunos <input type='number' name='has_end' v-model='newCourse.students_limit'/>
-                    </div>
-
-                <input type='button' class='button-create' value='Criar' v-on:click='saveCourse'/>
-
+        <div class='create-course-nav' v-if='showCourseCreateWindow != 0'>
+            <div class='create-course-nav-options-wrapper'>
+                <div class='create-course-nav-option' v-on:click='toggleCreateCourseStep(1)' :class='showCourseCreateWindow == 1 ? "active" : notactive'>1. Informações</div>
+                <div class='create-course-nav-option' v-on:click='toggleCreateCourseStep(2)' :class='showCourseCreateWindow == 2 ? "active" : notactive'>2. Conteúdo   </div>
+                <div class='create-course-nav-option' v-on:click='toggleCreateCourseStep(3)' :class='showCourseCreateWindow == 3 ? "active" : notactive'>3. Confirmação</div>
             </div>
-
         </div>
 
-        <div id = "wrapper_courses_container" v-if='!showCourseCreateWindow'>
+        <div id = "wrapper_courses_container" v-if='showCourseCreateWindow == 0'>
 
             <div class = "courses-container" v-if='typeUser'>
                 <div class = "courses-container-title">Cursos que Gerencio <input type='button' class='create-button' v-on:click='createCourse' value='Criar curso'/></div>
@@ -126,7 +87,6 @@
                         </div>
                     </div>
                 </div> 
-
             </div>
 
             <div class = "courses-container" v-if='coursesFav != null'>
@@ -156,6 +116,125 @@
 
         </div>
 
+        <div id='courseCreateWindow' v-if='showCourseCreateWindow == 1'>            
+
+            <div id='courseCreateBox'>
+                
+                <div class='course-form-title-main'>Cadastro de Curso</div>
+
+                <div class='course-form-title'>Título</div>
+                <input type='text' class='course-form-input' name='name' v-model='newCourse.course_title'/>
+                
+                <div class='course-form-title'>Descrição do Curso</div>
+                <textarea id='courseDescription' v-model='newCourse.course_description'></textarea>
+                
+                <div class='course-form-title'>Categoria</div>
+
+                <input type='text' class='course-form-input' v-model='newCourse.course_category'/>
+                <!--select v-model='newCourse.course_category'>
+                    <option></option>
+                </select-->
+                <div class='course-form-title'>Imagem do Curso</div>
+                <input type='file' />    
+                <input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/>            
+                
+                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_certification' v-model='newCourse.has_certification'/> Possui certificação </div>
+                    <div class='course-box-hidden' v-if='newCourse.has_certification'>
+                        Horas: <input type='number' v-model='newCourse.hours'/>
+                    </div>
+                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_deadline' v-model='newCourse.has_inscription'/>Possui periodo de inscrição </div>
+                    <div class='course-box-hidden date-container' v-if='newCourse.has_inscription'>
+                        <input type='text' class='course-date' name='begin_subscriptions_date' placeholder='Data de inicio' v-model='newCourse.begin_subscriptions_date'/>
+                        <input type='text' class='course-date' name='end_subscriptions_date' placeholder='Data de Fim' v-model='newCourse.end_subscriptions_date'/>
+                    </div>
+                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_end' v-model='newCourse.is_temporary'/> O curso é lecionado de maneira gradual </div>
+                    <div class='course-box-hidden date-container' v-if='newCourse.is_temporary'>
+                        <input type='text' class='course-date' name='begin_course_date' placeholder='Data de inicio' v-model='newCourse.begin_course_date'/>
+                        <input type='text' class='course-date' name='end_course_date' placeholder='Data de Fim' v-model='newCourse.end_course_date'/>
+                    </div>
+                <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_end' v-model='newCourse.has_limit'/> Possui limite de alunos </div>
+                    <div class='course-box-hidden' v-if='newCourse.has_limit'>
+                        Número de Alunos <input type='number' name='has_end' v-model='newCourse.students_limit'/>
+                    </div>
+
+                <input type='button' class='button-create' value='Criar' v-on:click='saveCourse'/>
+
+            </div>
+
+        </div>
+
+        <div id='courseCreateWindowContent' v-if='showCourseCreateWindow == 2'>            
+
+            <div id='courseCreateContentBox'>
+                
+                <div class='course-form-title-main'>Cadastro de Curso</div>
+
+                <div class='nav-actual-course-modules'>
+                    <div class='nav-actual-course-module' :class='actualModuleIndex == module.index ? "actual" : notactive' v-for='module in this.newCourse.modules' v-on:click='showNewCourseModule(module.index)'>
+                        @{{module.name}}
+                    </div>
+                    <div id='newModuleButton' v-on:click='createNewCourseModule'> + </div>
+                </div>
+
+                <div class='course-content-box-part-left'>
+
+                    <div class='course-content-select' v-if='actualPartitionIndex == 0'>
+                        <div class='course-content-select-none'>
+                            <div class='course-content-select-none-box'>
+                                <div class='course-content-select-none-title'>Adicionar...</div>
+                                <div class='course-content-select-none-subtitle'>Selecione um conteúdo para adicionar ao módulo</div>
+                                <div class='course-content-select-none-options'>
+                                    <div class='course-content-select-option' v-on:click='createModulePartition(0)'>
+                                        Texto
+                                    </div>
+                                    <div class='course-content-select-option' v-on:click='createModulePartition(1)'>
+                                        Vídeo                                        
+                                    </div>
+                                    <div class='course-content-select-option' v-on:click='createModulePartition(2)'>
+                                        Exercícios
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                    <div class='course-content-text-container' v-else>
+                        <div class='course-content-text-title'>
+                            <input type='text'/>
+                        </div>
+                        <div>
+                            <textarea id='courseContentTextTextarea' v-model='getActualPartitionC.content.text'></textarea>
+                        </div>
+                    </div> 
+                    
+
+                </div>
+                <div class='course-content-box-part-right'>
+                    <div class='course-modules-wrapper'>
+                        <div class='course-modules-wrapper-title'>
+                            @{{ getActualModuleComputed.name}}
+                        </div>
+                        <div class='course-modules-container'>
+                            <div class='course-module-box' v-for='partition in getActualModuleComputed.partitions' v-on:click='setActualPartitionIndex(partition.index)'>
+                            @{{partition.index}} - @{{partition.name}}
+                            </div>
+                            <div class='course-module-box' v-on:click='actualPartitionIndex = 0'>
+                                Adicionar Conteúdo
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <!--input type='button' class='button-create' value='Criar' v-on:click='saveCourse'/-->
+
+            </div>
+
+        </div>
+        
+        <div id='courseCreateWindowContent' v-if='showCourseCreateWindow == 3'> 
+            <button v-on:click='saveCourse'>SALVAR</button>
+        </div>
+        
+
         <!--div id = "modal" v-if= "this.modal_visible==true" v-on:click='closeModal'>
             <div id = "modal-window" name = "modal-window" v-on:click.prevent>
                 <div class = 'modal-course-title'>
@@ -177,71 +256,172 @@
             data(){
                 return{
                     typeUser: true,
-                    showCourseCreateWindow: false,
+                    showCourseCreateWindow: 0,
                     coursesTeaches: null,
                     coursesStudies: null,
                     coursesFav: null,
                     newCourse: {
-                        course_title: 'a',
-                        path_picture_course: 'b',
-                        course_description: 'b',
+                        course_title: '',
+                        path_picture_course: '',
+                        course_description: '',
                         has_tutoring: false,
                         has_certification: false,
-                        hours: 20,
+                        hours: 0,
                         has_inscription: false,
-                        begin_subscriptions_date: '2021-10-11',
-                        end_subscriptions_date: '2021-10-11',
+                        begin_subscriptions_date: '',
+                        end_subscriptions_date: '',
                         is_temporary: false,
-                        begin_course_date: '2021-10-11',
-                        end_course_date: '2021-10-11',
+                        begin_course_date: '',
+                        end_course_date: '',
                         has_limit: false,
                         students_limit: 0,
-                        course_category: 'alfa',
+                        course_category: '',
+
+                        modules: [{
+                            index: 1,
+                            name: 'Módulo 1',
+                            partitions: [],
+                        }],
                     },
+                    actualModuleIndex: 1,
+                    actualPartitionIndex: 0,
                 }
             },
             methods: {
                 async loadCategorySelect()
                 {
-                    var response = await axios.get('/student/getStudies');
+                    var response = await axios.get('/student/get-studies');
                     //this.coursesStudies = response.data.studies;
                     this.coursesFav = response.data.favorites;
                 },
                 async loadCourse(){
-                    var response = await axios.get('/student/getStudies');
+                    var response = await axios.get('/student/get-studies');
                     //this.coursesStudies = response.data.studies;
                     this.coursesFav = response.data.favorites;
                 },
                 async loadStudies(){
-                    var response = await axios.get('/student/getStudies');
+                    var response = await axios.get('/student/get-studies');
                     this.coursesStudies = response.data.studies;
                     this.coursesFav = response.data.favorites;
                 },
                 async loadTeaches(){
-                    var response = await axios.get('/teacher/getCoursesNotifications');
+                    var response = await axios.get('/teacher/get-course-notifications');
                     this.coursesTeaches = response.data.teaches;
                 },
+                showPartition()
+                {
+                    alert('aaa');
+                },
                 showCourses(){
-                    window.location ='http://ufsmooc.test/show_courses'
+                    window.location ='http://ufsmooc.test/show_courses';
+                },
+                showNewCourseModule(index){
+                    this.actualPartitionIndex = 0;
+                    this.actualModuleIndex = index;
                 },
                 createCourse(){
-                    this.showCourseCreateWindow = true;
+                    this.showCourseCreateWindow = 1;
+                },
+                toggleCreateCourseStep(actualStep){
+                    this.showCourseCreateWindow = actualStep;
+                },
+                createNewCourseModule(){
+                    let newModuleNumber = this.newCourse.modules.length + 1;
+                    this.newCourse.modules.push({
+                        index: newModuleNumber,
+                        name: 'Módulo ' + newModuleNumber,
+                        partitions: [],
+                    });
+                },
+                createModulePartition(type){
+                    //type 0 = text, 1 = video, 2 = exercícios
+                    var actualModule = this.getActualModule();
+                    var name = null;
+                    var content = null;
+                    switch(type)
+                    {
+                        case 0:
+                            name = 'Nova Leitura';
+                            content = {
+                                text: '',
+                            };
+                            break;
+                        case 1:
+                            name = 'Novo Vídeo';
+                            content = {
+                                url: '',
+                            };
+                            break;
+                        case 2:
+                            name = 'Novos Exercícios';
+                            alert('Ainda não implementado')
+                            return;
+                            /*content = {
+                                text: '',
+                            };*/
+                            break;
+                    }
+                    var newPartition = {
+                        index:  actualModule.partitions.length + 1,
+                        type: type,
+                        name: name,
+                        content: content,
+                    };
+                    actualModule.partitions.push(newPartition);
+                    this.actualPartitionIndex = newPartition.index;
+                },
+                saveActualPartition(){
+                    this.actualCourse;
+                    this.actualPartition;
                 },
                 async saveCourse()
                 {
-                    var response = await axios.post('/teacher/saveCourse', this.newCourse);
+                    var response = await axios.post('/teacher/save-course', this.newCourse);
                     this.loadTeaches();
-                    this.showCourseCreateWindow = false;
-                }
+                    this.showCourseCreateWindow = 0;
+                },
+                getActualModule(){
+                    return this.newCourse.modules.find(mod => mod.index  == this.actualModuleIndex);
+                },
+                getActualPartition(){
+                    if(this.actualModuleIndex != 0)
+                    {
+                        return this.getActualModule().partitions.find(part => part.index  == this.actualPartitionIndex);
+                    }                    
+                },
+                setActualPartitionIndex(index){
+                    this.actualPartitionIndex = index;
+                },
             },
             created: async function () {
             //this.loadCategorySelect();
             this.loadStudies();
             this.loadTeaches();
             },
+            computed: {
+                getActualPartitionC(){
+                    if(this.actualModuleIndex != 0)
+                    {
+                        return this.getActualModule().partitions.find(part => part.index  == this.actualPartitionIndex);
+                    } 
+                },
+                getActualModuleComputed(){
+                    return this.newCourse.modules.find(mod => mod.index  == this.actualModuleIndex);
+                },   
+            },
         });
               
-        
+        /**app.component('.course-content-text-container', {
+            props: ['partition'],
+            template: `
+            <div class='course-content-text-title'>
+                <input type='text'/>
+            </div>
+            <div>
+                <textarea id='courseContentTextTextarea' v-model='partition.content.text'></textarea>
+            </div>
+            <button >Salvar</button>`,
+        });**/
         app.mount('#vue_jurisdiction');
 </script>
     @endsection
