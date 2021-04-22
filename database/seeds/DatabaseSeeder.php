@@ -102,24 +102,24 @@ class DatabaseSeeder extends Seeder
             "name" => 'particao 1',
             "type" => '1',
             "sequence_position" => 1,
-            "content" => 'primeira particao do primeiro modulo',
+            "content" => '[{"style":"font-family: Comic sans MS;","content":"Teste ","breakAfter":true},{"style":"font-family: Comic sans MS;font-weight: bold;","content":"Teste pos quebra de linha ","breakAfter":false}]',
             "module_id" => 1,
 
         ]);
 
         DB::table('module_partition')->insert([
-            "name" => 'particao 1',
+            "name" => 'particao 2',
             "type" => '1',
             "sequence_position" => 2,
-            "content" => 'segunda particao do primeiro modulo',
+            "content" => '[{"style":"font-family: Arial;","content":"Teste 2 fonte diferente mucho texto jsdaoif jsoijdsoifj dsif jjidsof jisdo jfosid jij io sdjoasijfiodsfajidfsajfiods ja  jsdioaf jsaoij sai jjia ojs i fdsojad ifjasiof saj sdiojf soidaj sioaj ijosdafio dsjioa fjs iojfjd soi jsoidj osji pok jiij joi j ijoi jiv j ioj ioj ioj iouj uij io jik jnik ni uhui jhui h uihui hi uh iuuh ui uh uihh uih iu uh hiu huh uimiu jiu  huih ui huibduifgjdsiuo dsiis oisudf sdids uisdfoisde uisidof iuo sduisdfi usosioudfio sd iosdiuo fu isdui fosuios uiodu oidsuiosuiod  uiosdisduiosd uio uiosuiod uio sd uiods sduioud ios uod ","breakAfter":true},{"style":"font-family: Roboto;font-weight: bold;","content":"Teste pos quebra de linha ","breakAfter":false}]',
             "module_id" => 1,
         ]);
 
         DB::table('module_partition')->insert([
-            "name" => 'particao 1',
+            "name" => 'particao 3',
             "type" => '1',
             "sequence_position" => 1,
-            "content" => 'primeira particao do segundo modulo',
+            "content" => '[{"style":"font-family: Comic sans MS;","content":"Mais teste","breakAfter":true},{"style":"font-family: Comic sans MS;font-weight: bold;","content":"Teste pos quebra de linha ","breakAfter":false}]',
             "module_id" => 2,
 
         ]);

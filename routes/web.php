@@ -25,6 +25,7 @@ Route::get('/forgot-pass', 'ViewController@showUserForgotPass') -> name('get.vie
 Route::get('/show-panel', 'ViewController@showPanel') -> name('get.view.panel')-> Middleware('auth');
 Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view.showCoursesPublic');
 Route::get('/participate-course', 'ViewController@participateCourse')-> name('get.view.participateCourse');
+Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
 
 Route::get('/edit-teacher', function () {
     return view('auth.edit_teacher');
@@ -38,9 +39,14 @@ Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')
 
 Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post.data.course.subscribe'); //TROCAR O METODO DA ROTA
 Route::get('/get-students-info', 'CourseController@returnCoursesStudents')-> name('get.data.courseStudentsInfo');
-
+Route::get('get-content-info', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
+Route::get('get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
+Route::get('get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
 
 Route::get('/logout', 'UserController@userLogout') -> name('logout');
+
+
+Route::get('/teste', 'CourseController@teste')->name('teste');
 
 
 

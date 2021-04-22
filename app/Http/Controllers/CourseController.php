@@ -169,17 +169,22 @@ class CourseController extends Controller
     }
     
     public function courseSubscribe(Request $request){
-        $testes = DB::table('studies')->where('student_id', '=', Auth::id())->where('course_id', '=', $request['course_id'])->pluck('student_id');
-        if (count($testes) == 0){
-            DB::table('studies')->insert([
-                "data_json" => "batata",
-                "course_id" => $request['course_id'],
-                "student_id" => Auth::id(),
-            ]);
-            return response()->json('Cadastro realizado com sucesso');
+        if (Auth::check()){
+            $testes = DB::table('studies')->where('student_id', '=', Auth::id())->where('course_id', '=', $request['courseId'])->pluck('student_id');
+            if (count($testes) == 0){
+                DB::table('studies')->insert([
+                    "data_json" => "batata",
+                    "course_id" => $request['courseId'],
+                    "student_id" => Auth::id(),
+                ]);
+                return response()->json('Cadastro realizado com sucesso');
+            }
+            else{
+                echo 'Você já está inscrito';
+            }
         }
         else{
-            echo 'Você já está inscrito';
+            return response()->json('Você precisa fazer login');
         }
 
     }
@@ -197,6 +202,45 @@ class CourseController extends Controller
         $studentsName = DB::table('users')->whereIn('id', $usersId)->pluck('name');
         return response()->json($studentsName);
         
+    }
+
+    public function courseModuleGetContent(Request $request){
+        $courseId = $request['courseId'];
+        $moduleId = $request['moduleId'];
+        $modulePartitionId = $request['modulePartitionId'];
+        $content = DB::table('module_partition')->where('module_id', '=', $moduleId)->where('id', '=', $modulePartitionId)->pluck('content');
+        return response()->json($content);
+    }
+
+    
+
+    public function courseModulesGetInfo(Request $request){
+        $courseId = $request['courseId'];
+        $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
+        foreach ($modulesInfo as $moduleInfo){
+            $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
+        }
+        return response()->json($modulesInfo);
+        
+    }
+
+
+
+    public function teste(Request $request){
+        $courseId = 2;
+        $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
+        foreach ($modulesInfo as $moduleInfo){
+            $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
+
+        }
+        
+
+    }
+
+    public function courseModuleGetPartitionInfo(Request $request){
+        $moduleId = $request['moduleId'];
+        $modulePartitionsInfo = DB::table('module')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleId)->orderBy('sequence_position')->get();
+        return response()->json($modulePartitionsInfo);
     }
 
 }
