@@ -34,6 +34,17 @@ class DatabaseSeeder extends Seeder
             'type_user' => '1',
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'jorge',
+            'surname' => 'do grande teste',
+            'email' => 'jorge@gmail.com',
+            'password' => bcrypt('123'),
+            'CPF' => '44444444444',
+            'UF' => 'RJ',
+            'city' => 'volta redonda',
+            'type_user' => '1',
+        ]);
+
         DB::table('course')->insert([
             "course_title" => 'Curso teste',
             "course_subtitle" => 'teste zzz',

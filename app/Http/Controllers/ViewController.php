@@ -38,6 +38,8 @@ class ViewController extends Controller
 
     public function participateCourse(){
         return view ('auth.view_course');
+        
+
     }
 
 
@@ -54,10 +56,7 @@ class ViewController extends Controller
     }
 
     public function showCoursesPublic(Request $request){
-        $db_courses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')
-        ->orderBy('course_title')->get();
-        
-        return view ('pages.show_courses', ['courses' => $db_courses]);
+        return view ('pages.show_courses');
     }
 
     public function showCoursesManage(){

@@ -13,22 +13,45 @@
                 <div class = "courses-container-title">Cursos disponíveis</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="course in courses">
+                    <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses">
 
                         <div class = "img-container">
                             <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
                         </div>
                         <div class = "info-container"></div>
-                        <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
-                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>TutoriSDDSa</div>
+                        <div class = "course_title" name = "course_title">@{{notSubscribedCourse.course_title}}</div>
+                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{notSubscribedCourse.course_cartegory}}</div>
+                        <div class = "has_tutoring" name = "has_tutoring" v-if="notSubscribedCourse.has_tutoring==1"><br>TutoriSDDSa</div>
                         <div class = "progress-bar"></div>
-                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="show_modal(course)" >Ver detalhes</button>
+                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="showModal(notSubscribedCourse)" >Ver detalhes</button>
 
                     </div>        
                 </div>  
             </div>    
+
+            <div class = "courses-container">
+                <div class = "courses-container-title">Cursos que participo</div>
+    
+                <div class = "courses-container-body" name = "courses_loop" >
+                    <div class = "course-box" v-for="subscribedCourse in subscribedCourses">
+    
+                        <div class = "img-container">
+                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
+                        </div>
+                        <div class = "info-container"></div>
+                        <div class = "course_title" name = "course_title">@{{subscribedCourse.course_title}}</div>
+                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{subscribedCourse.course_cartegory}}</div>
+                        <div class = "has_tutoring" name = "has_tutoring" v-if="subscribedCourse.has_tutoring==1"><br>Tutoria</div>
+                        <div class = "progress-bar"></div>
+                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="showCourse(subscribedCourse)" >Ver curso</button>
+    
+                    </div>        
+                </div>  
+            </div> 
+
         </div>
+
+        
 
         <div id = "modal" v-if= "this.modal_visible==true" v-on:click='closeModal'>
             <div id = "modal-window" name = "modal-window" v-on:click.prevent>
@@ -47,7 +70,7 @@
 
         <div id = "big-box" v-if='this.openCourse == true'>
             <div id = 'close-course-button' v-on:click='closeCourseBigBox'> Fechar </div>
-            <div id = 'title'>Google Classroom para professores</div>
+            <div id = 'title'>@{{currentCourse.courseData.course_title}}</div>
             <div id = 'teacher-content'>
                 <img id='teacher-pic' src = 'https://i.pinimg.com/originals/f0/b2/7e/f0b27e8e3a0978694001fcd2afd58f25.png'>
                 <div id = 'teacher-name'>Dr. Leonardo da Silva</div>
@@ -68,13 +91,13 @@
                 </div>
                 <div class = 'modules-container' v-if='this.currentCourse.showModules==true'>
                     <div class = 'module-box'>
-                        <div class ='module-elements-margin' v-for='module in this.currentCourse.modules'>
+                        <div class ='module-elements-margin' v-for='(module, index) in this.currentCourse.modules'>
                             <div class = 'module-top-container'>
                                 <div class = 'module-title'>@{{module.title_module}}</div>
-                                <div class = 'module-expand' v-on:click='expandModule'>Expandir</div>
+                                <div class = 'module-expand' v-on:click='expandModule(index)'>Expandir</div>
                             </div>
 
-                            <div class = 'content-container' v-if ='this.currentCourse.expand == true' v-for='modulePartition in module.modulePartition'>
+                            <div class = 'content-container' v-if ='this.currentCourse.expand[index] == true' v-for='modulePartition in module.modulePartition'>
 
                                 <div class = 'content'>
                                     <div class = 'content-icon'> .. </div>
@@ -106,44 +129,47 @@
             data(){
                 return{
                     openCourse: false,
-                    courses: {!! json_encode($courses) !!},
+                    notSubscribedCourses: '',
+                    subscribedCourses: '',
                     modal_visible: false,
-                    auth: {!! json_encode(Auth::check()) !!},
 
                     currentCourse:{
-                        expand: false,
+                        expand: [],
                         teste: 'batata',
                         showModules: true,
                         courseData: null,
                         modules:[{
-                            titleModule: '',
-                            id: '',
-                            modulePartition:[],
-                            },
-                            {
-                            titleModule: '',
-                            id: '',
-                            modulePartition:[],
-                            },
-                        
+                            }
                         ],
                     },
                 }
             },
             mounted(){
-
+                this.getAllCourses();
             },
 
             methods: {
+
+                async getAllCourses(){
+                    response = await axios.get('get-courses', {
+                    });
+                    this.notSubscribedCourses = response.data.notSubscribedCourses;
+                    this.subscribedCourses = response.data.subscribedCourses;
+                },
 
                 closeCourseBigBox(){
                     this.openCourse = false;
                 },
 
-                show_modal(course){
+                showModal(course){
                     this.modal_visible = true;
                     this.currentCourse.courseData = course;
+                    console.log(this.modal_visible);
                     
+                },
+
+                showCourse(subscribedCourse){
+                    window.location.href = '/participate-course/' + subscribedCourse.id;
                 },
 
                 closeModal(){
@@ -163,6 +189,10 @@
                         }
                         });
                     this.currentCourse.modules = response.data;
+                    console.log(this.currentCourse.modules);
+                    for(var i = 0; i < this.currentCourse.modules.length;i++){
+                        this.currentCourse.expand[i]= false;
+                    }
                 },   
 
                 
@@ -193,17 +223,16 @@
                     moduleButtonTextId = moduleButtonTextId.style.color = "#FFFFFF";
                 },
 
-                expandModule(){
-                    if (this.currentCourse.expand == false){
-                        this.currentCourse.expand = true;
-                        var moduleExpand = window.document.getElementsByClassName('module-expand');
-                        for (var i = 0; i < moduleExpand.lenght; i++){
-                            //moduleExpand[i].innerText = 'Recolher';
-                        };
+                expandModule(index){
+                    var moduleExpand = window.document.getElementsByClassName('module-expand');
+                    if (this.currentCourse.expand[index] == false){
+                        this.currentCourse.expand[index] = true;
+                        moduleExpand[index].innerText = 'Recolher';
                     }
                     else{
-                        this.currentCourse.expand = false;
-                        ////
+                        this.currentCourse.expand[index] = false;
+                        moduleExpand[index].innerText = 'Expandir';
+                        
                     };
                 },
 

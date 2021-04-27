@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Course;
 use App\Teaches;
 use App\Studies;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {    
@@ -87,6 +88,19 @@ class CourseController extends Controller
         return response()->json($course->id);
     }
 
+    public function courseGetCourses(){
+        $userId = Auth::id();
+        $subscribedCoursesId = DB::table('studies')->where('student_id', '=', $userId)->pluck('course_id');
+        if (Auth::check() && count($subscribedCoursesId) != 0){
+            $subscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
+            $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
+        }
+        else{
+            $subscribedCourses = NULL;
+            $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->orderBy('course_title')->get();
+        }
+        return response()->json(['subscribedCourses' => $subscribedCourses, 'notSubscribedCourses' => $notSubscribedCourses]);
+    }
     
     
 
@@ -227,12 +241,7 @@ class CourseController extends Controller
 
 
     public function teste(Request $request){
-        $courseId = 2;
-        $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
-        foreach ($modulesInfo as $moduleInfo){
-            $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
-
-        }
+        return Storage::download('public/file.txt');
         
 
     }

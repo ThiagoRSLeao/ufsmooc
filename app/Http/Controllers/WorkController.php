@@ -17,4 +17,8 @@ class WorkController extends Controller
         ]);
         return ('/');
     }
+
+    public function getWorkData(Request $request){
+        
+    }
 }

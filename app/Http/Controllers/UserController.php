@@ -37,6 +37,12 @@ class UserController extends Controller
         }
     }
 
+    public function userGetUsername(){
+        $id = Auth::id();
+        $name = DB::table('users')->select('name', 'id')->where('id', $id)->get();
+        return response()->json($name);
+    }
+
     public function userValidateLogin(Request $request)
     {
         if (!(Auth::check())){
