@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('style')/style/pages/show_courses.css
+@section('style')/style/pages/panel.css
 @endsection
 
 @section('title', 'pedro cursos')
