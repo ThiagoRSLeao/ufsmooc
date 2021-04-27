@@ -29,26 +29,6 @@
                 </div>  
             </div>    
 
-            <div class = "courses-container">
-                <div class = "courses-container-title">Cursos que participo</div>
-    
-                <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="subscribedCourse in subscribedCourses">
-    
-                        <div class = "img-container">
-                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
-                        </div>
-                        <div class = "info-container"></div>
-                        <div class = "course_title" name = "course_title">@{{subscribedCourse.course_title}}</div>
-                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{subscribedCourse.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="subscribedCourse.has_tutoring==1"><br>Tutoria</div>
-                        <div class = "progress-bar"></div>
-                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="showCourse(subscribedCourse)" >Ver curso</button>
-    
-                    </div>        
-                </div>  
-            </div> 
-
         </div>
 
         

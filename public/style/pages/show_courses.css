@@ -1,0 +1,536 @@
+
+
+.section-main{
+    display:flex;
+    justify-content: center;
+    background-color: #f7f9fb;
+}
+
+#courseCreateWindow
+{
+    top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 15px;
+    width: 700px;
+    height: 1000px;
+    background-color: #FFFFFF;    
+    box-shadow: 0px 5px 5px 2px rgb(134 134 134 / 27%);
+    margin-bottom: 90px;
+}
+.course-form-input
+{
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    height: 40px;
+    padding-left: 5px;
+    width: 100%;
+}
+#courseCreateBox
+{
+    width: 500px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.course-form-title
+{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    font-size: 15pt;
+}
+.course-checkbox
+{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.course-date
+{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    margin-left: 10px;
+    text-align: center;
+}
+.date-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.course-box-hidden
+{
+    width: 100%;
+}
+#courseDescription
+{
+    border-radius: 10px;
+    border: 2px solid rgba(12, 20, 39, 0.25);
+    padding: 10px;
+    width: 480px;
+    height: 200px;
+    resize: none;
+}
+div#wrapper_courses_container{
+    top: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 90vw;
+}
+
+.courses-container{
+    height: 400px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.courses-container-title{
+    height:40px;
+    width:auto;
+    display:flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Rubik;
+    justify-content: space-between;
+}
+
+.courses-container-body{
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.button-create
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 40px;
+    border: 0;
+    font-size: 15pt;
+    background: #FFFFFF;
+    color: #395EB7;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px 2px rgb(134 134 134 / 27%);
+    transition: 0.25s 0s ease;
+}
+.button-create:hover
+{
+    box-shadow: 0px 3px 8px 5px rgb(134 134 134 / 27%);
+    cursor: pointer;
+}
+
+.img-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+}
+
+.steve{
+    width:100px;
+    text-align: center;
+}
+
+.course_title{
+    width:100%;
+    text-align: center;
+}
+
+.course_cartegory{
+    width:100%;
+    text-align: center;
+}
+
+.has_tutoring{
+    width:100%;
+    text-align: center;
+}
+
+.show_details{
+    
+}
+
+.course-box{
+    height: 280px;
+    width: 240px;
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius:10%;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 5px 5px 2px rgb(134 134 134 / 27%);
+    overflow:hidden;    
+}
+.no-courses-container
+{
+    margin-top:30px;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.no-courses-box
+{
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.no-courses-title
+{
+    font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgba(12, 30, 39, 0.589);
+}
+.create-button
+{
+    height: 50px;
+    width: 230px;
+    background-color: #ffffff;
+    color: #395EB7;
+    font-size: 18pt;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 1px 1px 1px rgb(134 134 134 / 27%);
+    border: 0;
+    overflow:hidden; 
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-position: 10px 10px;
+    background-size: 30px 30px;
+    background-image:url('/../../img/panel/create.png');
+}
+.create-button:hover
+{
+    background-color: rgba(57, 94, 183, 0.08);
+    cursor: pointer;
+}
+.no-courses-button-create, .no-courses-button-explore
+{
+    height: 100px;
+    width: 400px;
+    background-color: #ffffff;
+    color: #395EB7;
+    font-size: 18pt;
+    margin: 20px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 1px 1px 1px rgb(134 134 134 / 27%);
+    overflow:hidden; 
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-position: 35px 25px;
+    background-size: 50px 50px;
+}
+.no-courses-button-explore
+{
+    background-image:url('/../../img/panel/explore.png');
+}
+.no-courses-button-create
+{
+    background-image:url('/../../img/panel/create.png');
+}
+.no-courses-button-create:hover, .no-courses-button-explore:hover
+{
+    background-color: rgba(57, 94, 183, 0.08);
+    cursor: pointer;
+}
+.course-box:hover{
+    box-shadow: 0px 15px 21px 10px rgb(134 134 134 / 27%);
+    cursor: pointer;
+}
+
+div#modal{
+    background-color: rgba(201, 199, 204, 0.34);
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    left:0%;
+    top:0%;
+    bottom: 0%;
+    right: 0%;
+    z-index: 50;
+    flex-wrap: wrap;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#modal-window{
+    min-width: 70%;
+    max-width: 70%;
+    min-height: 55%;
+    max-height : 55%;
+    top: 50%;
+    left: 50%;
+    background-color: #f7f9fb;
+    border-radius: 15px;
+    box-shadow:rgba(201, 199, 204, 0.34);
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    
+}
+
+.modal-course-title{
+    font-family: Rubik;
+    font-size: 16pt;
+    padding-top: 20px;
+
+}
+
+.modal-course-description-box{
+    margin-top: 20px;
+    border: gray;
+    background-color: #FFFFFF;
+}
+
+.modal-course-description{
+    margin-top: 5px;
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 20%;
+}
+
+.subscribe{
+    margin-right: 20px;
+}
+
+
+/************************************************
+*************************************************
+*************************************************
+
+here begins the course individual show
+
+*************************************************
+*************************************************
+************************************************/
+
+#big-box{
+    position: relative;
+    
+    min-width: 1100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #FFFFFF;
+    min-height: 500px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction:column;
+    margin-bottom: 100px;
+}
+
+#close-course-button{
+    font-family: Rubik;
+    color: black;
+    align-self: flex-end;
+    padding-right: 30px;
+    padding-top: 15px;
+    cursor: pointer;
+}
+
+#title{
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16pt;
+    line-height: 100%;
+    margin-top: 30px;
+}
+
+#teacher-content{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin-top: 15px;
+    font-size: 12pt;
+}
+
+#teacher-pic{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+
+
+
+#modules-alignment{
+    margin-top: 40px;
+    width: 65%;
+    align-self: center;
+}
+
+#change-window-buttons{
+    width: 100%;
+    align-self:center;
+    border: 1px solid gray;
+    box-shadow: 0px 15px 30px 4px #868686 27%;
+    display: flex;
+    height: 40px;
+    text-align: center;
+    flex-direction: row;
+    align-items:center;
+    border-radius: 15px;
+    
+}
+
+#module-button{
+    position: relative;
+    height: 90%;
+    background-color: #395EB7;
+    width: 50%;
+    align-items: center;
+    border-radius:15px;
+    display:flex;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#module-button-text{
+    color: #FFFFFF;
+}
+
+#about-button{
+    position: relative;
+    height: 90%;
+    background-color: #FFFFFF;
+    width: 50%;
+    align-items: center;
+    border-radius:15px;
+    display:flex;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#about-button-text{
+    color: rgba(12, 20, 39, 0.4);
+}
+
+.modules-container{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.module-box{
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+.module-elements-margin{
+    margin: 15px;
+}
+
+.module-title{
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14pt;
+    line-height: 100%;
+    /* or 21px */
+
+
+color: rgba(12, 20, 39, 0.7);
+}
+
+.module-top-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.module-expand{
+    font-family: Rubik;
+    font-size: 12pt;
+    color: black;
+    cursor: pointer;
+}
+
+.content{
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.content-text{
+    margin-left: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 100%;
+
+    letter-spacing: 0.02em;
+
+    color: rgba(12, 20, 39, 0.6);
+    cursor: pointer;
+}
+
+#subscribe{
+    align-self: flex-end;
+    margin-right: 60px;
+    margin-top: 40px;
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.about-box{
+    border: 1px solid gray;
+    margin-top: 20px;
+    border-radius: 15px;
+    min-height: 300px;
+
+}
+
+.about-text{
+    padding-top: 20px;
+    padding-left: 20px;
+    word-wrap: break-word;
+}

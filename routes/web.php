@@ -26,6 +26,7 @@ Route::get('/show-panel', 'ViewController@showPanel') -> name('get.view.panel')-
 Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view.showCoursesPublic');
 Route::get('/participate-course', 'ViewController@participateCourse')-> name('get.view.participateCourse');
 Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
+Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
 
 Route::get('/edit-teacher', function () {
     return view('auth.edit_teacher');

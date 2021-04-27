@@ -92,14 +92,12 @@ class CourseController extends Controller
         $userId = Auth::id();
         $subscribedCoursesId = DB::table('studies')->where('student_id', '=', $userId)->pluck('course_id');
         if (Auth::check() && count($subscribedCoursesId) != 0){
-            $subscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
             $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
         }
         else{
-            $subscribedCourses = NULL;
             $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->orderBy('course_title')->get();
         }
-        return response()->json(['subscribedCourses' => $subscribedCourses, 'notSubscribedCourses' => $notSubscribedCourses]);
+        return response()->json(['notSubscribedCourses' => $notSubscribedCourses]);
     }
     
     
@@ -241,8 +239,25 @@ class CourseController extends Controller
 
 
     public function teste(Request $request){
-        return Storage::download('public/file.txt');
-        
+        //$path = $request->only('courseId', 'moduleId', 'modulePartitionId');
+        $path['courseId'] = 1;
+        $path['moduleId'] = 1;
+        $path['modulePartitionId'] = 1;
+        $courseId = $path['courseId'];
+        $moduleId = $path['moduleId'];
+        $modulePartitionId = $path['modulePartitionId'];
+
+        $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
+        $files = scandir($pathDirectory);
+        $i = 0;
+        //verifies if the file is a system file
+        foreach ($files as $file){
+            if ($file[0] != '.'){
+                $filesName[$i] = $file;
+                $i++;
+            }
+        }
+        dd($filesName);
 
     }
 
@@ -250,6 +265,28 @@ class CourseController extends Controller
         $moduleId = $request['moduleId'];
         $modulePartitionsInfo = DB::table('module')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleId)->orderBy('sequence_position')->get();
         return response()->json($modulePartitionsInfo);
+    }
+
+    public function getModuleArchivesPath(Request $request){
+         //$path = $request->only('courseId', 'moduleId', 'modulePartitionId');
+         $path['courseId'] = 1;
+         $path['moduleId'] = 1;
+         $path['modulePartitionId'] = 1;
+         $courseId = $path['courseId'];
+         $moduleId = $path['moduleId'];
+         $modulePartitionId = $path['modulePartitionId'];
+ 
+         $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
+         $files = scandir($pathDirectory);
+         $i = 0;
+         //verifies if the file is a system file
+         foreach ($files as $file){
+             if ($file[0] != '.'){
+                 $filesName[$i] = $file;
+                 $i++;
+             }
+         }
+        return $filesName;
     }
 
 }

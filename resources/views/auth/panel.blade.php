@@ -70,6 +70,7 @@
                         <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
                         <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
                         <div class = "progress-bar"></div>
+                        <button class = 'seeMore' v-on:click='seeCourse(course)'>Ver mais</button>
                         
 
                     </div>        
@@ -310,6 +311,11 @@
                 }
             },
             methods: {
+
+                seeCourse(course){
+                    //colocar o botão que vai pra página interna do curso, q ainda não aceita variáveis
+                },
+
                 async loadCategorySelect()
                 {
                     var response = await axios.get('/student/get-studies');
