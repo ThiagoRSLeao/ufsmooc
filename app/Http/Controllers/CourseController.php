@@ -216,22 +216,25 @@ class CourseController extends Controller
         
     }
 
-    public function courseModuleGetContent(Request $request){
-        $courseId = $request['courseId'];
-        $moduleId = $request['moduleId'];
-        $modulePartitionId = $request['modulePartitionId'];
-        $content = DB::table('module_partition')->where('module_id', '=', $moduleId)->where('id', '=', $modulePartitionId)->pluck('content');
+    public function courseModuleGetContent($id){
+        $modulePartitionId = $id;
+        $content = DB::table('module_partition')->find($modulePartitionId, ['content']);
+        //->where('module_id', '=', $moduleId)
+        
         return response()->json($content);
     }
 
     
 
     public function courseModulesGetInfo(Request $request){
-        $courseId = $request['courseId'];
+        $courseId = $request->only('courseId');
+        
         $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
+        
         foreach ($modulesInfo as $moduleInfo){
-            $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
+            $moduleInfo->partitions = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
         }
+
         return response()->json($modulesInfo);
         
     }
@@ -252,7 +255,7 @@ class CourseController extends Controller
     }
 
     public function courseModuleGetPartitionInfo(Request $request){
-        $moduleId = $request['moduleId'];
+        $moduleId = $request->only('moduleId');
         $modulePartitionsInfo = DB::table('module')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleId)->orderBy('sequence_position')->get();
         return response()->json($modulePartitionsInfo);
     }
@@ -285,6 +288,11 @@ class CourseController extends Controller
         //the download method uses /storage as root
         $pathDirectory = 'courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId .'/'. $fileName;
         return Storage::disk('public')->download($pathDirectory);
+    }
+
+    public function showCourse($id)
+    {        
+        return view('auth.view_course', ['id' => $id]);
     }
 
 }

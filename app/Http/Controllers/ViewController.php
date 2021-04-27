@@ -64,6 +64,7 @@ class ViewController extends Controller
     }
 
     public function showCourseExternal(){
+        
         return view('pages.view_course_external');
     }
 

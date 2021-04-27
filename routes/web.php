@@ -24,7 +24,7 @@ Route::get('/signup', 'ViewController@showUserSignup' ) -> name('get.view.userSi
 Route::get('/forgot-pass', 'ViewController@showUserForgotPass') -> name('get.view.userForgotPass');
 Route::get('/show-panel', 'ViewController@showPanel') -> name('get.view.panel')-> Middleware('auth');
 Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view.showCoursesPublic');
-Route::get('/participate-course', 'ViewController@participateCourse')-> name('get.view.participateCourse');
+Route::get('/participate-course/{id}', 'CourseController@showCourse')-> name('get.view.participateCourse');
 Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
 
@@ -41,13 +41,13 @@ Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')
 
 Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post.data.course.subscribe'); //TROCAR O METODO DA ROTA
 Route::post('/create-module-test', 'CourseController@courseCreateModule');
-Route::get('get-courses', 'CourseController@courseGetCourses')->name('get.data.course');
+Route::get('/get-courses', 'CourseController@courseGetCourses')->name('get.data.course');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
-Route::get('get-content-info', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
-Route::get('get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
-Route::get('get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
-Route::get('get-module-partition-file-name', 'CourseController@courseGetModuleFilesName');
-Route::get('get-course-file', 'courseController@courseGetFile');
+Route::get('/get-content-info/{id}', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
+Route::get('/get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
+Route::get('/get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
+Route::get('/get-module-partition-file-name', 'CourseController@courseGetModuleFilesName');
+Route::get('/get-course-file', 'courseController@courseGetFile');
 
 
 Route::get('/logout', 'UserController@userLogout') -> name('logout');

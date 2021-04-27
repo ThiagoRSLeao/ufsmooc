@@ -20,7 +20,7 @@
 
         <div id = "wrapper_courses_container" v-if='showCourseCreateWindow == 0'>
 
-            <div class = "courses-container" v-if='typeUser'>
+            <div class = "courses-container" >
                 <div class = "courses-container-title">Cursos que Gerencio <input type='button' class='create-button' v-on:click='createCourse' value='Criar curso'/></div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
@@ -53,8 +53,7 @@
                         </div>
                     </div>
                 </div> 
-
-            </div>
+            </div>          
 
             <div class = "courses-container">
                 <div class = "courses-container-title">Cursos que faço</div>
@@ -70,7 +69,7 @@
                         <div class = "course_cartegory" name = "course_cartegory"><br>@{{course.course_cartegory}}</div>
                         <div class = "has_tutoring" name = "has_tutoring" v-if="course.has_tutoring==1"><br>Tutoria</div>
                         <div class = "progress-bar"></div>
-                        <button class = 'seeMore' v-on:click='seeCourse(course)'>Ver mais</button>
+                        <button class = 'seeMore' v-on:click='showCourse(course)'>Ver mais</button>
                         
 
                     </div>        
@@ -420,6 +419,11 @@
                 setActualPartitionIndex(index){
                     this.actualPartitionIndex = index;
                 },
+                showCourse(subscribedCourse)
+                {       
+                    //var response = await axios.get('/teacher/save-course', this.newCourse);             
+                    window.location.href = '/participate-course/' + subscribedCourse.id;
+                },
             },
             created: async function () {
             //this.loadCategorySelect();
@@ -438,18 +442,7 @@
                 },   
             },
         });
-              
-        /**app.component('.course-content-text-container', {
-            props: ['partition'],
-            template: `
-            <div class='course-content-text-title'>
-                <input type='text'/>
-            </div>
-            <div>
-                <textarea id='courseContentTextTextarea' v-model='partition.content.text'></textarea>
-            </div>
-            <button >Salvar</button>`,
-        });**/
+
         app.mount('#vue_jurisdiction');
 </script>
     @endsection

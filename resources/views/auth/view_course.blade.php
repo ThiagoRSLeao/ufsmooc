@@ -14,28 +14,45 @@
                 </div>
                 <div id = 'all-content-align'>
                     <div id = 'content-window' v-if='this.isContentWindow == true'>    
-                        <div id = 'title-box'>
-                            
-                            <div id = 'title-icon'>
-                                II
-                            </div>
+                        <div v-if='modulePartitionType == 0'>
+                            <div id = 'title-box'>
+                                
+                                <div id = 'title-icon'>
+                                    II
+                                </div>
 
-                            <div id = 'title'>
-                                Função decrementa
+                                <div id = 'title'>
+                                    Função decrementa
+                                </div>
+                            </div>
+                            <div id = 'content'>
+                                <div class = 'content-partition' v-for='content in this.contents'>
+                                    @{{content.text}}
+                                </div>
+                            </div>
+                            <div id = 'files-container'>
+                                <div id ='files-title'><strong>Anexos:</strong></div>
+                                <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
+                                    @{{fileName}}
+                                </div>
+                                <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
+                                    @{{fileName}}
+                                </div>
                             </div>
                         </div>
-                        <div id = 'content'>
-                            <div class = 'content-partition' v-for='content in this.contents'>
-                                @{{content.content}}
+                        <div v-if='modulePartitionType == 1'>
+                            <div id = 'title-box'>
+                                
+                                <div id = 'title-icon'>
+                                    II
+                                </div>
+
+                                <div id = 'title'>
+                                    @{{}}
+                                </div>
                             </div>
-                        </div>
-                        <div id = 'files-container'>
-                            <div id ='files-title'><strong>Anexos:</strong></div>
-                            <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
-                                @{{fileName}}
-                            </div>
-                            <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
-                                @{{fileName}}
+                            <div id = 'content'>
+                                <iframe width="560" height="315" v-bind:src="computedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -58,15 +75,18 @@
 
             <div id = 'module-navigation-box'>
                 <div class = 'module-container' v-for='module in modules'>
+                
                     <div class = 'module-navigation-title-box'>
                         <div class = 'module-navigation-title-text'>@{{module.title_module}}</div>
                     </div>
-                    <div class = 'module-navigation' v-for='modulePartition in module.modulePartition'>
+
+                    <div class = 'module-navigation' v-for='modulePartition in module.partitions'>
                         <div class = 'module-text-icon'>
                             II   
                         </div>
-                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id)'>@{{modulePartition.name}}</div>
+                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id, modulePartition.type)'>@{{modulePartition.name}}</div>
                     </div>
+
                 </div>
             
 
@@ -84,14 +104,15 @@
                 return{
                     contents: '',
                     modules: '',
-                    courseId: 1,
-                    moduleId: 1,
-                    modulePartitionId: 1,
+                    courseId: '{{ $id }}',
+                    moduleId: 0,
+                    modulePartitionId: 0,
+                    modulePartitionType: 0,
+                    modulePartitionName: '',
                     isContentWindow: true,
                     filesName: [],
                 }
             },
-
             methods:{
 
                 async getModulesData(courseId){
@@ -106,15 +127,9 @@
                     
                 },  
 
-                async getContent(courseId, moduleId, modulePartitionId){
-                    response = await axios.get('get-content-info',{
-                        params: {
-                            courseId : courseId,
-                            moduleId: moduleId,
-                            modulePartitionId: modulePartitionId,
-                        }
-                    });
-                    this.contents = JSON.parse(response.data);
+                async getContent(modulePartitionId){
+                    response = await axios.get('/get-content-info/'+modulePartitionId);
+                    this.contents = JSON.parse(response.data.content);
                     console.log(this.contents);
                     
                 },
@@ -129,7 +144,7 @@
                 },
 
                 async getFiles(courseId, moduleId, modulePartitionId){
-                    response = await axios.get('get-module-partition-file-name', {
+                    response = await axios.get('/get-module-partition-file-name', {
                         params:{
                             courseId: courseId,
                             moduleId: moduleId,
@@ -147,22 +162,23 @@
 
                 async mountPage(){
                     await this.getModulesData(this.courseId);
-                    await this.getContent(this.courseId, this.moduleId, this.modulePartitionId);
-                    await this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
+                    
+                    //
+                    //await this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
                     this.getStyle();
                 },
-
-                async changeContent(localModulePartitionId){
-                    this.modulePartitionId = localModulePartitionId;
-                    await this.getContent(this.courseId, this.moduleId, this.modulePartitionId);
+                async changeContent(localModulePartitionId, type){
+                    await this.getContent(localModulePartitionId);
+                    this.modulePartitionType = type;
+                    this.modulePartitionName = Name;
                     this.getStyle();
                 }
-
-
-
- 
             },
-
+            computed: {
+                computedUrl(){
+                    return this.contents.url;
+                }
+            },
             mounted(){
                 this.mountPage();
             }
