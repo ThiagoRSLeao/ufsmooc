@@ -198,12 +198,24 @@
                         </div>
                     </div>  
 
-                    <div class='course-content-text-container' v-else>
+                    <div class='course-content-text-container' v-else-if='getActualPartitionComputed.type == 0'>
                         <div class='course-content-text-title'>
-                            <input type='text'/>
+                            Título: <input type='text' v-model='getActualPartitionComputed.name'/>
                         </div>
                         <div>
-                            <textarea id='courseContentTextTextarea' v-model='getActualPartitionC.content.text'></textarea>
+                            <textarea id='courseContentTextTextarea' v-model='getActualPartitionComputed.content.text'></textarea>
+                        </div>
+                    </div> 
+
+                    <div class='course-content-video-container' v-else-if='getActualPartitionComputed.type == 1'>
+                        <div class='course-content-text-title'>
+                            Título: <input type='text' v-model='getActualPartitionComputed.name'/>
+                        </div>
+                        <div>
+                            URL <input type='text' id='courseContentUrlInput' v-model='getActualPartitionComputed.content.url' />
+                        </div>
+                        <div>
+                        <iframe width="560" height="315" v-bind:src="getActualPartitionComputed.content.url" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                     </div> 
                     
@@ -211,8 +223,17 @@
                 </div>
                 <div class='course-content-box-part-right'>
                     <div class='course-modules-wrapper'>
-                        <div class='course-modules-wrapper-title'>
-                            @{{ getActualModuleComputed.name}}
+                        <div class='course-modules-wrapper-title' v-model=''>
+                            <div v-if='this.editModuleName == 0'>
+                                @{{ getActualModuleComputed.name }}
+                                <button v-on:click='this.editModuleName = 1'> E </button>
+                            </div>
+                            <div v-if='this.editModuleName == 1'>
+                                <input type='text' v-model='getActualModuleComputed.name' />
+                                <button v-on:click='this.editModuleName = 0'> V </button>
+                                <button v-on:click='this.editModuleName = 0'> X </button>
+                            </div>
+                                
                         </div>
                         <div class='course-modules-container'>
                             <div class='course-module-box' v-for='partition in getActualModuleComputed.partitions' v-on:click='setActualPartitionIndex(partition.index)'>
@@ -285,6 +306,7 @@
                     },
                     actualModuleIndex: 1,
                     actualPartitionIndex: 0,
+                    editModuleName: 0,
                 }
             },
             methods: {
@@ -399,7 +421,7 @@
             this.loadTeaches();
             },
             computed: {
-                getActualPartitionC(){
+                getActualPartitionComputed(){
                     if(this.actualModuleIndex != 0)
                     {
                         return this.getActualModule().partitions.find(part => part.index  == this.actualPartitionIndex);
