@@ -239,25 +239,15 @@ class CourseController extends Controller
 
 
     public function teste(Request $request){
-        //$path = $request->only('courseId', 'moduleId', 'modulePartitionId');
-        $path['courseId'] = 1;
-        $path['moduleId'] = 1;
-        $path['modulePartitionId'] = 1;
-        $courseId = $path['courseId'];
-        $moduleId = $path['moduleId'];
-        $modulePartitionId = $path['modulePartitionId'];
+        $courseId = 1;
+        $moduleId = 1;
+        $modulePartitionId = 1;
+        $fileName = 'file.txt';
+        //the download method uses /storage as root
+        $pathDirectory = 'courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId .'/'. $fileName;
+        return Storage::disk('public')->download($pathDirectory);
 
-        $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
-        $files = scandir($pathDirectory);
-        $i = 0;
-        //verifies if the file is a system file
-        foreach ($files as $file){
-            if ($file[0] != '.'){
-                $filesName[$i] = $file;
-                $i++;
-            }
-        }
-        dd($filesName);
+
 
     }
 
@@ -267,11 +257,8 @@ class CourseController extends Controller
         return response()->json($modulePartitionsInfo);
     }
 
-    public function getModuleArchivesPath(Request $request){
-         //$path = $request->only('courseId', 'moduleId', 'modulePartitionId');
-         $path['courseId'] = 1;
-         $path['moduleId'] = 1;
-         $path['modulePartitionId'] = 1;
+    public function courseGetModuleFilesName(Request $request){
+         $path = $request->only('courseId', 'moduleId', 'modulePartitionId');
          $courseId = $path['courseId'];
          $moduleId = $path['moduleId'];
          $modulePartitionId = $path['modulePartitionId'];
@@ -286,7 +273,18 @@ class CourseController extends Controller
                  $i++;
              }
          }
-        return $filesName;
+        return response()->json(['filesName' => $filesName]);
+    }
+
+    public function courseGetFile(Request $request){
+        $path = $request->only('courseId', 'moduleId', 'modulePartitionId', 'fileName');
+        $courseId = $path['courseId'];
+        $moduleId = $path['moduleId'];
+        $modulePartitionId = $path['modulePartitionId'];
+        $fileName = $path['fileName'];
+        //the download method uses /storage as root
+        $pathDirectory = 'courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId .'/'. $fileName;
+        return Storage::disk('public')->download($pathDirectory);
     }
 
 }

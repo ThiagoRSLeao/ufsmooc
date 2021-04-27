@@ -46,6 +46,9 @@ Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('g
 Route::get('get-content-info', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
 Route::get('get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
 Route::get('get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
+Route::get('get-module-partition-file-name', 'CourseController@courseGetModuleFilesName');
+Route::get('get-course-file', 'courseController@courseGetFile');
+
 
 Route::get('/logout', 'UserController@userLogout') -> name('logout');
 

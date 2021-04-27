@@ -20,6 +20,19 @@ body{
     margin-bottom: 75px;
 }
 
+#files-title{
+    font-family: Rubik;
+}
+
+#files{
+    font-family: Comic Sans MS;
+    cursor: pointer;
+}
+
+#files:hover{
+    text-decoration: underline;
+}
+
 
 
 #go-back{

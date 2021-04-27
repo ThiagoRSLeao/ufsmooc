@@ -29,6 +29,15 @@
                                 @{{content.content}}
                             </div>
                         </div>
+                        <div id = 'files-container'>
+                            <div id ='files-title'><strong>Anexos:</strong></div>
+                            <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
+                                @{{fileName}}
+                            </div>
+                            <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
+                                @{{fileName}}
+                            </div>
+                        </div>
                     </div>
 
                     <div id = 'questionary-window' v-if='this.isContentWindow == false'>
@@ -78,7 +87,8 @@
                     courseId: 1,
                     moduleId: 1,
                     modulePartitionId: 1,
-                    isContentWindow: false,
+                    isContentWindow: true,
+                    filesName: [],
                 }
             },
 
@@ -118,9 +128,27 @@
                     }
                 },
 
+                async getFiles(courseId, moduleId, modulePartitionId){
+                    response = await axios.get('get-module-partition-file-name', {
+                        params:{
+                            courseId: courseId,
+                            moduleId: moduleId,
+                            modulePartitionId: modulePartitionId
+                        } 
+                    });
+                    this.filesName = response.data;
+
+                },
+
+                async downloadFile(fileName){
+                    window.open('/get-course-file?courseId=' + this.courseId + '&moduleId=' + this.moduleId + '&modulePartitionId=' + this.modulePartitionId + '&fileName=' + fileName);
+
+                },
+
                 async mountPage(){
                     await this.getModulesData(this.courseId);
                     await this.getContent(this.courseId, this.moduleId, this.modulePartitionId);
+                    await this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
                     this.getStyle();
                 },
 
