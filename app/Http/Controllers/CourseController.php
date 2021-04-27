@@ -85,7 +85,13 @@ class CourseController extends Controller
             "dt_begin_teaches" => date("Y-m-d H:i:s"),
             "dt_end_teaches" => date("Y-m-d H:i:s"),            
         ]);
-        return response()->json($course->id);
+        $courseId = $course->id;
+        return response()->json($courseId);
+    }
+
+    public function courseSetCourseImage(Request $request){
+        //$contents = file_get_contents($request->photo->path());
+        //echo $contents;
     }
 
     public function courseGetCourses(){

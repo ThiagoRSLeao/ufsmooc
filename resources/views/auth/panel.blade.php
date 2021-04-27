@@ -136,7 +136,7 @@
                     <option></option>
                 </select-->
                 <div class='course-form-title'>Imagem do Curso</div>
-                <input type='file' />    
+                <input type='file' @change='selectFile' />    
                 <input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/>            
                 
                 <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_certification' v-model='newCourse.has_certification'/> Possui certificação </div>
@@ -282,6 +282,7 @@
                     coursesTeaches: null,
                     coursesStudies: null,
                     coursesFav: null,
+                    courseImage: null,
                     newCourse: {
                         course_title: '',
                         path_picture_course: '',
@@ -353,6 +354,9 @@
                 toggleCreateCourseStep(actualStep){
                     this.showCourseCreateWindow = actualStep;
                 },
+                selectFile(event){
+                    this.courseImage = event.target.files[0];
+                },
                 createNewCourseModule(){
                     let newModuleNumber = this.newCourse.modules.length + 1;
                     this.newCourse.modules.push({
@@ -407,6 +411,13 @@
                     var response = await axios.post('/teacher/save-course', this.newCourse);
                     this.loadTeaches();
                     this.showCourseCreateWindow = 0;
+                    courseId = response.data;
+                    const data = new FormData();
+                    data.append('image', this.courseImage);
+                    data.append('id', courseId)
+                    axios.post('/set-course-image', {
+                        data: data,
+                    });
                 },
                 getActualModule(){
                     return this.newCourse.modules.find(mod => mod.index  == this.actualModuleIndex);
