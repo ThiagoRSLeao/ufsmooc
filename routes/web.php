@@ -32,13 +32,16 @@ Route::get('/edit-teacher', function () {
 }) -> name('get.view.teacherEdit')-> Middleware('auth');
 
 Route::post('/validate-login', 'UserController@userValidateLogin') -> name('post.data.login.validate');
-Route::post('/create-user', 'UserController@userCreate' ) -> name('post.data.user.create');
+Route::post('/create-user', 'UserController@userCreate' ) -> name('user.create');//trocar o nome para post.data.user.create
+Route::get('/get-username', 'UserController@userGetUsername') -> name('get.data.username');
 
 Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')->name('show.course.formCreate');
 
 
 Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post.data.course.subscribe'); //TROCAR O METODO DA ROTA
-Route::get('/get-students-info', 'CourseController@returnCoursesStudents')-> name('get.data.courseStudentsInfo');
+Route::post('/create-module-test', 'CourseController@courseCreateModule');
+Route::get('get-courses', 'CourseController@courseGetCourses')->name('get.data.course');
+Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
 Route::get('get-content-info', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
 Route::get('get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
 Route::get('get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
