@@ -21,6 +21,8 @@ class CreateCourseTable extends Migration
             $table->text('course_description');
             $table->boolean('has_tutoring');
             $table->boolean('has_certification');
+            $table->integer('number_hours')->nullable();
+            $table->smallInteger('level')->nullable(); // tirar esse nullable
             $table->dateTime('begin_subscriptions_date');
             $table->dateTime('end_subscriptions_date');
             $table->dateTime('begin_course_date');

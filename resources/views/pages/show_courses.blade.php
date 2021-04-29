@@ -13,7 +13,7 @@
                 <div class = "courses-container-title">Cursos disponíveis</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses">
+                    <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses"v-on:click="showModal(notSubscribedCourse)">
 
                         <div class = "img-container">
                             <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
@@ -21,10 +21,10 @@
                         <div class = "info-container"></div>
                         <div class = "course_title" name = "course_title">@{{notSubscribedCourse.course_title}}</div>
                         <div class = "course_cartegory" name = "course_cartegory"><br>@{{notSubscribedCourse.course_cartegory}}</div>
-                        <div class = "has_tutoring" name = "has_tutoring" v-if="notSubscribedCourse.has_tutoring==1"><br>TutoriSDDSa</div>
+                        <div class = "course-tag-tutoring" name = "has_tutoring" v-if="notSubscribedCourse.has_tutoring==1">Tutoria</div>
+                        <div class = "course-tag-hours" name = "has_tutoring">40 horas</div>
+                        <div class = "course-tag-level" name = "has_tutoring">Intermediário</div>
                         <div class = "progress-bar"></div>
-                        <button class = "show_details" name = "show_details" value = "inscrever-se" v-on:click="showModal(notSubscribedCourse)" >Ver detalhes</button>
-
                     </div>        
                 </div>  
             </div>    
@@ -90,7 +90,25 @@
                 </div>
 
                 <div class = 'about-box' v-if='this.currentCourse.showModules==false'>
+                    <div class = 'about-title'>Descrição do curso:</div>
                     <div class = 'about-text'>@{{currentCourse.courseData.course_description}}</div>
+                    <div class = 'general-info-title'>Informações gerais:</div>
+                    <div class = 'general-info-box'>
+                        <div class = 'general-info-content-align'>
+                            <div class = 'general-info-content'>Tutoria</div>
+                            <div class = 'general-info-content'>Tutoria</div>
+                        </div>
+                        <div class = 'general-info-content-align'>
+                            <div class = 'general-info-content'>Tutoria</div>
+                            <div class = 'general-info-content'>Tutoria</div>
+                        </div>
+                        <div class = 'general-info-content-align'>
+                            <div class = 'general-info-content'>Tutoria</div>
+                            <div class = 'general-info-content'>Tutoria</div>
+                        </div>
+                    </div>
+                    <div class ='about-teacher-title'> Sobre o professor </div>
+                    <div class ='about-teacher-text'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi inventore molestias provident reprehenderit consequuntur vitae magni vel, ipsum ex saepe voluptates? Ab excepturi cum porro at eaque rem, quibusdam labore?
                 </div>
                 
             </div>

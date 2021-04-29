@@ -13,7 +13,7 @@
                     Seta
                 </div>
                 <div id = 'all-content-align'>
-                    <div id = 'content-window' v-if='this.isContentWindow == true'>    
+                    <div id = 'content-window'>    
                         <div v-if='modulePartitionType == 0'>
                             <div id = 'title-box'>
                                 
@@ -57,7 +57,7 @@
                         </div>
                     </div>
 
-                    <div id = 'questionary-window' v-if='this.isContentWindow == false'>
+                    <div id = 'questionary-window' v-if='this.modulePartitionType == 2'>
                         <div id = 'questionary-top-container'>
                             <div id = 'questionary-icon'>?</div>
                             <div id = 'questionary-title'>mucho texto</div>
@@ -109,7 +109,6 @@
                     modulePartitionId: 0,
                     modulePartitionType: 0,
                     modulePartitionName: '',
-                    isContentWindow: true,
                     filesName: [],
                 }
             },

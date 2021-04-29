@@ -1,4 +1,13 @@
-
+.show-details {
+    background-color: #4CAF50; /* Green */
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
 .section-main{
     display:flex;
@@ -109,6 +118,9 @@ div#wrapper_courses_container{
 .courses-container-body{
     display:flex;
     flex-wrap:nowrap;
+    overflow-y:scroll;
+    padding-right: 15px;
+    box-sizing: border-box;
 }
 
 .button-create
@@ -150,23 +162,60 @@ div#wrapper_courses_container{
     text-align: center;
 }
 
+.course_title:hover{
+    text-decoration: underline;
+}
+
 .course_cartegory{
     width:100%;
     text-align: center;
 }
 
-.has_tutoring{
-    width:100%;
-    text-align: center;
+.course-tag-tutoring{
+    border-radius: 20px;
+    background-color: #87ED85;
+    color:#198516;
+    height: 15px;
+    font-size: 10pt;
+    margin: 5px;
+    padding: 5px;
 }
 
-.show_details{
-    
+.course-tag-hours{
+    border-radius: 20px;
+    background-color: #E34EE6;
+    color: #8A118D;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Roboto;
+    height: 15px;
+    font-size: 10pt;
+    margin: 5px;
+    padding: 5px;
 }
+
+.course-tag-modules{
+    border-radius: 20px;
+    background-color: green;
+    height: 15px;
+    font-size: 10pt;
+    margin: 5px;
+    padding: 5px;
+}
+
+.course-tag-level{
+    border-radius: 20px;
+    background-color: red;
+    height: 15px;
+    font-size: 10pt;
+    margin: 5px;
+    padding: 5px;
+}
+
 
 .course-box{
     height: 280px;
-    width: 240px;
+    min-width: 240px;
     background-color: #ffffff;
     margin: 20px;
     border-radius:10%;
@@ -522,15 +571,58 @@ color: rgba(12, 20, 39, 0.7);
 }
 
 .about-box{
-    border: 1px solid gray;
     margin-top: 20px;
     border-radius: 15px;
     min-height: 300px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
 
 }
 
-.about-text{
+.about-title{
     padding-top: 20px;
-    padding-left: 20px;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.about-text{
+    padding-top: 10px;
     word-wrap: break-word;
+    font-size: 12pt;
+}
+
+.general-info-title{
+    padding-top: 60px;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.general-info-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.general-info-content-align{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    
+}
+
+.general-info-content{
+    margin-right: 50%;
+    font-family: Rubik;
+    font-size: 10pt;
+}
+
+.about-teacher-title{
+    padding-top: 60px;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.about-teacher-text{
+    margin-top: 10px;
+    font-size: 12pt;
 }
