@@ -84,7 +84,7 @@
                         <div class = 'module-text-icon'>
                             II   
                         </div>
-                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id, modulePartition.type)'>@{{modulePartition.name}}</div>
+                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id)'>@{{modulePartition.name}}</div>
                     </div>
 
                 </div>
@@ -128,6 +128,8 @@
                 async getContent(modulePartitionId){
                     response = await axios.get('/get-content-info/'+modulePartitionId);
                     this.contents = JSON.parse(response.data.content);
+                    this.modulePartitionType = response.data.type;
+                    console.log(this.modulePartitionType);
                     console.log(this.contents[0].content);
                     
                 },
@@ -165,9 +167,8 @@
                     //await this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
                     this.getStyle();
                 },
-                async changeContent(localModulePartitionId, type){
+                async changeContent(localModulePartitionId){
                     await this.getContent(localModulePartitionId);
-                    this.modulePartitionType = 0 //type;
                     this.modulePartitionName = 'Nome'//Name;
                     this.getStyle();
                 }

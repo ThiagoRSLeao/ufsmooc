@@ -224,7 +224,7 @@ class CourseController extends Controller
 
     public function courseModuleGetContent($id){
         $modulePartitionId = $id;
-        $content = DB::table('module_partition')->find($modulePartitionId, ['content']);
+        $content = DB::table('module_partition')->find($modulePartitionId, ['content', 'type']);
         //->where('module_id', '=', $moduleId)
         
         return response()->json($content);
@@ -249,10 +249,10 @@ class CourseController extends Controller
 
     public function teste(Request $request){
         $modulePartitionId = 1;
-        $content = DB::table('module_partition')->find($modulePartitionId, ['content']);
+        $content = DB::table('module_partition')->find($modulePartitionId, ['content', 'type']);
         //->where('module_id', '=', $moduleId)
         
-        print_r($content);
+        dd($content);
 
 
 
