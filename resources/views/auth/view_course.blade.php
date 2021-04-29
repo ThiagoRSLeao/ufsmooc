@@ -27,7 +27,7 @@
                             </div>
                             <div id = 'content'>
                                 <div class = 'content-partition' v-for='content in this.contents'>
-                                    @{{content.text}}
+                                    @{{content.content}}
                                 </div>
                             </div>
                             <div id = 'files-container'>
@@ -122,14 +122,13 @@
                         }
                         });
                     this.modules = response.data;
-                    console.log(this.modules);
                     
                 },  
 
                 async getContent(modulePartitionId){
                     response = await axios.get('/get-content-info/'+modulePartitionId);
                     this.contents = JSON.parse(response.data.content);
-                    console.log(this.contents);
+                    console.log(this.contents[0].content);
                     
                 },
                 
@@ -168,8 +167,8 @@
                 },
                 async changeContent(localModulePartitionId, type){
                     await this.getContent(localModulePartitionId);
-                    this.modulePartitionType = type;
-                    this.modulePartitionName = Name;
+                    this.modulePartitionType = 0 //type;
+                    this.modulePartitionName = 'Nome'//Name;
                     this.getStyle();
                 }
             },

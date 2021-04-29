@@ -50,7 +50,7 @@
 
         <div id = "big-box" v-if='this.openCourse == true'>
             <div id = 'close-course-button' v-on:click='closeCourseBigBox'> Fechar </div>
-            <div id = 'title'>@{{currentCourse.courseData.course_title}}</div>
+            <div id = 'title'><strong>@{{currentCourse.courseData.course_title}}</strong></div>
             <div id = 'teacher-content'>
                 <img id='teacher-pic' src = 'https://i.pinimg.com/originals/f0/b2/7e/f0b27e8e3a0978694001fcd2afd58f25.png'>
                 <div id = 'teacher-name'>Dr. Leonardo da Silva</div>

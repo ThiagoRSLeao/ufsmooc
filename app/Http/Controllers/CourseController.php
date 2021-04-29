@@ -248,13 +248,11 @@ class CourseController extends Controller
 
 
     public function teste(Request $request){
-        $courseId = 1;
-        $moduleId = 1;
         $modulePartitionId = 1;
-        $fileName = 'file.txt';
-        //the download method uses /storage as root
-        $pathDirectory = 'courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId .'/'. $fileName;
-        return Storage::disk('public')->download($pathDirectory);
+        $content = DB::table('module_partition')->find($modulePartitionId, ['content']);
+        //->where('module_id', '=', $moduleId)
+        
+        print_r($content);
 
 
 
