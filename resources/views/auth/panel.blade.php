@@ -411,12 +411,13 @@
                     this.loadTeaches();
                     this.showCourseCreateWindow = 0;
                     courseId = response.data;
-                    const data = new FormData();
-                    data.append('image', this.courseImage);
-                    data.append('id', courseId)
-                    axios.post('/set-course-image', {
-                        data: data,
-                    });
+                    let formData = new FormData();
+                    formData.append('image', this.courseImage);
+                    formData.append('id', courseId);
+                    const config = {
+                        headers: { 'content-type': 'multipart/form-data' }
+                    };
+                    response = await axios.post('/set-course-image', formData, config);
                 },
                 getActualModule(){
                     return this.newCourse.modules.find(mod => mod.index  == this.actualModuleIndex);

@@ -152,8 +152,9 @@ div#wrapper_courses_container{
     overflow:hidden;
 }
 
-.steve{
-    width:100px;
+.course-image{
+    max-width:100px;
+    max-height: 200px;
     text-align: center;
 }
 

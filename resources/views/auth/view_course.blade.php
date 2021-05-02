@@ -35,9 +35,6 @@
                                 <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
                                     @{{fileName}}
                                 </div>
-                                <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
-                                    @{{fileName}}
-                                </div>
                             </div>
                         </div>
                         <div v-if='modulePartitionType == 1'>
@@ -105,8 +102,8 @@
                     contents: '',
                     modules: '',
                     courseId: '{{ $id }}',
-                    moduleId: 0,
-                    modulePartitionId: 0,
+                    moduleId: 1,
+                    modulePartitionId: 1,
                     modulePartitionType: 0,
                     modulePartitionName: '',
                     filesName: [],
@@ -129,8 +126,6 @@
                     response = await axios.get('/get-content-info/'+modulePartitionId);
                     this.contents = JSON.parse(response.data.content);
                     this.modulePartitionType = response.data.type;
-                    console.log(this.modulePartitionType);
-                    console.log(this.contents[0].content);
                     
                 },
                 
@@ -171,6 +166,7 @@
                     await this.getContent(localModulePartitionId);
                     this.modulePartitionName = 'Nome'//Name;
                     this.getStyle();
+                    this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
                 }
             },
             computed: {

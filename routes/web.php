@@ -35,6 +35,7 @@ Route::get('/edit-teacher', function () {
 Route::post('/validate-login', 'UserController@userValidateLogin') -> name('post.data.login.validate');
 Route::post('/create-user', 'UserController@userCreate' ) -> name('user.create');//trocar o nome para post.data.user.create
 Route::post('set-course-image', 'CourseController@courseSetCourseImage');
+Route::get('get-course-image', 'CourseController@courseGetCourseImage');
 Route::get('/get-username', 'UserController@userGetUsername') -> name('get.data.username');
 
 Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')->name('show.course.formCreate');

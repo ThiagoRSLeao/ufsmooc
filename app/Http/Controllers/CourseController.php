@@ -90,9 +90,24 @@ class CourseController extends Controller
     }
 
     public function courseSetCourseImage(Request $request){
-        //$contents = file_get_contents($request->photo->path());
-        //echo $contents;
+        $imageName = 'courseImage';
+        $request->image->move(public_path('/resources/courses/course'. $request->id), $imageName);
+        
+    	return response()->json(['success'=>'Upload complete']);
     }
+
+    /*public function courseGetCourseImage($courseId){
+        $fileName = 'courseImage.jpg';
+        //the download method uses /storage as root
+        $pathDirectory = 'courses/course'. $courseId .'/'. $fileName;
+        if (Storage::disk('public')->exists($pathDirectory)){
+            return Storage::disk('public')->get($pathDirectory);
+        }
+        else{
+            return Storage::disk('public')->get('/courses/standard_course_image.PNG');
+        }
+        
+    }*/
 
     public function courseGetCourses(){
         $userId = Auth::id();
@@ -103,6 +118,7 @@ class CourseController extends Controller
         else{
             $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->orderBy('course_title')->get();
         }
+
         return response()->json(['notSubscribedCourses' => $notSubscribedCourses]);
     }
     
@@ -248,11 +264,21 @@ class CourseController extends Controller
 
 
     public function teste(Request $request){
+        /*$courseId = 37;
+        $item = Storage::get(public_path('/storage/courses/course'.$courseId.'/courseImage'));
+        //return Storage::response($item);
+        echo $item;*/
+
+        //$path = $request->only('courseId', 'moduleId', 'modulePartitionId', 'fileName');
+        $courseId = 37;
+        $moduleId = 1;
         $modulePartitionId = 1;
-        $content = DB::table('module_partition')->find($modulePartitionId, ['content', 'type']);
-        //->where('module_id', '=', $moduleId)
-        
-        dd($content);
+        $fileName = 'courseImage.jpg';
+        //the download method uses /storage as root
+        $pathDirectory = 'courses/course'. $courseId .'/'. $fileName;
+        $response = Storage::disk('public')->get($pathDirectory);
+        echo $response;
+
 
 
 
