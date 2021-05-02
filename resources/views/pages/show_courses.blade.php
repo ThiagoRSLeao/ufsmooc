@@ -16,7 +16,7 @@
                     <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses"v-on:click="showModal(notSubscribedCourse)">
 
                         <div class = "img-container">
-                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + notSubscribedCourse.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
+                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + notSubscribedCourse.id + '/courseImage.png'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
                         </div>
                         <div class = "info-container"></div>
                         <div class = "course_title" name = "course_title">@{{notSubscribedCourse.course_title}}</div>
