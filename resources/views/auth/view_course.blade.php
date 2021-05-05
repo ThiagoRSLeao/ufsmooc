@@ -27,7 +27,7 @@
                             </div>
                             <div id = 'content'>
                                 <div class = 'content-partition' v-for='content in this.contents'>
-                                    @{{content.content}}
+                                    @{{content.text}}
                                 </div>
                             </div>
                             <div id = 'files-container'>
@@ -77,11 +77,11 @@
                         <div class = 'module-navigation-title-text'>@{{module.title_module}}</div>
                     </div>
 
-                    <div class = 'module-navigation' v-for='modulePartition in module.partitions'>
+                    <div class = 'module-navigation' v-for='modulePartition in module.modulePartition'>
                         <div class = 'module-text-icon'>
                             II   
                         </div>
-                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id)'>@{{modulePartition.name}}</div>
+                        <div class = 'module-navigation-text' v-on:click='changeContent(modulePartition.id, module.id)'>@{{modulePartition.name}}</div>
                     </div>
 
                 </div>
@@ -102,8 +102,8 @@
                     contents: '',
                     modules: '',
                     courseId: '{{ $id }}',
-                    moduleId: 1,
-                    modulePartitionId: 1,
+                    moduleId: '',
+                    modulePartitionId: '',
                     modulePartitionType: 0,
                     modulePartitionName: '',
                     filesName: [],
@@ -119,14 +119,20 @@
                         }
                         });
                     this.modules = response.data;
+                    console.log(response.data);
                     
                 },  
 
-                async getContent(modulePartitionId){
+                async getContent(modulePartitionId, moduleId){
                     response = await axios.get('/get-content-info/'+modulePartitionId);
                     this.contents = JSON.parse(response.data.content);
                     this.modulePartitionType = response.data.type;
-                    
+                    this.adjustModules(modulePartitionId, moduleId);
+                },
+
+                adjustModules(modulePartitionId, moduleId){
+                    this.modulePartitionId = modulePartitionId;
+                    this.moduleId = moduleId;
                 },
                 
                 getStyle(){
@@ -162,11 +168,12 @@
                     //await this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
                     this.getStyle();
                 },
-                async changeContent(localModulePartitionId){
-                    await this.getContent(localModulePartitionId);
+                async changeContent(localModulePartitionId, localModuleId){
+                    await this.getContent(localModulePartitionId, localModuleId);
                     this.modulePartitionName = 'Nome'//Name;
                     this.getStyle();
                     this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
+                    console.log(this.modulePartitionType);
                 }
             },
             computed: {

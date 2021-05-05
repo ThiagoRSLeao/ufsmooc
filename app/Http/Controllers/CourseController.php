@@ -121,7 +121,7 @@ class CourseController extends Controller
         $userId = Auth::id();
         $subscribedCoursesId = DB::table('studies')->where('student_id', '=', $userId)->pluck('course_id');
         if (Auth::check() && count($subscribedCoursesId) != 0){
-            $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
+            $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
         }
         else{
             $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->orderBy('course_title')->get();
@@ -301,20 +301,26 @@ class CourseController extends Controller
     public function courseGetModuleFilesName(Request $request){
          $path = $request->only('courseId', 'moduleId', 'modulePartitionId');
          $courseId = $path['courseId'];
-         $moduleId = $path['moduleId'];
+         $moduleId = 1;//$path['moduleId'];
          $modulePartitionId = $path['modulePartitionId'];
  
          $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
-         $files = scandir($pathDirectory);
-         $i = 0;
-         //verifies if the file is a system file
-         foreach ($files as $file){
-             if ($file[0] != '.'){
-                 $filesName[$i] = $file;
-                 $i++;
-             }
-         }
-        return response()->json(['filesName' => $filesName]);
+         if (is_dir($pathDirectory)){
+            $files = scandir($pathDirectory);
+            $i = 0;
+            //verifies if the file is a system file
+            foreach ($files as $file){
+                if ($file[0] != '.'){
+                    $filesName[$i]= $file;
+                    $i++;
+                }
+            }
+        
+            return response()->json(['filesName' => $filesName]);
+        }
+        else{
+            return response()->json(['filesName' => NULL]);
+        }
     }
 
     public function courseGetFile(Request $request){

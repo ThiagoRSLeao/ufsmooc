@@ -28,7 +28,7 @@ Route::get('/participate-course/{id}', 'CourseController@showCourse')-> name('ge
 Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
 
-Route::get('/edit-teacher', function () {
+Route::get('/edit-profile', function () {
     return view('auth.edit_teacher');
 }) -> name('get.view.teacherEdit')-> Middleware('auth');
 
