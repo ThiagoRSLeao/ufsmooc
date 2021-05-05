@@ -1,19 +1,18 @@
 @extends('layouts.app')
 
-@section('style')
-    {{ url('style/pages/signUp.css') }}
+@section('style')/style/pages/signUp.css
 @endsection
 
 @section('title', 'Cadastre-se')
 
 @section('content')
     
-        <form action="{{ route('user.create') }}" method="POST">
+        <form action="{{ route('post.data.user.create') }}" method="POST">
             @method('POST')
             @csrf
             <div class="main-container">            
                 <div>
-                    <div class='main-title'> Faça seu Cadastro </div>
+                    <div class='main-title'>Nova Conta</div>
                     <div class='main-box'>
                         <input class='email-input' type="text" value="" placeholder="E-mail" name = 'email'/>
                         <input class='password-input' type="password" value="" placeholder="Senha" name = 'password'/>
@@ -39,7 +38,10 @@
 
                         <div class='btn-container'>
                             <input class='create-account-btn' type='submit' value='Criar conta' />
-                            <a class='cancel-btn' href={{ url('/')}}>Cancelar</a>
+                            <div class='lines-container'>
+                                <div class="line"></div>ou<div class="line"></div>
+                            </div>
+                            <a class='login-btn' href={{ url('/')}}>Entrar</a>
                         </div>                        
                     </div>               
                 </div>

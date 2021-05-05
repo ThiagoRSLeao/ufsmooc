@@ -15,50 +15,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
-        <h1 id = "edit_profile" name = "edit_profile">Editar perfil</h1>
-        <a ref = "camera.png"></a>
-        <div id = "data_pass_background" name = "data_pass_background"></div>
-        <div id = "current_background" name = "current_background"></div>
-        <div id = "image_input" name = "image_input"></div>
-        <div id = "data" name = "data" v-on:click="changeToDataForm">Dados</div>
-        <div id = "pass" name = "pass" v-on:click="changeToPassForm">Senha</div>
-        <div id = "form_1_header" name = "form_1_header" v-if="this.data_show==true">
-            <div class = "form_header" id = "complete_name" name = "complete_name"> Nome Completo</div>
-            <div class = "form_header" type = "text" id = "email_header" name = "email_header">E-mail: </div>
-            <div class = "form_header" id = "teacher_description_header" name = "teacher_description_header"> Descrição do professor</div>
-            <div class = "form_header" id = "CPF_header" name = "CPF_header">CPF</div>
-            <div class = "form_header" id = "country_header" name = "country_header">País:</div>
-            <div class = "form_header" id = "city_header" name = "city_header"> Cidade/Município:</div>
-            
+        <div id = 'main-box'>
+            <div id = "edit-profile-title" name = "edit_profile">Editar perfil</div>
+            <img id = 'teacher-img' src='https://i.pinimg.com/originals/62/70/4b/62704b5d02823c38fba159f572a565bd.jpg'></img>
+            <div id ='window-container'>
+                <div id = "data" name = "data" v-on:click="changeToDataForm">Dados</div>
+                <div id = "pass" name = "pass" v-on:click="changeToPassForm">Senha</div>
+            </div>
+            <div class = 'form-elements' v-if='this.data_show == true'>
+                <div class = "form-header" id = "complete_name" name = "complete_name"> Nome Completo</div>
+                <input class = "form-template" type = "text" id = "complete_name_form" name = "complete_name_form"  v-model="name">
+                <div class = "form-header" type = "text" id = "email_header" name = "email_header">E-mail: </div>
+                <input class = "form-template" type = "text" id = "email_form" name = "email">
+                <div class = "form-header" id = "teacher_description_header" name = "teacher_description_header"> Descrição do professor</div>
+                <textarea rows = "5" class = "form-template" type = "text" id = "teacher_description_input" name = "text_description_input"></textarea>
+                <div class = "form-header" id = "CPF_header" name = "CPF_header">CPF</div>
+                <input class = "form-template" id = "CPF_input" name = "CPF_input" type = "text">
+                <div class = "form-header" id = "country_header" name = "country_header">País:</div>
+                <input class = "form-template" id = "country_input" type = "text" name = "country_input">
+                <div class = "form-header" id = "city_header" name = "city_header"> Cidade/Município:</div>
+                <input class = "form-template" id = "city_input" name = "city input">
+                <button v-on:click='submitar' to-route='{{ route("post.data.teacher.update") }}'>Enviar</button>
+            </div>
+            <div class='form-elements' name = "form_2_header" v-if="this.data_show == false">
+                <div class = "form-header" id = "current_password_header" name = "current_password_header">Senha atual</div>
+                <input class = "form-template" type = "password" id = "current_password_input" name = "current_passowrd_input">
+                <div class = "form-header" id = "new_password_header" name = "new_password_header">Nova senha</div>
+                <input class = "form-template" type = "password" id = "new_password_input" name = "new_password_input">
+                <div class = "form-header" id = "confirm_new_password_header" name = "confirm_new_password_header">Confirmar nova senha</div>
+                <input class = "form-template" type = "password" id = "confirm_new_password_input" name = "confirm_new_password_input">
+                <div id = "save_border" name = "save_border"></div>    
+                <div id = "save" name = "save">Salvar</div>
+            </div>
         </div>
-        <form id = "form1" name = "form1" v-if="this.data_show == true" @submit.prevent = "submit">
-            <input class = "form_template" type = "text" id = "complete_name_form" name = "complete_name_form"  v-model="name">
-            <input class = "form_template" type = "text" id = "email_form" name = "email">
-            <textarea rows = "5" class = "form_template" type = "text" id = "teacher_description_input" name = "text_description_input"></textarea>
-            <input class = "form_template" id = "CPF_input" name = "CPF_input" type = "text">
-            <input class = "form_template" id = "city_input" name = "city input">
-            <input class = "form_template" id = "country_input" type = "text" name = "country_input">
-            <button v-on:click='submitar' to-route='{{ route("post.data.teacher.update") }}'>Enviar</button>
-        </form>
-        <div id = form_2_header name = "form_2_header" v-if="this.data_show == false">
-            <div class = "form_header" id = "current_password_header" name = "current_password_header">Senha atual</div>
-            <div class = "form_header" id = "new_password_header" name = "new_password_header">Nova senha</div>
-            <div class = "form_header" id = "confirm_new_password_header" name = "confirm_new_password_header">Confirmar nova senha</div>
-        </div>
-
-        <form id = "form2" name = "form2" v-if = "this.data_show == false">
-            <input class = "form_template" type = "password" id = "current_password_input" name = "current_passowrd_input">
-            <input class = "form_template" type = "password" id = "new_password_input" name = "new_password_input">
-            <input class = "form_template" type = "password" id = "confirm_new_password_input" name = "confirm_new_password_input">
-
-        </form>
-            <div id = "save_border" name = "save_border"></div>    
-            <div id = "save" name = "save">Salvar</div>
     </div>
                                                                                             
 @endsection

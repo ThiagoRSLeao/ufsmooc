@@ -134,6 +134,12 @@
                 <!--select v-model='newCourse.course_category'>
                     <option></option>
                 </select-->
+                <div class = 'course-form-title'> Nível</div>
+                <select id="course-level" v-model='newCourse.level'>
+                    <option value="0">Iniciante</option>
+                    <option value="1">Intermediário</option>
+                    <option value="2">Avançado</option>
+                </select>
                 <div class='course-form-title'>Imagem do Curso</div>
                 <input type='file' @change='selectFile' />    
                 <input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/>            
@@ -289,6 +295,7 @@
                         has_tutoring: false,
                         has_certification: false,
                         hours: 0,
+                        level: '',
                         has_inscription: false,
                         begin_subscriptions_date: '',
                         end_subscriptions_date: '',

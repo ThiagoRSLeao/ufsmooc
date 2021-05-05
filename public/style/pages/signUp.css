@@ -1,6 +1,7 @@
 body
 {
     min-height: 800px;
+    background-color:#F7F9FD;
 }
 input:focus, select:focus
 {
@@ -20,12 +21,9 @@ form
 }
 .main-container
 {
-    background: #F3F3FA;
+    background: #FFFFFF;
     border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25), 0px 0px 3px #FFFFFF, 0px 0px 3px rgba(31, 42, 139, 0.48);
-    border: 2px solid #F3F3F4;
-    height: 650px;
+    min-height: 650px;
     width: 500px;
     display: flex;
     justify-content: center;
@@ -38,7 +36,7 @@ form
     justify-content: center;
     align-items: center; 
     height: 50px; 
-    color: #21376B;
+    color: black;
     font-weight: bold;
     font-size: 35px;
     letter-spacing: 0.2px;  
@@ -46,7 +44,7 @@ form
 }
 .main-box
 {
-    height: 380px;
+    min-height: 380px;
     display: flex;
     justify-content: center;
 	flex-wrap: wrap;
@@ -61,10 +59,10 @@ input[type='text'], input[type='password']
     width: 90%;
     box-sizing: border-box;
     height: 50px;
-    background: #E6E6E8;
+    background: #FFFFFF;
     border: 2px solid rgba(245, 245, 245, 0.2);
     box-shadow: inset 0px 0px 1px #FFFFFF, inset 0.1px 0px 2px #6E7788;
-    border-radius: 10px;
+    border-radius: 20px;
     padding-left: 20px;
 }
 .remind-login-container
@@ -87,8 +85,9 @@ input[type='text'], input[type='password']
     align-items: center;
     height: 40px;
     width: 90%;
-    color: #21376B;
+    color: black;
     font-size: 16pt;
+    font-weight: bold;
 }
 .city-container
 {
@@ -119,10 +118,10 @@ input[type='text'], input[type='password']
     padding-left: 17.5px;
 
     box-sizing: border-box;
-    background: #E6E6E8;
+    background: #FFFFFF;
     border: 2px solid rgba(245, 245, 245, 0.2);
     box-shadow: inset 0px 0px 1px #FFFFFF, inset 0.1px 0px 2px #6E7788;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 .btn-container
 {
@@ -131,17 +130,19 @@ input[type='text'], input[type='password']
     display: flex;    
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 .create-account-btn
 {
-    width: 71%;
+    width: 90%;
     box-sizing: border-box;
 
     height: 52px;
     background: #2754BE;
     border: 2px solid #A4A4A4;
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: .15s ease;
     display: flex;
     justify-content: space-around;
@@ -149,12 +150,47 @@ input[type='text'], input[type='password']
     text-decoration: none;
     font-size: 15pt;
 }
+.or-bar{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.or-bar-left{
+    height: 4px;
+    width: 40%;
+    left: 5%;
+    background-color: gray;
+}
+.or-bar-right{
+    height: 4px;
+    width: 40%;
+    background-color: gray;
+    right: 5%;
+}
 .create-account-btn:hover
 {
     color: #c4c4c4;
     cursor: pointer;
 }
-.cancel-btn
+.lines-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 90%;
+}
+.line
+{
+    width: 190px;
+    background: #B5AEAE;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    border: 0.1px solid #A6A1A1;
+    box-shadow: 0px 0.1px 0.1px #000000;
+    transform: rotate(0.24deg);
+}
+.login-btn
 {
     margin-left: 2%;
     text-decoration: none;
@@ -164,8 +200,10 @@ input[type='text'], input[type='password']
     box-sizing: border-box;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25), 0px 1px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 15px 10px 15px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: .1s ease;
+    width: 90%;
+    text-align: center;
 }
 .cancel-btn:hover
 {

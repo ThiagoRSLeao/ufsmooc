@@ -27,11 +27,11 @@ class CreateCourseTable extends Migration
             $table->dateTime('end_subscriptions_date');
             $table->dateTime('begin_course_date');
             $table->dateTime('end_course_date');
-            $table->integer('students_limit');
-            $table->integer('work_notifications');
-            $table->integer('question_notifications');
-            $table->integer('forum_notifications');
-            $table->integer('doubt_notifications');
+            $table->integer('students_limit')->unsigned();
+            $table->integer('work_notifications')->unsigned();
+            $table->integer('question_notifications')->unsigned();
+            $table->integer('forum_notifications')->unsigned();
+            $table->integer('doubt_notifications')->unsigned();
             $table->string('course_category');
             //$table->foreign('course_cartegory_id')->references('id')->on('course_cartegory'); --> TABLE COURSE_CARTEGORY DOESN'T EXIST
             $table->timestamps();

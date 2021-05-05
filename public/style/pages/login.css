@@ -1,6 +1,7 @@
 body
 {
     min-height: 600px;
+    background-color: #F7F9FD;
 }
 input:focus
 {
@@ -16,11 +17,8 @@ input:focus
 }
 .main-container
 {
-    background: #F3F3FA;
+    background: #FFFFFF;
     border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25), 0px 0px 3px #FFFFFF, 0px 0px 3px rgba(31, 42, 139, 0.48);
-    border: 2px solid #F3F3F4;
     height: 470px;
     width: 500px;
     display: flex;
@@ -34,7 +32,7 @@ input:focus
     justify-content: center;
     align-items: center; 
     height: 50px; 
-    color: #21376B;
+    color: black;
     font-weight: bold;
     font-size: 35px;
     letter-spacing: 0.2px;  
@@ -57,10 +55,10 @@ input[type='text'], input[type='password']
     width: 90%;
     box-sizing: border-box;
     height: 50px;
-    background: #E6E6E8;
+    background: #FFFFFF;
     border: 2px solid rgba(245, 245, 245, 0.2);
     box-shadow: inset 0px 0px 1px #FFFFFF, inset 0.1px 0px 2px #6E7788;
-    border-radius: 10px;
+    border-radius: 20px;
     padding-left: 20px;
 }
 .remind-login-container
@@ -75,6 +73,8 @@ input[type='text'], input[type='password']
     width: 20px;
     height: 20px;
     margin-right: 15px;
+    color: rgba(12, 20, 39, 0.35);
+
 }
 .login-btn
 {
@@ -85,7 +85,7 @@ input[type='text'], input[type='password']
     background: #2754BE;
     border: 2px solid #A4A4A4;
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: .15s ease;
 }
 .login-btn:hover
@@ -114,13 +114,15 @@ input[type='text'], input[type='password']
 .create-account-btn
 {
     text-decoration: none;
-    background: #F3F3F4;
-    color: black;
+    background: #FFFFFF;
+    color: #395EB7;
     border: 2px solid #F3F3F4;
     box-sizing: border-box;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25), 0px 1px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 15px 10px 15px;
-    border-radius: 10px;
+    border-radius: 20px;
+    width: 90%;
+    text-align: center;
 }
 .create-account-btn:hover
 {

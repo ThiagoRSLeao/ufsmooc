@@ -27,7 +27,9 @@ class CourseController extends Controller
         'end_course_date',
         'students_limit', 
         'course_category',
-        'modules');
+        'modules',
+        'hours',
+        'level');
         
         $course = Course::create([
             "course_title" => $data['course_title'],
@@ -46,6 +48,8 @@ class CourseController extends Controller
             "question_notifications" => 0,
             "forum_notifications" => 0,
             "doubt_notifications" => 0,
+            "number_hours" => $data['hours'],
+            "level" => $data['level'],
         ]);
 
         foreach($data['modules'] as $module)
@@ -90,10 +94,14 @@ class CourseController extends Controller
     }
 
     public function courseSetCourseImage(Request $request){
-        $imageName = 'courseImage';
-        $request->image->move(public_path('/resources/courses/course'. $request->id), $imageName);
-        
-    	return response()->json(['success'=>'Upload complete']);
+        $extension = $request->image->getClientOriginalExtension();
+        if ($extension == 'jpg'){
+            $imageName = 'courseImage.'.'jpg';
+            $request->image->move(public_path('/storage/courses/course'. $request->id), $imageName);
+            return response()->json(['success'=>'Upload complete']);
+        }else{
+            return response()->json(['error' => 'Invalid file']);
+        }
     }
 
     /*public function courseGetCourseImage($courseId){
@@ -116,7 +124,7 @@ class CourseController extends Controller
             $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
         }
         else{
-            $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course')->orderBy('course_title')->get();
+            $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->orderBy('course_title')->get();
         }
 
         return response()->json(['notSubscribedCourses' => $notSubscribedCourses]);
@@ -254,7 +262,7 @@ class CourseController extends Controller
         $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
         
         foreach ($modulesInfo as $moduleInfo){
-            $moduleInfo->partitions = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
+            $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
         }
 
         return response()->json($modulesInfo);

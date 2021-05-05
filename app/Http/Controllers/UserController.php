@@ -29,7 +29,7 @@ class UserController extends Controller
                 'type_user' => '1'
             ];
             User::create($user);
-            return $this->userLogin();
+            return $this->userValidateLogin($request);
         }
         else
         {

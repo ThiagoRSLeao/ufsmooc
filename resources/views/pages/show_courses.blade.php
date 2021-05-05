@@ -16,14 +16,14 @@
                     <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses"v-on:click="showModal(notSubscribedCourse)">
 
                         <div class = "img-container">
-                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + notSubscribedCourse.id + '/courseImage.png'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
+                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + notSubscribedCourse.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
                         </div>
                         <div class = "info-container"></div>
                         <div class = "course_title" name = "course_title">@{{notSubscribedCourse.course_title}}</div>
                         <div class = "course_cartegory" name = "course_cartegory"><br>@{{notSubscribedCourse.course_cartegory}}</div>
                         <div class = "course-tag-tutoring" name = "has_tutoring" v-if="notSubscribedCourse.has_tutoring==1">Tutoria</div>
-                        <div class = "course-tag-hours" name = "has_tutoring">40 horas</div>
-                        <div class = "course-tag-level" name = "has_tutoring">Intermediário</div>
+                        <div class = "course-tag-hours" name = "has_tutoring" v-if='notSubscribedCourse.number_hours != null'>@{{notSubscribedCourse.number_hours}}</div>
+                        <div class = "course-tag-level" name = "has_tutoring" v-if='notSubscribedCourse.level != null'>@{{notSubscribedCourse.level}}</div>
                         <div class = "progress-bar"></div>
                     </div>        
                 </div>  

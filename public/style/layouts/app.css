@@ -286,6 +286,13 @@ footer
     background: #21376B;
 }
 
+.footer-ufsm-links{
+    right: 10%;
+    margin-right: 20px;
+    display:flex;
+    transform: scale(1.25);
+}
+
 
 
 
