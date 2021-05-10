@@ -122,12 +122,14 @@ class CourseController extends Controller
         $subscribedCoursesId = DB::table('studies')->where('student_id', '=', $userId)->pluck('course_id');
         if (Auth::check() && count($subscribedCoursesId) != 0){
             $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
+            $subscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->whereIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
         }
         else{
             $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->orderBy('course_title')->get();
+            $subscribedCourses = NULL;
         }
 
-        return response()->json(['notSubscribedCourses' => $notSubscribedCourses]);
+        return response()->json(['notSubscribedCourses' => $notSubscribedCourses, 'subscribedCourses' => $subscribedCourses]);
     }
     
     

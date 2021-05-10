@@ -29,6 +29,26 @@
                 </div>  
             </div>    
 
+            <div class = "courses-container">
+                <div class = "courses-container-title">Cursos que participo</div>
+
+                <div class = "courses-container-body" name = "courses_loop" >
+                    <div class = "course-box" v-for="subscribedCourse in subscribedCourses"v-on:click="showModal(subscribedCourse)">
+
+                        <div class = "img-container">
+                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + subscribedCourse.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
+                        </div>
+                        <div class = "info-container"></div>
+                        <div class = "course_title" name = "course_title">@{{subscribedCourse.course_title}}</div>
+                        <div class = "course_cartegory" name = "course_cartegory"><br>@{{subscribedCourse.course_cartegory}}</div>
+                        <div class = "course-tag-tutoring" name = "has_tutoring" v-if="subscribedCourse.has_tutoring==1">Tutoria</div>
+                        <div class = "course-tag-hours" name = "has_tutoring" v-if='subscribedCourse.number_hours != null'>@{{subscribedCourse.number_hours}}</div>
+                        <div class = "course-tag-level" name = "has_tutoring" v-if='subscribedCourse.level != null'>@{{subscribedCourse.level}}</div>
+                        <div class = "progress-bar"></div>
+                    </div>        
+                </div>  
+            </div>    
+
         </div>
 
         
@@ -128,6 +148,7 @@
                 return{
                     openCourse: false,
                     notSubscribedCourses: '',
+                    subscribedCourses: '',
                     modal_visible: false,
 
                     currentCourse:{
@@ -152,6 +173,7 @@
                     response = await axios.get('get-courses', {
                     });
                     this.notSubscribedCourses = response.data.notSubscribedCourses;
+                    this.subscribedCourses = response.data.subscribedCourses;
                 },
 
                 closeCourseBigBox(){

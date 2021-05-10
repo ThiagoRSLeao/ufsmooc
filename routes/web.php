@@ -56,6 +56,9 @@ Route::get('/logout', 'UserController@userLogout') -> name('logout');
 
 
 Route::get('/teste', 'CourseController@teste')->name('teste');
+/*Route::get('/', function(){
+    return view('test');
+});*/
 
 
 

@@ -55,7 +55,7 @@
                 </div> 
             </div>          
 
-            <div class = "courses-container">
+            <!--div class = "courses-container">
                 <div class = "courses-container-title">Cursos que faço</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div> 
-            </div>
+            </div-->
 
             <div class = "courses-container" v-if='coursesFav != null'>
                 <div class = "courses-container-title" >Salvos</div>

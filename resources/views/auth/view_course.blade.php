@@ -99,7 +99,7 @@
 
             data(){
                 return{
-                    contents: '',
+                    contents: [],
                     modules: '',
                     courseId: '{{ $id }}',
                     moduleId: '',
@@ -125,8 +125,10 @@
 
                 async getContent(modulePartitionId, moduleId){
                     response = await axios.get('/get-content-info/'+modulePartitionId);
-                    this.contents = JSON.parse(response.data.content);
+                    this.contents = [''];
+                    this.contents.push(JSON.parse(response.data.content));
                     this.modulePartitionType = response.data.type;
+                    console.log(this.modulePartitionType);
                     this.adjustModules(modulePartitionId, moduleId);
                 },
 
@@ -173,7 +175,6 @@
                     this.modulePartitionName = 'Nome'//Name;
                     this.getStyle();
                     this.getFiles(this.courseId, this.moduleId, this.modulePartitionId);
-                    console.log(this.modulePartitionType);
                 }
             },
             computed: {
