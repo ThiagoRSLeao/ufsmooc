@@ -21,7 +21,7 @@
     <div id = "vue_jurisdiction" name = "vue_jurisdiction">
         <div id = 'main-box'>
             <div id = "edit-profile-title" name = "edit_profile">Editar perfil</div>
-            <img id = 'teacher-img' src='https://i.pinimg.com/originals/62/70/4b/62704b5d02823c38fba159f572a565bd.jpg'></img>
+            <!--img id = 'teacher-img' src='https://i.pinimg.com/originals/62/70/4b/62704b5d02823c38fba159f572a565bd.jpg'></img-->
             <div id ='window-container'>
                 <div id = "data" name = "data" v-on:click="changeToDataForm">Dados</div>
                 <div id = "pass" name = "pass" v-on:click="changeToPassForm">Senha</div>
@@ -39,7 +39,6 @@
                 <input class = "form-template" id = "country_input" type = "text" name = "country_input">
                 <div class = "form-header" id = "city_header" name = "city_header"> Cidade/Município:</div>
                 <input class = "form-template" id = "city_input" name = "city input">
-                <button v-on:click='submitar' to-route='{{ route("post.data.teacher.update") }}'>Enviar</button>
             </div>
             <div class='form-elements' name = "form_2_header" v-if="this.data_show == false">
                 <div class = "form-header" id = "current_password_header" name = "current_password_header">Senha atual</div>
@@ -49,8 +48,8 @@
                 <div class = "form-header" id = "confirm_new_password_header" name = "confirm_new_password_header">Confirmar nova senha</div>
                 <input class = "form-template" type = "password" id = "confirm_new_password_input" name = "confirm_new_password_input">
                 <div id = "save_border" name = "save_border"></div>    
-                <div id = "save" name = "save">Salvar</div>
             </div>
+            <button v-on:click='submitar'>Enviar</button>
         </div>
     </div>
                                                                                             
@@ -77,9 +76,19 @@
             methods:{
                 changeToPassForm(){
                     this.data_show = false;
+                    var data = window.document.getElementById('data');
+                    var pass = window.document.getElementById('pass');
+                    pass.style.backgroundColor = '#395EB7';
+                    pass.style.color = 'white';
+                    data.style.backgroundColor = 'white';
+                    data.style.color = 'black';
                 },
                 changeToDataForm(){
                     this.data_show = true;
+                    pass.style.backgroundColor = 'white';
+                    pass.style.color = 'black';
+                    data.style.backgroundColor = '#395EB7';
+                    data.style.color = 'white';
                 },
                 async getTeacher() {
                     response = await axios.get('/costumer/me');

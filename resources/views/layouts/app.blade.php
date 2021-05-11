@@ -31,9 +31,9 @@
                 <!--div class = 'messages-button'>Mensagens</div>
                 <div class = 'notifications-button'>Notificações</div-->
                 <div class = "username"> @{{this.username}}</div>
-                <div class = "user-picture-container">
+                <!--div class = "user-picture-container">
                     <img class = "user-picture" src = "https://pbs.twimg.com/media/D3LC7YNXsAIyiNz?format=jpg&name=4096x4096">
-                </div>
+                </div-->
                 <div class = "arrow" v-on:click="openUserOptions"> > </div>
             </div>
 

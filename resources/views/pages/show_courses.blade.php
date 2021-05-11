@@ -13,7 +13,7 @@
                 <div class = "courses-container-title">Cursos disponíveis</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses"v-on:click="showModal(notSubscribedCourse)">
+                    <div class = "course-box" v-for="notSubscribedCourse in notSubscribedCourses"v-on:click="showModal(notSubscribedCourse, false)">
 
                         <div class = "img-container">
                             <img class = 'course-image' v-bind:src="'/storage/courses/course' + notSubscribedCourse.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
@@ -29,11 +29,11 @@
                 </div>  
             </div>    
 
-            <div class = "courses-container">
+            <div class = "courses-container" v-if='this.subscribedCourses != null'>
                 <div class = "courses-container-title">Cursos que participo</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
-                    <div class = "course-box" v-for="subscribedCourse in subscribedCourses"v-on:click="showModal(subscribedCourse)">
+                    <div class = "course-box" v-for="subscribedCourse in subscribedCourses"v-on:click="showModal(subscribedCourse, true)">
 
                         <div class = "img-container">
                             <img class = 'course-image' v-bind:src="'/storage/courses/course' + subscribedCourse.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
@@ -54,7 +54,7 @@
         
 
         <div id = "modal" v-if= "this.modal_visible==true" v-on:click='closeModal'>
-            <div id = "modal-window" name = "modal-window" v-on:click.prevent>
+            <div id = "modal-window" name = "modal-window">
                 <div class = 'modal-course-title'>
                     <strong>@{{currentCourse.courseData.course_title}}</strong>
                 </div>
@@ -72,8 +72,8 @@
             <div id = 'close-course-button' v-on:click='closeCourseBigBox'> Fechar </div>
             <div id = 'title'><strong>@{{currentCourse.courseData.course_title}}</strong></div>
             <div id = 'teacher-content'>
-                <img id='teacher-pic' src = 'https://i.pinimg.com/originals/f0/b2/7e/f0b27e8e3a0978694001fcd2afd58f25.png'>
-                <div id = 'teacher-name'>Dr. Leonardo da Silva</div>
+                <!--img id='teacher-pic' src = 'https://i.pinimg.com/originals/f0/b2/7e/f0b27e8e3a0978694001fcd2afd58f25.png'-->
+                <div id = 'teacher-name'>Professor @{{currentCourse.courseData.teacher_info[0].name}} @{{currentCourse.courseData.teacher_info.surname}}</div>
             </div>
             <div id = 'modules-alignment'>
 
@@ -91,17 +91,19 @@
                 </div>
                 <div class = 'modules-container' v-if='this.currentCourse.showModules==true'>
                     <div class = 'module-box'>
-                        <div class ='module-elements-margin' v-for='(module, index) in this.currentCourse.modules'>
-                            <div class = 'module-top-container'>
-                                <div class = 'module-title'>@{{module.title_module}}</div>
-                                <div class = 'module-expand' v-on:click='expandModule(index)'>Expandir</div>
-                            </div>
+                        <div class ='module-elements-division' v-for='(module, index) in this.currentCourse.modules'>
+                            <div class = 'module-elements-margin'>
+                                <div class = 'module-top-container'>
+                                    <div class = 'module-title'>@{{module.title_module}}</div>
+                                    <div class = 'module-expand' v-on:click='expandModule(index)'>Expandir</div>
+                                </div>
 
-                            <div class = 'content-container' v-if ='this.currentCourse.expand[index] == true' v-for='modulePartition in module.modulePartition'>
+                                <div class = 'content-container' v-if ='this.currentCourse.expand[index] == true' v-for='modulePartition in module.modulePartition'>
 
-                                <div class = 'content'>
-                                    <div class = 'content-icon'> .. </div>
-                                    <div class = 'content-text'>@{{modulePartition.name}}</div>
+                                    <div class = 'content'>
+                                        <div class = 'content-icon'> .. </div>
+                                        <div class = 'content-text'>@{{modulePartition.name}}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,25 +116,17 @@
                     <div class = 'about-text'>@{{currentCourse.courseData.course_description}}</div>
                     <div class = 'general-info-title'>Informações gerais:</div>
                     <div class = 'general-info-box'>
-                        <div class = 'general-info-content-align'>
-                            <div class = 'general-info-content'>Tutoria</div>
-                            <div class = 'general-info-content'>Tutoria</div>
-                        </div>
-                        <div class = 'general-info-content-align'>
-                            <div class = 'general-info-content'>Tutoria</div>
-                            <div class = 'general-info-content'>Tutoria</div>
-                        </div>
-                        <div class = 'general-info-content-align'>
-                            <div class = 'general-info-content'>Tutoria</div>
-                            <div class = 'general-info-content'>Tutoria</div>
-                        </div>
+                        <div class = 'general-info-tutoring' v-if='currentCourse.courseData.has_tutoring == 1'>Tutoria</div>
+                        <div class = 'general-info-hours'>@{{currentCourse.courseData.number_hours}}</div>
+                        <div class = 'general-info-level'>@{{currentCourse.courseData.level}}</div>
                     </div>
                     <div class ='about-teacher-title'> Sobre o professor </div>
-                    <div class ='about-teacher-text'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi inventore molestias provident reprehenderit consequuntur vitae magni vel, ipsum ex saepe voluptates? Ab excepturi cum porro at eaque rem, quibusdam labore?
+                    <div class ='about-teacher-text' v-if='currentCourse.courseData.teacher_info[0].description != null'> @{{currentCourse.courseData.teacher_info[0].description}}</div>
+                    <div class = 'about-teacher-text' v-if='currentCourse.courseData.teacher_info[0].description == null'>Não há informações sobre o professor.</div>
                 </div>
                 
             </div>
-            <div id = 'subscribe' v-on:click='subscribe(this.currentCourse.courseData.id)'>
+            <div id = 'subscribe' v-on:click='subscribe(this.currentCourse.courseData.id)' v-if='this.currentCourse.subscribed == false'>
                 <div id = 'subscribe-text'>
                     Inscrever-se
                 </div>
@@ -160,6 +154,7 @@
                         modules:[{
                             }
                         ],
+                        subscribed: false,
                     },
                 }
             },
@@ -174,15 +169,18 @@
                     });
                     this.notSubscribedCourses = response.data.notSubscribedCourses;
                     this.subscribedCourses = response.data.subscribedCourses;
+                    console.log(this.notSubscribedCourses);
+                    console.log(this.subscribedCourses[0].teacher_info[0].name);
                 },
 
                 closeCourseBigBox(){
                     this.openCourse = false;
                 },
 
-                showModal(course){
+                showModal(course, subscribed){
                     this.modal_visible = true;
                     this.currentCourse.courseData = course;
+                    this.currentCourse.subscribed = subscribed; //true or false to show subscribe button 
                     console.log(this.modal_visible);
                     
                 },
@@ -244,13 +242,19 @@
 
                 expandModule(index){
                     var moduleExpand = window.document.getElementsByClassName('module-expand');
+                    var moduleStyleChange = window.document.getElementsByClassName('module-elements-division');
                     if (this.currentCourse.expand[index] == false){
                         this.currentCourse.expand[index] = true;
                         moduleExpand[index].innerText = 'Recolher';
+                        moduleStyleChange[index].style.border = '1px solid rgba(205, 205, 205, 0.3)';
+                        //moduleStyleChange[index].style.boxSizing = 'border-box';
+                        moduleStyleChange[index].style.boxShadow = '0px 3.75px 7.5px 1px rgba(134, 134, 134, 0.27)';
                     }
                     else{
                         this.currentCourse.expand[index] = false;
                         moduleExpand[index].innerText = 'Expandir';
+                        moduleStyleChange[index].style.border = '0.5px solid #CDCDCD';
+                        moduleStyleChange[index].style.boxShadow = '';
                         
                     };
                 },

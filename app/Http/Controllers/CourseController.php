@@ -123,13 +123,23 @@ class CourseController extends Controller
         if (Auth::check() && count($subscribedCoursesId) != 0){
             $notSubscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->whereNotIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
             $subscribedCourses = DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->whereIn('id', $subscribedCoursesId)->orderBy('course_title')->get();
+            $this->setTeacherProperties($notSubscribedCourses);
+            $this->setTeacherProperties($subscribedCourses);
         }
         else{
             $notSubscribedCourses =DB::table('course')->select('id', 'course_title', 'course_description', 'has_tutoring', 'path_picture_course', 'number_hours', 'level')->orderBy('course_title')->get();
+            $this->setTeacherProperties($notSubscribedCourses);
             $subscribedCourses = NULL;
         }
 
         return response()->json(['notSubscribedCourses' => $notSubscribedCourses, 'subscribedCourses' => $subscribedCourses]);
+    }
+
+    private function setTeacherProperties(&$courses){
+        foreach ($courses as $course){
+            $id = DB::table('teaches')->where('course_id', $course->id)->pluck('user_id');
+            $course->teacher_info = DB::table('users')->select('name', 'surname', 'description')->where('id', $id)->get();
+        }
     }
     
     

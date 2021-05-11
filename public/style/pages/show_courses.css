@@ -411,6 +411,10 @@ here begins the course individual show
     cursor: pointer;
 }
 
+#close-course-button:hover{
+    text-decoration: underline;
+}
+
 #title{
     text-align: center;
     font-family: Roboto;
@@ -500,27 +504,31 @@ here begins the course individual show
     padding: 10px;
 }
 
-.module-box{
-    border: 1px solid gray;
-    margin-top: 10px;
+
+.module-elements-division{
+    border: 0.5px solid #CDCDCD;
+    box-sizing: border-box;
     border-radius: 15px;
+}
+
+.module-elements-division{
+    
+    border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 .module-elements-margin{
     margin: 15px;
+    
 }
-
 .module-title{
     margin-bottom: 20px;
-    font-family: Roboto;
+    font-family: Rubik;
     font-style: normal;
     font-weight: bold;
     font-size: 14pt;
     line-height: 100%;
-    /* or 21px */
-
-
-color: rgba(12, 20, 39, 0.7);
+    color: black;
 }
 
 .module-top-container{
@@ -544,7 +552,7 @@ color: rgba(12, 20, 39, 0.7);
 
 .content-text{
     margin-left: 10px;
-    font-family: Roboto;
+    font-family: Rubik;
     font-style: normal;
     font-weight: 500;
     font-size: 12pt;
@@ -578,6 +586,8 @@ color: rgba(12, 20, 39, 0.7);
     max-width: 100%;
     flex-wrap: wrap;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -601,21 +611,13 @@ color: rgba(12, 20, 39, 0.7);
 
 .general-info-box{
     display: flex;
-    flex-direction: column;
-}
-
-.general-info-content-align{
-    display: flex;
     flex-direction: row;
     margin-top: 10px;
-    
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
-.general-info-content{
-    margin-right: 50%;
-    font-family: Rubik;
-    font-size: 10pt;
-}
+
 
 .about-teacher-title{
     padding-top: 60px;
@@ -626,4 +628,5 @@ color: rgba(12, 20, 39, 0.7);
 .about-teacher-text{
     margin-top: 10px;
     font-size: 12pt;
+    padding-bottom: 10px;
 }

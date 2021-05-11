@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->char('type_user', 1);
             $table->rememberToken();
             $table->timestamps();
+            $table->text('description')->nullable();
         });
     }
 

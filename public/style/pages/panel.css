@@ -33,6 +33,8 @@
 .create-course-nav-option:hover
 {
     cursor: pointer;
+    color: #395EB7;
+    transition: 0.50s 0s ease;
 }
 .create-course-nav-option.active
 {
@@ -109,6 +111,7 @@
 .course-box-hidden
 {
     width: 100%;
+    transition: opacity 1s;
 }
 #courseDescription
 {
@@ -183,7 +186,7 @@ div#wrapper_courses_container{
     overflow:hidden;
 }
 
-.steve{
+.course-image{
     width:100px;
     text-align: center;
 }
@@ -439,10 +442,6 @@ div#wrapper_courses_container{
     align-items: center;
     border-bottom: 0.5px solid rgba(12, 20, 39, 0.3);
 }
-.course-module-box:hover
-{
-    cursor: pointer;
-}
 .course-content-select-none
 {
     width: 100%;
@@ -484,6 +483,11 @@ div#wrapper_courses_container{
     align-items: center;
     width: 100px;
     height: 100px;
+}
+.course-content-select-option:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
 }
 .course-content-text-container
 {

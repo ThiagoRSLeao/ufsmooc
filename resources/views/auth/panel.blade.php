@@ -27,7 +27,7 @@
                     <div class = "course-box" v-for="course in coursesTeaches">
 
                         <div class = "img-container">
-                            <img class = "steve" src = "https://www.bellacollezione.com/image/cache/catalog/products/menino/fantasia-steve-minecraft-800x800.jpg">
+                            <img class = 'course-image' v-bind:src="'/storage/courses/course' + course.id + '/courseImage.jpg'" onerror="this.src='/storage/courses/standard_course_image.PNG'"></img>
                         </div>
                         <div class = "info-container">
                             <div class = "course_title" name = "course_title">@{{course.course_title}}</div>
@@ -90,7 +90,7 @@
             </div-->
 
             <div class = "courses-container" v-if='coursesFav != null'>
-                <div class = "courses-container-title" >Salvos</div>
+                <div class = "courses-container-title" >Cursos arquivados</div>
 
                 <div class = "courses-container-body" name = "courses_loop" >
                     <div class = "course-box" v-for="course in coursesFav">
@@ -142,7 +142,7 @@
                 </select>
                 <div class='course-form-title'>Imagem do Curso</div>
                 <input type='file' @change='selectFile' />    
-                <input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/>            
+                <!--input type='text' name='path_picture_course' v-model='newCourse.path_picture_course'/-->            
                 
                 <div class='course-form-title'> <input type='checkbox' class='course-checkbox' name='has_certification' v-model='newCourse.has_certification'/> Possui certificação </div>
                     <div class='course-box-hidden' v-if='newCourse.has_certification'>
@@ -290,7 +290,7 @@
                     courseImage: null,
                     newCourse: {
                         course_title: '',
-                        path_picture_course: '',
+                        path_picture_course: 'A ser removido',
                         course_description: '',
                         has_tutoring: false,
                         has_certification: false,
