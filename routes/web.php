@@ -66,6 +66,7 @@ Route::get('/teste', 'CourseController@teste')->name('teste');
 
 
 Route::post('/update-register', 'UserController@userUpdateRegister')-> name ('post.data.teacher.update');
+Route::post('/update-password', 'UserController@userUpdatePassword')-> name ('post.pass.teacher.update');
 
 Route::prefix('/teacher')->group(function()
 {

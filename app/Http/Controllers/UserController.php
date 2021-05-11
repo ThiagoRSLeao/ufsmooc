@@ -91,35 +91,43 @@ class UserController extends Controller
 
 
     public function userUpdateRegister(Request $request){
-        /*$id = $request->only('id');
-        $data = $request->only('name, surname, CPF, email, UF, city, password, description');
+        $id = Auth::id();
+        $data = $request->only('name', 'surname', 'CPF', 'email', 'UF', 'city', 'password', 'curriculum');
         DB::table('users')->where('id', $id)->update([
             "email" => $data['email'],
-            "password" => bcrypt($data['password']),
             'name' => $data['name'],
-            'description' => $data['description'],
+            'description' => $data['curriculum'],
             'surname' => 'teste',
-            'CPF' => $data['cpf'],
-            'UF' => 'XX',
+            'CPF' => $data['CPF'],
+            'UF' => 'xx',
             'city' => $data['city'],
             'type_user' => '1',
-        ]);*/
-        $name = $request->only('name');
-
-        $user = [
-            "email" => $name['name'],
-            "password" => '1123',
-            'name' => 'DADS',
-            'surname' => 'Poéticdo',
-            'CPF' => '41241d2',
-            'UF' => 'ss',
-            'city' => 'sm',
-            'type_user' => '1'
-        ];
-        User::create($user);
-
+        ]);
         
-        return response()->json(['message' => 'Atualizacao bem sucedida.']);
+        
+        $this->userLogout($request);
+    }
+
+    public function userUpdatePassword(Request $request){
+        $id = Auth::id();
+        $data = $request->only('oldPassword', 'confirmNewPassword', 'newPassword');
+        $oldPasswordSent = bcrypt($data['oldPassword']);
+        $oldPasswordDB = DB::table('users')->where('id', $id)->pluck('password');
+        $newPassword = bcrypt($data['newPassword']);
+        $confirmNewPassword = bcrypt($data['confirmNewPassword']);
+        if ($oldPasswordDB == $oldPasswordSent && $newPassword == $confirmNewPassword){
+            DB::table('users')->where($id, 'id')->update([
+                'password' => bcrypt($newPassword),
+            ]);
+            $this->userLogout($request);
+        }
+        else{
+            return back()->withErrors(([
+                'error' => 'As credenciais estão incorretas.',
+            ]));
+        }
+        
+
     }
 
 }
