@@ -45,6 +45,17 @@ class DatabaseSeeder extends Seeder
             'type_user' => '1',
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'surname' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'CPF' => '11111311111',
+            'UF' => 'RS',
+            'city' => 'admin',
+            'type_user' => '2',
+        ]);
+
         DB::table('course')->insert([
             "course_title" => 'Curso teste',
             "course_subtitle" => 'teste zzz',

@@ -298,6 +298,31 @@ div#wrapper_courses_container{
     background-position: 35px 25px;
     background-size: 50px 50px;
 }
+.request-teacher-account, .request-teacher-account-definitive{
+    height: 100px;
+    width: 400px;
+    background-color: #ffffff;
+    color: #395EB7;
+    font-size: 12pt;
+    margin: 20px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: 0.35s 0s ease;
+    box-shadow: 0px 1px 1px 1px rgb(134 134 134 / 27%);
+    overflow:hidden; 
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-position: 35px 25px;
+    background-size: 50px 50px;
+}
+.request-teacher-account:hover, .request-teacher-account-definitive:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .no-courses-button-explore
 {
     background-image:url('/../../img/panel/explore.png');

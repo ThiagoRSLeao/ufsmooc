@@ -24,6 +24,7 @@ Route::get('/signup', 'ViewController@showUserSignup' ) -> name('get.view.userSi
 Route::get('/forgot-pass', 'ViewController@showUserForgotPass') -> name('get.view.userForgotPass');
 Route::get('/show-panel', 'ViewController@showPanel') -> name('get.view.panel')-> Middleware('auth');
 Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view.showCoursesPublic');
+Route::get('/admin', 'ViewController@showAdminPage')->middleware('admin');
 Route::get('/participate-course/{id}', 'CourseController@showCourse')-> name('get.view.participateCourse');
 Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
@@ -67,6 +68,12 @@ Route::get('/teste', 'CourseController@teste')->name('teste');
 
 Route::post('/update-register', 'UserController@userUpdateRegister')-> name ('post.data.teacher.update');
 Route::post('/update-password', 'UserController@userUpdatePassword')-> name ('post.pass.teacher.update');
+Route::get('/isTeacher', 'UserController@userIsTeacher')-> name('get.data.userIsTeacher');
+Route::post('/requestTeacherAccount', 'UserController@userRequestTeacherAccount');
+Route::get('/getTeacherTransformRequests', 'UserController@userGetTransformTeacherRequests')->middleware('admin');
+Route::post('/transformTeacher', 'UserController@userTransformTeacher')->middleware('admin');
+Route::post('/notTransformTeacher', 'UserController@userNotTransformTeacher')->middleware('admin');
+
 
 Route::prefix('/teacher')->group(function()
 {

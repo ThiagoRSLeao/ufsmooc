@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\UserSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -26,7 +27,7 @@ class UserController extends Controller
                 'CPF' => $data['cpf'],
                 'UF' => $data['uf'],
                 'city' => $data['city'],
-                'type_user' => '1'
+                'type_user' => '0'
             ];
             User::create($user);
             return $this->userValidateLogin($request);
@@ -35,6 +36,36 @@ class UserController extends Controller
         {
             return $this->userSignup();            
         }
+    }
+
+    public function userGetTransformTeacherRequests(){
+        $ids = DB::table('request_teacher_account')->pluck('user_id');
+        $teachersInfo = DB::table('users')->select('name', 'surname', 'id', 'email')->whereIn('id', $ids)->get();
+        return response()->json(['teachersInfo' => $teachersInfo]);
+    }
+
+    public function userTransformTeacher(Request $request){
+        $data = $request->only('id');
+        DB::table('users')->where('id', $data['id'])->update([
+            'type_user' => 1,
+        ]);
+
+        DB::table('request_teacher_account')->where('user_id', $data['id'])->delete();
+        return response()->json('Operacao concluida.');
+        
+    }
+
+    public function userNotTransformTeacher(Request $request){
+        $data = $request->only('id');
+
+        DB::table('request_teacher_account')->where('user_id', $data['id'])->delete();
+        return response()->json('Operacao concluida.');
+    }
+
+    public function userRequestTeacherAccount(){
+        DB::table('request_teacher_account')->insert([
+            'user_id' => Auth::id(),
+        ]);
     }
 
     public function userGetUsername(){
@@ -53,7 +84,7 @@ class UserController extends Controller
                 session()->put('userId', $user->id);
                 return redirect()->intended('/');
             }
-    
+            
             return back()->withErrors([
                 'email' => 'As credenciais inseridas não estão registradas no sistema.',
             ]);
@@ -68,6 +99,21 @@ class UserController extends Controller
         $request->session()->regenerateToken();
     
         return redirect('/');
+    }
+
+    public function userIsTeacher(){
+        $id = Auth::id();
+        $typeUser = DB::table('users')->where('id', $id)->pluck('type_user');
+        if ($typeUser[0] == 0){
+            return false;
+        }
+        else if ($typeUser[0] == 1 || $typeUser[0] == 2){
+            return true;
+        }
+        else{
+            return back()->withErrors('O tipo de usuário não pode ser definido.');
+        }
+        
     }
 
 

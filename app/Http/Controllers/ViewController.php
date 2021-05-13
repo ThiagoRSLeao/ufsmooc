@@ -68,4 +68,8 @@ class ViewController extends Controller
         return view('pages.view_course_external');
     }
 
+    public function showAdminPage(){
+        return view('auth.admin.admin');
+    }
+
 }
