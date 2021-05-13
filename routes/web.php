@@ -27,7 +27,7 @@ Route::get('/show-courses', 'ViewController@showCoursesPublic')-> name('get.view
 Route::get('/admin', 'ViewController@showAdminPage')->middleware('admin');
 Route::get('/participate-course/{id}', 'CourseController@showCourse')-> name('get.view.participateCourse');
 Route::get('/show-course-external', 'ViewController@showCourseExternal')-> name('get.view.showCourseExternal');
-Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
+Route::get('/get-students-info', 'CourseController@courseGetStudents')->middleware('teacher')->name('get.data.courseStudentsInfo');
 
 Route::get('/edit-profile', function () {
     return view('auth.edit_teacher');
@@ -35,15 +35,15 @@ Route::get('/edit-profile', function () {
 
 Route::post('/validate-login', 'UserController@userValidateLogin') -> name('post.data.login.validate');
 Route::post('/create-user', 'UserController@userCreate' ) -> name('post.data.user.create');//trocar o nome para post.data.user.create
-Route::post('set-course-image', 'CourseController@courseSetCourseImage');
+Route::post('set-course-image', 'CourseController@courseSetCourseImage')->middleware('teacher');
 Route::get('get-course-image', 'CourseController@courseGetCourseImage');
 Route::get('/get-username', 'UserController@userGetUsername') -> name('get.data.username');
 
-Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')->name('show.course.formCreate');
+Route::post('/show-course-create-form', 'CourseController@courseShowCreateForm')->name('show.course.formCreate')->middleware('teacher');
 
 
 Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post.data.course.subscribe'); //TROCAR O METODO DA ROTA
-Route::post('/create-module-test', 'CourseController@courseCreateModule');
+Route::post('/create-module-test', 'CourseController@courseCreateModule')->middleware('teacher');
 Route::get('/get-courses', 'CourseController@courseGetCourses')->name('get.data.course');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
 Route::get('/get-content-info/{id}', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
@@ -78,11 +78,11 @@ Route::post('/notTransformTeacher', 'UserController@userNotTransformTeacher')->m
 Route::prefix('/teacher')->group(function()
 {
     Route::get('/panel', 'ViewController@showPanel') -> name('get.view.teacherPanel')-> Middleware('auth');
-    Route::get('/course-manage', "ViewController@showCoursesManage") -> name('get.view.coursesManage');
-    Route::get('/course-get-teaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.courseTeaches')-> Middleware('auth');
-    Route::get('/get-course-notifications', 'CourseController@courseGetNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('auth');
+    Route::get('/course-manage', "ViewController@showCoursesManage") -> middleware('teacher')-> name('get.view.coursesManage');
+    Route::get('/course-get-teaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.courseTeaches')-> Middleware('teacher');
+    Route::get('/get-course-notifications', 'CourseController@courseGetNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('teacher');
 
-    Route::post('/save-course', 'CourseController@courseSave')->name('post.data.course.create');
+    Route::post('/save-course', 'CourseController@courseSave')->name('post.data.course.create')->middleware('teacher');
 });
 
 
