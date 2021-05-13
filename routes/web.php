@@ -61,6 +61,11 @@ Route::get('/teste', 'CourseController@teste')->name('teste');
     return view('test');
 });*/
 
+//works
+Route::post('submitWorkOrientations', 'WorkController@workSubmitOrientations')->middleware('teacher');
+
+//endWorks
+
 
 
 

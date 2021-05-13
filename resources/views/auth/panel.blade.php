@@ -208,6 +208,9 @@
                                         <div class='course-content-select-option' v-on:click='createModulePartition(2)'>
                                             Exercícios
                                         </div>
+                                        <div class = 'course-content-select-option' v-on:click='createModulePartition(3)'>
+                                            Trabalho
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +235,21 @@
                             <div>
                             <iframe width="560" height="315" v-bind:src="getActualPartitionComputed.content.url" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
-                        </div> 
+                        </div>
+
+                        <div class = 'course-content-work-container' v-else-if='getActualPartitionComputed.type == 3'>
+                            <div class = 'course-content-work-title'>
+                                Nome do trabalho: <input type = 'text' id = 'work-title-input'/>
+                            </div>
+                            <div class = 'course-content-work-file'>
+                                PDF do trabalho: <input type = 'file' id = 'work-pdf-input' accept=".pdf"/>
+                            </div>
+                            <div class = 'work-weight'>
+                                Peso do trabalho: <input type = 'number' step='0.01'/>
+                                Atenção: A nota final do aluno é calculada dividindo o total de pontos obtidos pelo aluno pela soma dos pesos de todos os trabalhos.
+                            </div>
+
+                        </div>
                         
 
                     </div>
