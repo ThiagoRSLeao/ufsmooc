@@ -46,7 +46,7 @@ Route::post('/subscribe-course', 'CourseController@courseSubscribe')->name('post
 Route::post('/create-module-test', 'CourseController@courseCreateModule')->middleware('teacher');
 Route::get('/get-courses', 'CourseController@courseGetCourses')->name('get.data.course');
 Route::get('/get-students-info', 'CourseController@courseGetStudents')-> name('get.data.courseStudentsInfo');
-Route::get('/get-content-info/{id}', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
+Route::get('/get-content-info/', 'CourseController@courseModuleGetContent')->name('get.data.courseModuleContent');
 Route::get('/get-modules-info', 'CourseController@courseModulesGetInfo')->name('get.data.courseModules');
 Route::get('/get-module-partition-info', 'CourseController@courseModuleGetPartitionInfo')->name('get.data.courseModulePartition');
 Route::get('/get-module-partition-file-name', 'CourseController@courseGetModuleFilesName');
@@ -84,7 +84,7 @@ Route::prefix('/teacher')->group(function()
 {
     Route::get('/panel', 'ViewController@showPanel') -> name('get.view.teacherPanel')-> Middleware('auth');
     Route::get('/course-manage', "ViewController@showCoursesManage") -> middleware('teacher')-> name('get.view.coursesManage');
-    Route::get('/course-get-teaches/{id}', 'CourseController@showCourseTeaches') -> name('teacher.show.courseTeaches')-> Middleware('teacher');
+    Route::get('/course-get-teaches/{id}/', 'CourseController@showCourseTeaches') -> name('teacher.show.courseTeaches')-> Middleware('teacher');
     Route::get('/get-course-notifications', 'CourseController@courseGetNotifications') -> name('teacher.get.coursesNotifications')-> Middleware('teacher');
 
     Route::post('/save-course', 'CourseController@courseSave')->name('post.data.course.create')->middleware('teacher');

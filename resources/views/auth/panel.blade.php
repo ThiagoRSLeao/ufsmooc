@@ -209,6 +209,9 @@
                                             Exercícios
                                         </div>
                                         <div class = 'course-content-select-option' v-on:click='createModulePartition(3)'>
+                                            Leitura em PDF
+                                        </div>
+                                        <div class = 'course-content-select-option' v-on:click='createModulePartition(4)'>
                                             Trabalho
                                         </div>
                                     </div>
@@ -237,7 +240,15 @@
                             </div>
                         </div>
 
-                        <div class = 'course-content-work-container' v-else-if='getActualPartitionComputed.type == 3'>
+                        <div class = 'course-content-questionary-container' v-else-if='getActualPartitionComputed.type == 2'>
+                            Aqui fica um código muito legal sobre a inserção do questionário
+                        </div>
+
+                        <div class = 'course-content-pdf-container' v-else-if='getActualPartitionComputed.type == 3'>
+                            Aqui fica um código muito legal sobre a inserção do PDF
+                        </div>
+
+                        <div class = 'course-content-work-container' v-else-if='getActualPartitionComputed.type == 4'>
                             <div class = 'course-content-work-title'>
                                 Nome do trabalho: <input type = 'text' id = 'work-title-input'/>
                             </div>
@@ -245,7 +256,7 @@
                                 PDF do trabalho: <input type = 'file' id = 'work-pdf-input' accept=".pdf"/>
                             </div>
                             <div class = 'work-weight'>
-                                Peso do trabalho: <input type = 'number' step='0.01'/>
+                                Peso do trabalho: <input type = 'number' step='0.1'/>
                                 Atenção: A nota final do aluno é calculada dividindo o total de pontos obtidos pelo aluno pela soma dos pesos de todos os trabalhos.
                             </div>
 

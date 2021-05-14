@@ -258,12 +258,17 @@ class CourseController extends Controller
         
     }
 
-    public function courseModuleGetContent($id){
-        $modulePartitionId = $id;
-        $content = DB::table('module_partition')->find($modulePartitionId, ['content', 'type']);
-        //->where('module_id', '=', $moduleId)
+    public function courseModuleGetContent(Request $request){
+        $data = $request->only('courseId', 'moduleId');
+        $aux = DB::table('module')->select('id', 'title_module')->where('id', $data['moduleId'])->get();
+        $moduleData = $aux[0];
+        $partitionsData = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position', 'content')->where('module_id', $data['moduleId'])->orderBy('sequence_position')->get();
+        foreach ($partitionsData as $partitionData){
+            $partitionData->fileName = $this->courseGetModuleFilesName($data['courseId'], $data['moduleId'], $partitionData->id);
+        }
+        $moduleData->partitions = $partitionsData;
         
-        return response()->json($content);
+        return response()->json($moduleData);
     }
 
     
@@ -273,9 +278,9 @@ class CourseController extends Controller
         
         $modulesInfo = DB::table('module')->select('id', 'title_module')->where('course_id', '=', $courseId)->get();
         
-        foreach ($modulesInfo as $moduleInfo){
+        /*foreach ($modulesInfo as $moduleInfo){
             $moduleInfo->modulePartition = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position')->where('module_id', '=', $moduleInfo->id)->orderBy('sequence_position')->get();
-        }
+        }*/
 
         return response()->json($modulesInfo);
         
@@ -310,11 +315,7 @@ class CourseController extends Controller
         return response()->json($modulePartitionsInfo);
     }
 
-    public function courseGetModuleFilesName(Request $request){
-         $path = $request->only('courseId', 'moduleId', 'modulePartitionId');
-         $courseId = $path['courseId'];
-         $moduleId = 1;//$path['moduleId'];
-         $modulePartitionId = $path['modulePartitionId'];
+    private function courseGetModuleFilesName($courseId, $moduleId, $modulePartitionId){
  
          $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
          if (is_dir($pathDirectory)){
@@ -328,10 +329,10 @@ class CourseController extends Controller
                 }
             }
         
-            return response()->json(['filesName' => $filesName]);
+            return $filesName;
         }
         else{
-            return response()->json(['filesName' => NULL]);
+            return NULL;
         }
     }
 

@@ -42,6 +42,10 @@ body{
     cursor: pointer;
 }
 
+#go-back:hover{
+    text-decoration: underline;
+}
+
 #all-content-align{
     margin-left: 50px;
     margin-right: 50px;
@@ -91,19 +95,28 @@ body{
 .module-navigation-title-box{
     height: 40px;
     background-color: #21376B;
+    display: flex;
+    flex-direction: row;
+}
+
+.module-navigation-title-box:hover{
+    text-decoration: underline;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.module-navigation-expand-module{
+    padding-top: 10px;
+    color: #FFFFFF;
 }
 
 .module-navigation-title-text{
     font-family: Rubik;
     color: #FFFFFF;
     padding-top: 10px;
-    text-align: center;
-    cursor: pointer;
+    padding-left: 30px;
 }
 
-.module-navigation-title-text:hover{
-    text-decoration: underline;
-}
 
 .module-navigation{
     border: 0.7px solid rgba(12, 20, 39, 0.3);
