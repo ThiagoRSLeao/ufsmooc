@@ -81,6 +81,53 @@ body{
     white-space: pre;
 }
 
+.pdf-download-container{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pdf-download{
+    cursor: pointer;
+    color: #395EB7;
+    margin-left: 10px;
+}
+
+.pdf-download:hover{
+    text-decoration: underline;
+}
+
+.pdf-window{
+    margin-bottom: 15px;
+}
+
+.submit-work{
+
+    border-radius: 20px;
+    background-color: #395EB7;
+    color: #FFFFFF;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: center;
+    margin-bottom: 30px;
+}
+
+.submit-work-text:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.upload-work-modal-background{
+    z-index: 5;
+    height:100%;
+    width: 100%;
+    position: fixed;
+    background-color: gray;
+}
+
 #module-navigation-box{
     width: 250px;
     height: 350px;

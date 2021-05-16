@@ -259,14 +259,17 @@ class CourseController extends Controller
     }
 
     public function courseModuleGetContent(Request $request){
-        $data = $request->only('courseId', 'moduleId');
+        $data = $request->only('courseId', 'modulePosition');
+        $auxId = DB::table('module')->select('id')->where('module_position', $data['modulePosition'])->where('course_id', $data['courseId'])->get();
+        $data['moduleId'] = $auxId[0]->id;
         $aux = DB::table('module')->select('id', 'title_module')->where('id', $data['moduleId'])->get();
         $moduleData = $aux[0];
         $partitionsData = DB::table('module_partition')->select('id', 'name', 'type', 'sequence_position', 'content')->where('module_id', $data['moduleId'])->orderBy('sequence_position')->get();
         foreach ($partitionsData as $partitionData){
-            $partitionData->fileName = $this->courseGetModuleFilesName($data['courseId'], $data['moduleId'], $partitionData->id);
+            $partitionData->fileName = $this->courseGetModuleFilesName($data['courseId'], $data['moduleId'], $partitionData->sequence_position);
         }
         $moduleData->partitions = $partitionsData;
+        $moduleData->id = $data['moduleId'];
         
         return response()->json($moduleData);
     }
@@ -315,21 +318,21 @@ class CourseController extends Controller
         return response()->json($modulePartitionsInfo);
     }
 
-    private function courseGetModuleFilesName($courseId, $moduleId, $modulePartitionId){
- 
-         $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionId;
+    private function courseGetModuleFilesName($courseId, $moduleId, $modulePartitionPosition){
+         $pathDirectory = 'storage/courses/course'. $courseId . '/module' . $moduleId .'/module_partition'. $modulePartitionPosition;
          if (is_dir($pathDirectory)){
             $files = scandir($pathDirectory);
             $i = 0;
+            $filesName = '';
             //verifies if the file is a system file
             foreach ($files as $file){
                 if ($file[0] != '.'){
-                    $filesName[$i]= $file;
+                    $fileName= $file;
                     $i++;
                 }
             }
         
-            return $filesName;
+            return $fileName;
         }
         else{
             return NULL;

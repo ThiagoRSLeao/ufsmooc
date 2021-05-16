@@ -20,20 +20,14 @@
                                     II
                             </div>
 
-                            <div id = 'title'>
-                                    Função decrementa
+                            <div id = 'title' v-if='this.modulePartitionType != null'>
+                                @{{this.modulePartitions[this.currentPartitionIndex].name}}
                             </div>
                         </div>
                         <!--div v-if='modulePartitionType == 0'>
                             <div id = 'content'>
                                 <div class = 'content-partition' v-for='content in this.contents'>
                                     
-                                </div>
-                            </div>
-                            <div id = 'files-container'>
-                                <div id ='files-title'><strong>Anexos:</strong></div>
-                                <div class = 'files' v-for='fileName in filesName' v-on:click='downloadFile(fileName)'>
-                                    @{{fileName}}
                                 </div>
                             </div>
                         </div-->
@@ -67,23 +61,18 @@
 
                     </div>
 
-                    <div id = 'pdf-window' v-if='this.modulePartitionType == 3'>
-                        <div>
-                            <iframe v-bind:src="'/storage/batata.pdf'" style="width:100%;height:700px;"></iframe>
+                    <div id = 'pdf-window' v-if='this.modulePartitionType == 3|| this.modulePartitionType == 4'>
+                        <div class = 'pdf-download-container'>
+                            <div>PDF</div>
+                            <div class = 'pdf-download' v-on:click='downloadFile(this.modulePartitions[this.currentPartitionIndex].fileName)'>
+                                @{{this.modulePartitions[this.currentPartitionIndex].fileName}}
+                            </div>
                         </div>
-                        <div class = 'files-title'></strong>Download:</strong></div>
-                        <div class = 'files' v-on:click='downloadFile(fileName)'>
-                            @{{this.modulePartitions[this.currentPartitionIndex].fileName}}
+                        <div class = 'pdf-window'>
+                            <iframe v-bind:src="'/storage/courses/course' + this.courseId + '/module' + this.moduleId + '/module_partition' + this.currentPartitionIndex + '/' + this.modulePartitions[this.currentPartitionIndex].fileName" style="width:100%;height:500px;"></iframe>
                         </div>
-                    </div>
-
-                    <div id = 'work-window' v-if='this.modulePartitionType == 4'>
-                        <div>
-                            <iframe v-bind:src="'/storage/batata.pdf'" style="width:100%;height:700px;"></iframe>
-                        </div>
-                        <div id ='files-title'><strong>Anexos:</strong></div>
-                        <div class = 'files' v-on:click='downloadFile(fileName)'>
-                            @{{this.modulePartitions[this.currentPartitionIndex].fileName}}
+                        <div class = 'submit-work' v-if='this.modulePartitionType == 4'>
+                            <div class = 'submit-work-text' v-on:click='openSubmitWindow()'> Enviar Trabalho</div>
                         </div>
                     </div>
                 </div>
@@ -108,8 +97,13 @@
             
 
             </div>
-        </div>
+            <div class = 'advance-module' v-on:click='advanceModule()'>Próximo</div>
 
+
+        </div>
+        <div class = 'upload-work-modal-background' v-if='this.submitWorkWindow == true'>
+                
+        </div>
         
     </div>
     @endsection
@@ -121,10 +115,12 @@
                 return{
                     modules: '',
                     courseId: '{{ $id }}',
-                    moduleId: '1',
+                    moduleId: '',
+                    modulePosition: 1,
                     modulePartitions:[],
                     currentPartitionIndex: '',
-                    modulePartitionType: '',
+                    modulePartitionType: null,
+                    submitWorkWindow: false,
                 }
             },
             methods:{
@@ -133,30 +129,32 @@
                     window.location.href = '/show-courses';
                 },
 
-                async mountModule(moduleId){
+                async mountModule(){
                     response = await axios.get('/get-content-info/',{
                             params:{
                                 courseId: this.courseId,
-                                moduleId: this.moduleId,
+                                modulePosition: this.modulePosition,
                             }
                         });
                     console.log(response.data);
                     this.modulePartitions = response.data.partitions;
-                    //this.contents = [''];
-                    //this.contents.push(JSON.parse(response.data.content));
-                    //this.modulePartitionType = response.data.type;
-                    //this.adjustModules(modulePartitionId, moduleId);
+                    this.moduleId = response.data.id;
                 },
 
-                async mountContent(modulePartitionPosition){
-                    this.currentPartitionIndex = modulePartitionPosition - 1; //necessary subtract 1 because of javascript arrays starts on 0
+                advanceModule(){
+                    this.modulePosition++;
+                    this.mountModule();
+                    this.currentPartitionIndex = '';
+                    this.modulePartitionType = null;
+                },
+
+
+                mountContent(modulePartitionPosition){
+                    this.currentPartitionIndex = modulePartitionPosition; //necessary subtract 1 because of javascript arrays starts on 0
                     this.modulePartitionType = this.modulePartitions[this.currentPartitionIndex].type;
+                    console.log(this.currentPartitionIndex);
+                    console.log(this.modulePartitions[this.currentPartitionIndex]);
                     //CONTENT (TYPE 0) DOES NOT WORK IN THIS VERSION
-                },
-
-                adjustModules(modulePartitionId, moduleId){
-                    this.modulePartitionId = modulePartitionId;
-                    this.moduleId = moduleId;
                 },
                 
                 mountStyle(){
@@ -168,8 +166,12 @@
                     }
                 },
 
+                openSubmitWindow(){
+                    this.submitWorkWindow = true;
+                },
+
                 async downloadFile(fileName){
-                    window.open('/get-course-file?courseId=' + this.courseId + '&moduleId=' + this.moduleId + '&modulePartitionId=' + this.modulePartitionId + '&fileName=' + fileName);
+                    window.open('/get-course-file?courseId=' + this.courseId + '&moduleId=' + this.moduleId + '&modulePartitionId=' + this.currentPartitionIndex + '&fileName=' + fileName);
 
                 },
 
